@@ -40,5 +40,17 @@ class FunctorAcceptanceSpec extends Specification {
 
   }
 
+  "as an Applicative, a List" should {
+
+    "apply '+' binary function to lists distributes the sum over all elements" in { 
+      import pimps._
+
+      val v1 = List(1,2,3)
+      val v2 = List(3,4,5)
+      val plus : List[Int => Int => Int] = List((x:Int,y:Int) => x + y)
+      (plus **: v1) **: v2 should be_==(List(4,5,6,5,6,7,6,7,8))
+    }
+
+  }
 
 }

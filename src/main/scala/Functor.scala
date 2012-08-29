@@ -95,3 +95,29 @@ case object Empty extends Maybe[Nothing] {
     Empty
   }
 }
+
+/**
+ * Provides the ability to turn various types into applicatives.
+ *
+ * This is the now classical "pimp my library" pattern where one uses implicits to extend
+ * the existing behavior of external types and objects.
+ */
+object pimps { 
+
+  implicit def listToApplicative[A](list : List[A]) : Applicative[List,A] = new ApplicativeList(list)
+}
+
+class ApplicativeList[A](list : List[A]) extends Applicative[List,A] { 
+
+  def map[B](f : A => B) : List[B] = list map f
+
+  /**
+   * Applicative on a list distributes a list of functions over a list
+   * of elements.
+   */
+  def **:[B](funs : List[A => B]) : List[B] = funs match { 
+    case f :: fs => (list map f) ::: (fs **: this)
+    case Nil     => Nil
+  }
+}
+
