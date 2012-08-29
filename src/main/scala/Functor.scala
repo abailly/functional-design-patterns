@@ -29,13 +29,32 @@ trait Functor[F[+_], +A] {
  *
  * The prototypical usage is, given a function f : A => B => C and some functor F, to  apply it with arguments
  * pertaining to some functor:
+ * <pre>
  *   var a : F A
  *   var b : F B
  *   var f' : F f
- *   var c : F C = f' :** a :** b
+ *   var c : F C = (f' **: a) **: b
+ * </pre>
  *
+ * Applicative functors where explored in depth in a Functional Pearl written by Conor Mc.Bride and
+ * Ross Paterson: <em>Applicative Programming with Effects</em>, J. of Functional Programmming, <b>2005</b>.
  */
 trait Applicative[F[+_], +A] extends Functor[F,A] {
+
+  /**
+   * Operator for application of current arguments to given (lifted) function.
+   *
+   * This operator is postfixed with a colon in order to allow a more 'natural' writing
+   * of application as
+   * <pre>
+   * import curry._
+   * val plus : Maybe[Int => Int => Int] = Just((x:Int, y:Int) => x + y)
+   * (plus **: v1) **: v2
+   * </pre>
+   * Unfortunately it is not possible as in Haskell to define an operator fixity and
+   * precedence order, thus enforcing the need of proper parenthesing of expressions. Note
+   * here <code>plus</code> curried binary plus.
+   */
   def **:[B](f : F[A => B]) : F[B]
 }
 
@@ -65,20 +84,6 @@ case class Just[A](v : A) extends Maybe[A] {
     Just(f(v))
   }
 
-  /**
-   * Operator for application of current arguments to given (lifted) function.
-   *
-   * This operator is postfixed with a colon in order to allow a more 'natural' writing
-   * of application as
-   * <pre>
-   * import curry._
-   * val plus : Maybe[Int => Int => Int] = Just((x:Int, y:Int) => x + y)
-   * (plus **: v1) **: v2
-   * </pre>
-   * Unfortunately it is not possible as in Haskell to define an operator fixity and
-   * precedence order, thus enforcing the need of proper parenthesing of expressions. Note
-   * here <code>plus</code> curried binary plus.
-   */
   def **:[B](f : Maybe[A => B]) : Maybe[B] = f match { 
     case Just(ff) => Just(ff(v))
     case Empty    => Empty
@@ -107,6 +112,9 @@ object pimps {
   implicit def listToApplicative[A](list : List[A]) : Applicative[List,A] = new ApplicativeList(list)
 }
 
+/**
+ * Simple Applicative wrapper over standard (immutable) scala lists.
+ */
 class ApplicativeList[A](list : List[A]) extends Applicative[List,A] { 
 
   def map[B](f : A => B) : List[B] = list map f
@@ -119,5 +127,6 @@ class ApplicativeList[A](list : List[A]) extends Applicative[List,A] {
     case f :: fs => (list map f) ::: (fs **: this)
     case Nil     => Nil
   }
+
 }
 
