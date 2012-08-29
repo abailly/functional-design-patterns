@@ -1,5 +1,7 @@
 import org.specs2.mutable._
 
+import curry._
+
 class FunctorAcceptanceSpec extends Specification {
    "as a Functor, a Maybe" should {
      val f = (x:Int) => x + 1
@@ -22,13 +24,21 @@ class FunctorAcceptanceSpec extends Specification {
    } 
 
   "as an Applicative, a Maybe" should {
-    "apply a pure binary function to its values yielding " in { 
+
+    "apply '+' binary function to 2 'Just' values yielding Just the sum of values " in { 
       val v1 = Just(1)
       val v2 = Just(2)
-      val plus = Just((x:Int) => (y:Int) => x + y)
+      val plus : Maybe[Int => Int => Int] = Just((x:Int,y:Int) => x + y)
       (plus **: v1) **: v2 should be_==(Just(3))
     }
 
-    
+    "apply '+' binary function to 1 'Just' value and 1 'Empty' yields Empty" in { 
+      val plus : Maybe[Int => Int => Int] = Just((x:Int,y:Int) => x + y)
+      (plus **: Empty) **: Just(1) should be_==(Empty)
+      (plus **: Just(1)) **: Empty should be_==(Empty)
+    }
+
   }
+
+
 }

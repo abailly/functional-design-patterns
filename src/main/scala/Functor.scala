@@ -51,14 +51,39 @@ trait Applicative[F[+_], +A] extends Functor[F,A] {
  */
 sealed trait Maybe[+A] extends Applicative[Maybe, A] 
 
+/**
+ * Implicits for currification of functions.
+ */
+object curry { 
+  implicit def curry2[A,B,C](f : (A,B) => C) : A => B => C = { 
+    (x : A) => (y : B) => f(x,y)
+  }
+}
+
 case class Just[A](v : A) extends Maybe[A] {
   def map[B](f : A => B) : Maybe[B] = {
     Just(f(v))
   }
 
+  /**
+   * Operator for application of current arguments to given (lifted) function.
+   *
+   * This operator is postfixed with a colon in order to allow a more 'natural' writing
+   * of application as
+   * <pre>
+   * import curry._
+   * val plus : Maybe[Int => Int => Int] = Just((x:Int, y:Int) => x + y)
+   * (plus **: v1) **: v2
+   * </pre>
+   * Unfortunately it is not possible as in Haskell to define an operator fixity and
+   * precedence order, thus enforcing the need of proper parenthesing of expressions. Note
+   * here <code>plus</code> curried binary plus.
+   */
   def **:[B](f : Maybe[A => B]) : Maybe[B] = f match { 
     case Just(ff) => Just(ff(v))
+    case Empty    => Empty
   }
+
 }
 
 case object Empty extends Maybe[Nothing] { 
