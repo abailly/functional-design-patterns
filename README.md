@@ -1,6 +1,6 @@
 Une exploration des _motifs de conception_ de la programmation fonctionnelle à l'usage des simples mortels.
 
-* [Foncteurs](functor.html)
+* [Foncteurs](functor.md)
 * [Foncteurs applicatifs](applicative.html)
 * [Monades](monades.html)
 * [Flèches](arrows.html)
@@ -9,4 +9,4 @@ Une exploration des _motifs de conception_ de la programmation fonctionnelle à 
 * [Iteratee](iteratees.html)
 * [Reacteur](reactive.html)
 * [Continuations Délimitées](delimited-continuations.html)
-* [Bananes & co.](bananas.html)
+* [Bananes & co.](bananas.md)

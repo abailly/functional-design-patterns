@@ -2,7 +2,7 @@
 
 Les foncteurs sont parmi les concepts les plus simples de la programmation fonctionnelle. Dans un univers fortement typé, un foncteur est avant tout un _constructeur de type_, c'est à dire une _fonction sur les types_, possédant certaines propriétés particulières. Plus prosaïquement, un foncteur est un _type générique_ qui offre une certaine interface : la fonction traditionnellement appelée *map*. Si l'on ignore la question du typage, un foncteur est un _conteneur_ de valeurs offrant une opération permettant de manipuler la valeur contenue en son sein.
 
-La fonction *map* est une fonction _d'ordre supérieure_, c'est à dire une fonction qui opère sur des *fonctions*. Etant donné un foncteur $F$ et des types $A$ et $B$ quelconques, sa signature est simple:
+La fonction *map* est une fonction _d'ordre supérieur_, c'est à dire une fonction qui opère sur des *fonctions*. Etant donné un foncteur $F$ et des types $A$ et $B$ quelconques, sa signature est simple:
 
 $$
 map : (A \rightarrow B) \rightarrow (F A \rightarrow F B)
