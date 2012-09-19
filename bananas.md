@@ -140,7 +140,19 @@ Mais une fois que l'on a cette fonction, on n'est guère avancé car de toute é
 
 ## Catamorphismes
 
-Un *catamorphisme* est une _fonction d'ordre supérieure_ permettant de produire une valeur en "parcourant" une structure, un type algébrique, récursivement. 
+Un *catamorphisme* est une _fonction d'ordre supérieure_ permettant de produire une valeur d'un type arbitraire en "repliant" une structure, un type algébrique, récursivement, par application d'un opérateur quelconque sur une valeur initiale. 
+
+Le catamorphisme "canonique" est l'opérateur `foldr` sur les listes:
+
+~~~~~~~~~ {.haskell .numberLines}
+foldr :: (a -> b ->  b) -> b -> [a] -> b
+foldr op x []     = x
+foldr op x (y:ys) = y `op` (foldr op x ys)
+~~~~~~~~~
+
+Pour tout opérateur binaire ⊙ et toute valeur x, h = foldr ⊙ x, est un catamorphisme pour les listes de type `[a] -> b`. Le parcours de la liste est imbriqué avec l'application de l'opérateur dans l'appel récursif à `foldr`. 
+
+Mais on a vu ci-dessus que la récursion pouvait être rendue explicite au travers de la structure du type de données, par l'opérateur `Mu`. 
 
 -- catamorphims are dse
 cata :: Functor f => (f a -> a) -> (Rec f -> a)
