@@ -140,7 +140,7 @@ Mais une fois que l'on a cette fonction, on n'est guère avancé car de toute é
 
 ## Catamorphismes
 
-Un *catamorphisme* est une _fonction d'ordre supérieure_ permettant de produire une valeur d'un type arbitraire en "repliant" une structure, un type algébrique, récursivement, par application d'un opérateur quelconque sur une valeur initiale. 
+Un *catamorphisme* est donc une _fonction d'ordre supérieure_ permettant de produire une valeur d'un type arbitraire en "repliant" une structure, un type algébrique, récursivement, par application d'un opérateur quelconque sur une valeur initiale. 
 
 Le catamorphisme "canonique" est l'opérateur `foldr` sur les listes:
 
@@ -150,65 +150,46 @@ foldr op x []     = x
 foldr op x (y:ys) = y `op` (foldr op x ys)
 ~~~~~~~~~
 
-Pour tout opérateur binaire ⊙ et toute valeur x, h = foldr ⊙ x, est un catamorphisme pour les listes de type `[a] -> b`. Le parcours de la liste est imbriqué avec l'application de l'opérateur dans l'appel récursif à `foldr`. 
+Pour tout opérateur binaire ⊙ et toute valeur x, h = foldr ⊙ x, est un catamorphisme pour les listes de type `[a] -> b`. Le parcours de la liste est imbriqué avec l'application de l'opérateur dans l'appel récursif à `foldr`. Par ailleurs, on a vu ci-dessus que la récursion pouvait être rendue explicite au travers de la structure du type de données, par l'opérateur `Mu`, qui produit un _point fixe_ d'un foncteur quelconque. On aimerait donc pouvoir distinguer, séparer, dans foldr et d'autres opérations du même type qui transforment un type de données récursif en une valeur quleconque, deux entités distinctes:
+* le traitement de chaque instance possible d'un foncteur, autrement dit une f-algèbre quelconque ;
+* et la récursion. 
 
-Mais on a vu ci-dessus que la récursion pouvait être rendue explicite au travers de la structure du type de données, par l'opérateur `Mu`. 
+Ces deux contraintes peuvent s'exprimer dans le système de type, ce qui nous donne la signature suivante pour `cata`:
 
--- catamorphims are dse
-cata :: Functor f => (f a -> a) -> (Rec f -> a)
+~~~~~~~~~ {.haskell .numberLines}
+cata :: Functor f => (f a -> a) -> (Mu f -> a)
+~~~~~~~~~
+
+`cata` est donc une fonction qui, à partir d'une f-algèbre, produit une fonction transformation un point fixe du foncteur f en une valeur. Sa définition est la suivante et l'on voit bien que la récursion y est explicite:
+
+~~~~~~~~~ {.haskell .numberLines}
 cata h = h . fmap (cata h) . out
+~~~~~~~~~
 
--- Standard recursive ADT definition
--- data Expr = Num Int | Add Expr Expr
+On est désormais équipé pour appliquer notre fonction `intalgebra` définie ci-dessus pour transformer les nombres algébriques en entiers "sympathiques":
 
--- catamorphisms on simple expression trees
-data E e = Num Int | Add e e deriving Show
-  
-instance Functor E where
-  fmap g =  \x -> case x of 
-    Num n -> Num n
-    Add e e' -> Add (g e) (g e')
+~~~~~~~~~ {.haskell .numberLines}
+toInt :: Natural -> Int 
+toInt = cata intalgebra
+~~~~~~~~~
 
-type Expr = Rec E
+et l'on peut utiliser toint pour obtenir de "vrais" entiers:
 
-eval' (Num n) = id n
-eval' (Add e e') = e + e'
+```
+*Main> toint (In Zero)
+0
+*Main> toint (In (Succ (In (Succ (In Zero)))))
+2
+*Main> 
+```
 
-eval = cata eval'
+## Anamorphismes
 
--- list type
--- second parameter makes explicit the fact the actual type is a fixed point
--- of some equation L(x) = 1 + L(x)
-data L a l = Nil | L a l deriving Show 
+Dans l'univers des types, chaque concept a toujours son _duel_, un concept similaire mais inverse. Le duel d'une f-algèbre `h :: f a -> a` est une *f-coalgèbre*, `g :: a -> f a`, c'est à dire une fonction qui construit un élément d'un foncteur à partir d'une valeur. A titre d'exemple, on peut définir une `intcoalgebra` qui tranforme un nombre entier en `Natural`:
 
-type List a = Rec (L a)
-
--- This is the functor instance for the type L a, *not* for the usual List 
--- structure
-instance Functor (L a) where
-  fmap g Nil     = Nil
-  fmap g (L x l) = L x (g l)
-  
-
--- define non-recursive length function
-len :: L a Int -> Int
-len Nil      = 0
-len (L a l)  = 1 + l
-
--- then apply cata to recurse in list
-length = cata len
-
--- other example with filter
-filtr :: (a -> Bool) -> L a l -> L a l
-filtr p Nil     = Nil
-filtr p (L a l) | p a = L a l
-                | otherwise = Nil
-
-filter' :: (a -> Bool) -> L a (Rec (L a)) -> Rec (L a)
-filter' p Nil                 = In Nil
-filter' p (L a l) | p a       = In (L a l)
-                  | otherwise = l
-
-filter p = cata $ filter' p
+~~~~~~~~~ {.haskell .numberLines}
+intcoalgebra :: Int -> Natf Int
+intcoalgebra 0 = Zero
+intcoalgebra n = Succ (n - 1)
 ~~~~~~~~~
 
