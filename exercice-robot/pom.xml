@@ -132,4 +132,12 @@
 
     </developers>
 
+
+  <repositories>
+    <repository>
+      <id>embedded</id>
+      <url>file://${basedir}/lib</url>
+    </repository>
+  </repositories>
+
 </project>
