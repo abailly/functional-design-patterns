@@ -73,18 +73,6 @@ Each order may (optionally) be prefixed by a number (greater than 0)
 of time steps to wait *before* the following order is executed by the
 robot. 
 
-# Assignment
-
-Fortunately (!) you do not have to start writing your simulation
-program from scratch: An intern that has now left the ESA has written
-first version of the simulation in Java which hopefully does part of
-the job. 
-
-Unfortunately, it is not clear what are the implemented features of the
-simulation, but it is sure that energy consumption was not
-implemented. Your task will then consist in completing the simulation
-program with missing features.
-
 ## The Simulation Program
 
 The simulation is a simple command-line oriented program that takes as
@@ -171,3 +159,24 @@ has the following structure:
 * Position in X,Y coordinates of the robot
 * Bearing of the robot
 * Remaining battery level
+
+# Assignment
+
+Fortunately (!) you do not have to start writing your simulation
+program from scratch: An intern that has now left the ESA has written
+first version of the simulation in Java which hopefully does part of
+the job. 
+
+Unfortunately, it is not clear what are the implemented features of the
+simulation, but it is sure that energy consumption was not
+implemented. 
+
+Your task will then consist in completing the simulation
+program with missing features and improve the current design of the
+sytem. To sum-up, are here the goals of this exercise:
+
+* Improve the design of the current codebase by applying functional
+  concepts and patterns
+* Implement correctly the above specification. There should of course
+  be (automated) tests to demonstrate the correct behaviour of this
+  specification
