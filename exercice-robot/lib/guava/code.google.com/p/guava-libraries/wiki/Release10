@@ -1,0 +1,1618 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/guava-libraries/wiki/Release10" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"profileUrl":null,"token":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/17134919371905794448","projectHomeUrl":"/p/guava-libraries","relativeBaseUrl":"","projectName":"guava-libraries","loggedInUserEmail":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>Release10 - 
+ guava-libraries -
+ 
+ Release notes for Guava Release 10.0.1 - 
+ Guava: Google Core Libraries for Java 1.6+ - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/guava-libraries/gitchanges/basic?repo=wiki&amp;path=/Release10.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FRelease10&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FRelease10" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/guava-libraries">
+ <a href="/p/guava-libraries/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/search-48.gif" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/guava-libraries/"><span itemprop="name">guava-libraries</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/guava-libraries/"><span itemprop="description">Guava: Google Core Libraries for Java 1.6+</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/guava-libraries/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/wiki/GuavaExplained?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/guava-libraries/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/guava-libraries/wiki/GuavaExplained">Introduction</a> </li><li>Basic Utilities </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained">Using/avoiding null</a> </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </li></ul><li><a href="/p/guava-libraries/wiki/PreconditionsExplained">Preconditions</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained">Ordering</a> </li><ul><li><a href="/p/guava-libraries/wiki/OrderingExplained#Creation">Creation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Manipulation">Manipulation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Application">Application</a> </li></ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained">Object methods</a> </li><ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#equals">equals</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#hashCode">hashCode</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#toString">toString</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#compare/compareTo">compare/compareTo</a> </li></ul><li><a href="/p/guava-libraries/wiki/ThrowablesExplained">Throwables</a> </li></ul><li>Collections </li><ul><li><a href="/p/guava-libraries/wiki/ImmutableCollectionsExplained">Immutable collections</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained">New collection types</a> </li><ul><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">Multiset</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">Multimap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">Table</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">ClassToInstanceMap</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">Utility Classes</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Iterables">Iterables</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Lists">Lists</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Sets">Sets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Maps">Maps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multisets">Multisets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multimaps">Multimaps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Tables">Tables</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained">Extension Utilities</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#Forwarding_Decorators">Forwarding Decorators</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">PeekingIterator</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#AbstractIterator">AbstractIterator</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/CachesExplained">Caches</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Applicability">Applicability</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Population">Population</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Eviction">Eviction</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Removal_Listeners">Removal Listeners</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Refresh">Refresh</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Timed_Eviction">Timed Eviction</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Size-based_Eviction">Size Caps</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Reference-based_Eviction">Garbage Collection</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Explicit_Removals">Explicit Removals</a> </li></ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Features">Features</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Statistics">Statistics</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained">Functional Idioms</a> </li><ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions_and_Predicates">Obtaining</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Predicates">Using Predicates</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions">Using Functions</a> </li></ul><li>Concurrency </li><ul><li><a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained">Service</a> </li><ul><li><a href="/p/guava-libraries/wiki/ServiceExplained#Using_a_Service">Using</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained#Implementations">Implementations</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/StringsExplained">Strings</a> </li><ul><li><a href="/p/guava-libraries/wiki/StringsExplained#Joiner">Joiner</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">CharMatcher</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Charsets">Charsets</a> </li></ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained">Primitives</a> </li><ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Primitive_array_utilities">Primitive arrays</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#General_utility_methods">General utilities</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Byte_conversion_methods">Byte conversion</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support">Unsigned support</a> </li></ul><li><a href="/p/guava-libraries/wiki/RangesExplained">Ranges</a> </li><ul><li><a href="/p/guava-libraries/wiki/RangesExplained#Building_Ranges">Building</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Operations">Operations</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Discrete_Domains">Discrete Domains</a> </li></ul><li><a href="/p/guava-libraries/wiki/IOExplained">I/O</a> </li><li><a href="/p/guava-libraries/wiki/HashingExplained">Hashing</a> </li><ul><li><a href="/p/guava-libraries/wiki/HashingExplained#BloomFilter">BloomFilter</a> </li></ul><li><a href="/p/guava-libraries/wiki/EventBusExplained">EventBus</a> </li><li><a href="/p/guava-libraries/wiki/MathExplained">Math</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Math_on_Integral_Types">Integral</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Checked_Arithmetic">Overflow Checking</a> </li></ul><li><a href="/p/guava-libraries/wiki/MathExplained#Floating-point_arithmetic">Floating Point</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained">Reflection</a> </li><ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained#TypeToken">TypeToken</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReleaseHistory">Releases</a> </li><ul><li><a href="/p/guava-libraries/wiki/Release13">Release 13</a> </li><li><a href="/p/guava-libraries/wiki/Release12">Release 12</a> </li><li><a href="/p/guava-libraries/wiki/Release11">Release 11</a> </li><li><a href="/p/guava-libraries/wiki/Release10">Release 10</a> </li></ul><li>Tips </li><ul><li><a href="/p/guava-libraries/wiki/PhilosophyExplained">Philosophy</a> </li><li><a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">Building with Guava</a> </li><li><a href="/p/guava-libraries/wiki/UsingProGuardWithGuava">Shrinking JARs with ProGuard</a> </li><li><a href="/p/guava-libraries/wiki/ApacheCommonCollectionsEquivalents">Translating from Apache Commons</a> </li><li><a href="/p/guava-libraries/wiki/Compatibility">Guava and Compatibility</a> </li><li><a href="/p/guava-libraries/wiki/IdeaGraveyard">Idea Graveyard</a> </li><li><a href="/p/guava-libraries/wiki/FriendsOfGuava">Friends of Guava</a> </li><li><a href="/p/guava-libraries/wiki/HowToContribute">How to Contribute</a> </li></ul><li><a href="/p/guava-libraries/wiki/GuavaTermsExplained">Glossary</a> </li><li><a href="http://groups.google.com/group/guava-discuss" rel="nofollow">Mailing List</a> </li><li><a href="http://stackoverflow.com/questions/tagged/guava" rel="nofollow">Stack Overflow</a> </li><li><a href="http://code.google.com/p/memory-measurer/wiki/ElementCostInDataStructures" rel="nofollow">Footprint of JDK/Guava data structures</a> </li></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <span style="font-size:120%;font-weight:bold">Release10</span>
+ &nbsp;
+ <div> 
+ 
+ <i>Release notes for Guava Release 10.0.1</i>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Tue Mar 20 16:30:35 2012">
+ Mar 20, 2012</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/fry@google.com/">fry@google.com</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Guava_Release_10.0.1:_Release_Notes"></a>Guava Release 10.0.1: Release Notes<a href="#Guava_Release_10.0.1:_Release_Notes" class="section_anchor"></a></h1><p>Release 10.0 was released on September 28, 2011. Release 10.0.1 was released on October 10, 2011.  (See <a href="/p/guava-libraries/wiki/ReleaseHistory">ReleaseHistory</a>.) </p><p><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/index.html" rel="nofollow">Full API Documentation</a> </p><h2><a name="Using_Guava_in_your_project"></a>Using Guava in your project<a href="#Using_Guava_in_your_project" class="section_anchor"></a></h2><p>This release will be identified in the Maven Central repository as <a href="http://search.maven.org/#artifactdetails%7Ccom.google.guava%7Cguava%7C10.0.1%7Cjar" rel="nofollow">com.google.guava:guava:10.0.1</a> and <a href="http://search.maven.org/#artifactdetails%7Ccom.google.guava%7Cguava-gwt%7C10.0.1%7Cjar" rel="nofollow">com.google.guava:guava-gwt:10.0.1</a> </p><p>See <a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">UseGuavaInYourBuild</a> for help integrating Guava into your build environment. </p><p>If you don&#x27;t use managed dependencies, you can also just manually download JARs of the classes, sources and documentation from: </p><ul><li><a href="http://search.maven.org/remotecontent?filepath=com/google/guava/guava/10.0.1/guava-10.0.1.jar" rel="nofollow">guava-10.0.1.jar</a> </li><li><a href="http://search.maven.org/remotecontent?filepath=com/google/guava/guava-gwt/10.0.1/guava-gwt-10.0.1.jar" rel="nofollow">guava-gwt-10.0.1.jar</a> (for GWT users) </li><li><a href="http://search.maven.org/remotecontent?filepath=com/google/guava/guava/10.0.1/guava-10.0.1-javadoc.jar" rel="nofollow">guava-10.0.1-javadoc.jar</a> (Javadoc) </li><li><a href="http://search.maven.org/remotecontent?filepath=com/google/guava/guava/10.0.1/guava-10.0.1-sources.jar" rel="nofollow">guava-10.0.1-sources.jar</a> (Source) </li></ul><h2><a name="API_Changes"></a>API Changes<a href="#API_Changes" class="section_anchor"></a></h2><p><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/jdiff/changes.html" rel="nofollow">Full JDiff Report</a> of changes since release 9.0 </p><p>To build a combined report of the API changes between release 10.0.1 and any older release, check out our docs tree and run <tt>jdiff/jdiff.sh</tt> with the previous release number as argument (example: <tt>jdiff.sh 5.0</tt>). </p><h3><a name="Changes_between_10.0_and_10.0.1"></a>Changes between 10.0 and 10.0.1<a href="#Changes_between_10.0_and_10.0.1" class="section_anchor"></a></h3><ul><li>Fixed serialization of MapMaker eviction listeners (<a title="CacheBuilder caches should be serializable" class=closed_ref href="/p/guava-libraries/issues/detail?id=712">&nbsp;issue 712&nbsp;</a>) </li><li>Allow write operations on Cache.asMap view of CacheBuilder-generated Caches  </li><li>Don&#x27;t deprecate FinalizableReferenceQueue and associated classes  </li></ul><h2><a name="Issues_resolved"></a>Issues resolved<a href="#Issues_resolved" class="section_anchor"></a></h2><p><a href="http://code.google.com/p/guava-libraries/issues/list?can=1&amp;q=milestone%3DRelease10+status%3DFixed&amp;sort=id+-owner&amp;colspec=ID+Type+Status+Milestone+Summary&amp;nobtn=Update" rel="nofollow">Issues fixed</a> </p><h2><a name="Additions"></a>Additions<a href="#Additions" class="section_anchor"></a></h2><h3><a name="Runnable_tests!"></a>Runnable tests!<a href="#Runnable_tests!" class="section_anchor"></a></h3><h3><a name="New_packages"></a>New packages<a href="#New_packages" class="section_anchor"></a></h3><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/cache/package-summary.html" rel="nofollow">common.cache</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/eventbus/package-summary.html" rel="nofollow">common.eventbus</a> </li></ul><h3><a name="New_classes"></a>New classes<a href="#New_classes" class="section_anchor"></a></h3><p>Ranges </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/collect/Range.html" rel="nofollow">Range</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/collect/Ranges.html" rel="nofollow">Ranges</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/collect/ContiguousSet.html" rel="nofollow">ContiguousSet</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/collect/DiscreteDomain.html" rel="nofollow">DiscreteDomain</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/collect/DiscreteDomains.html" rel="nofollow">DiscreteDomains</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/collect/BoundType.html" rel="nofollow">BoundType</a> </li></ul><p>Forwarding Helpers </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/ForwardingExecutorService.html" rel="nofollow">ForwardingExecutorService</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/ForwardingListeningExecutorService.html" rel="nofollow">ForwardingListeningExecutorService</a> </li><li>ForwardingMap.StandardEntrySet </li><li>ForwardingMap.StandardKeySet </li><li>ForwardingMap.StandardValues </li><li>ForwardingMultiset.StandardElementSet </li></ul><p>Other Collections </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/collect/ArrayTable.html" rel="nofollow">ArrayTable</a> </li><li>ImmutableCollection.Builder </li></ul><p>Futures </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/ListeningExecutorService.html" rel="nofollow">ListeningExecutorService</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/ListeningScheduledExecutorService.html" rel="nofollow">ListeningScheduledExecutorService</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/FutureCallback.html" rel="nofollow">FutureCallback</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/UncheckedExecutionException.html" rel="nofollow">UncheckedExecutionException</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/ExecutionError.html" rel="nofollow">ExecutionError</a> </li></ul><p>Other Concurrency </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/Atomics.html" rel="nofollow">Atomics</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/Monitor.html" rel="nofollow">Monitor</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/util/concurrent/Uninterruptibles.html" rel="nofollow">Uninterruptibles</a> </li></ul><p>Miscellaneous </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/base/Stopwatch.html" rel="nofollow">Stopwatch</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/primitives/UnsignedLongs.html" rel="nofollow">UnsignedLongs</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/base/Optional.html" rel="nofollow">Optional</a> </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/v10.0.1/javadoc/com/google/common/net/HostAndPort.html" rel="nofollow">HostAndPort</a> </li><li>Splitter.MapSplitter </li><li>Equivalence.Wrapper </li></ul><h3><a name="New_members"></a>New members<a href="#New_members" class="section_anchor"></a></h3><ul><li>Futures.addCallback </li><li>Futures.allAsList </li><li>Futures.get </li><li>Futures.getUnchecked </li><li>Futures.successfulAsList </li></ul><ul><li>Predicates.assignableFrom </li></ul><ul><li>Multisets.containsOccurrences </li><li>Multisets.removeOccurrences </li><li>Multisets.retainOccurrences </li></ul><ul><li>ByteStreams.copy(InputStream, OutputSupplier) </li></ul><ul><li>Maps.difference using an <tt>Equivalence</tt> </li><li>Maps.uniqueIndex for an <tt>Iterator</tt> </li><li>Multimaps.index for an <tt>Iterator</tt> </li><li>MapJoiner.join for an <tt>Iterable&lt;Entry&gt;</tt> </li></ul><ul><li>Functions.forSupplier </li></ul><ul><li>AbstractExecutionThreadService.getServiceName </li></ul><ul><li>InetAddresses.increment </li><li>InetAddresses.isMappedIPv4Address </li><li>InetAddresses.isMaximum </li><li>InetAddresses.toAddrString </li></ul><ul><li>AbstractFuture.interruptTask </li></ul><ul><li>Doubles.isFinite </li><li>Floats.isFinite </li></ul><ul><li>MoreExecutors.listeningDecorator </li></ul><ul><li>Tables.newCustomTable </li><li>Tables.transformValues </li></ul><ul><li>Ticker.systemTicker </li></ul><ul><li>Splitter.withKeyValueSeparator </li></ul><ul><li>BYTES (Doubles, Floats) </li><li>MAX_POWER_OF_TWO (Int, Longs, Shorts, SignedBytes, UnsignedBytes) </li></ul><p><g:plusone size="medium" source="google:projecthosting"></g:plusone> </p>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/marcellodesales/">marcellodesales</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Sep 15 11:37:32 2011">Sep 15, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Any date? I&#x27;m about to implement a new Cache and I saw the new version will have a Cache utility! :)  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Sep 19 12:50:57 2011">Sep 19, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Should be posting rc2 imminently. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/emily@soldal.org/">emily@soldal.org</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Sep 27 08:38:36 2011">Sep 27, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Can&#x27;t say I am thrilled with Equivalence becoming a class, could you shed some light on this decision please? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Sep 28 10:32:33 2011">Sep 28, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>How does it hurt you? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/ellis.m.a@gmail.com/">ellis.m.a@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Sep 28 13:26:16 2011">Sep 28, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Still no OSGI headers in the manifest? Meh. How many versions ago did I submit a patch for that? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/emily@soldal.org/">emily@soldal.org</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Sep 29 01:09:03 2011">Sep 29, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@Kevinb; yes, we have used Equivalence interfaces in places using enums and other structures, so now we have to do some changes to sort this out. I&#x27;m sure there&#x27;s a reason behind changing it, I&#x27;m just curious as to what it is. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/117679010609155180272/">j...@nwsnet.de</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Sep 29 02:28:59 2011">Sep 29, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Is <tt>Joiner.withKeyValueSeparator</tt> really new? IIRC the map <strong>joiner</strong> (vs. map <strong>splitter</strong>, which was introduced in 10.0) was already around in Google Collections. Also there&#x27;s no @since annotation in the JavaDocs<a href="/p/guava-libraries/w/edit/JavaDocs">?</a> that marks the method in question as being added in 10.0. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102197328982447274508/">cpov...@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Sep 29 04:58:56 2011">Sep 29, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Fixed.  Thanks. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113937141757020325516/">cgdec...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Sep 29 05:46:41 2011">Sep 29, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@yo.gi: MapJoiner<a href="/p/guava-libraries/w/edit/MapJoiner">?</a> can now join Iterables of Map.Entrys (for instance, the entries of a Multimap) where it couldn&#x27;t before, but that&#x27;s all that&#x27;s new as far as I know. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Sep 29 07:17:22 2011">Sep 29, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Ah, our mistake -- too much to keep track of. </p><p>ellis, we really have zero domain knowledge of OSGi on this team so we&#x27;ve been relying on our friends who maintain guava-osgi.googlecode.com to tack whatever is needed on after the fact; we&#x27;ve made the decision that this stuff should be merged somehow but it&#x27;s unclear who is going to do that or when.  I think it will probably happen for 11.0. </p><p>&quot;em...&quot;, I&#x27;ll explain if I can find time and space to do so, but that&#x27;s not here or now. I&#x27;m sorry for the inconvenience.  It really should never have been released as an interface in the first place, but we try not to completely withhold our unfinished experiments from the world. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102097673053618254951/">sujeetku...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Sep 30 04:49:54 2011">Sep 30, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>unlike in past, can&#x27;t see the download link to guava release 10. Do we have to build from source? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113937141757020325516/">cgdec...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Sep 30 07:38:29 2011">Sep 30, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@sujeetku...: Use the links to Maven Central under &quot;Using Guava in your project&quot; at the top (e.g. &quot;com.google.guava:guava:10.0&quot;. There you&#x27;ll see links to download the jar, source jar, javadoc jar, etc. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/110159643929963265945/">jamesthe...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Oct  4 09:44:35 2011">Oct 4, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Keep in mind that downloading via Maven Central is weird to those of us who don&#x27;t use Maven.   Without reading these comments, there&#x27;s no way I&#x27;d figure it out.  I&#x27;d skim through the maven bits, completely ignore them (thinking &quot;Maven?  Don&#x27;t use it, don&#x27;t care, couldn&#x27;t possibly be relevant to me&quot;), and then still have to hunt for where to download.  No way would I figure out that a non-maven user needs to go over there to download stuff. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113937141757020325516/">cgdec...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Oct  4 09:56:12 2011">Oct 4, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>I think either adding the jars to the Downloads section or adding direct download links here would be a good idea. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/107235691364521960319/">jamiemar...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Oct  6 13:47:24 2011">Oct 6, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Where do I find the JARs?  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103237256888075560098/">peter.wa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Oct 10 06:45:44 2011">Oct 10, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>&lt;rant&gt; </p><p>Having beta code in a release is odd! Why don&#x27;t you remove the affected code in the release-build if it&#x27;s not intended for use? Anyone willing to use the beta code can do so by going wiht a snapshot build, so why litter a release build with unfinished software and let all the users do the work of removing it or checking usage of affected code when you can do it once and for all users? </p><p>Definitively something other open source projects are way better at .. &lt;/rant&gt; </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103237256888075560098/">peter.wa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Oct 10 09:03:22 2011">Oct 10, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>&lt;another rant&gt;  </p><p>Can you please make up your mind about versioning. Do you intend to stick with the r&lt;something&gt; numbering or is it now officially &lt;X&gt;.&lt;y&gt;. The same goes for packaging and download site. </p><p>&lt;/another rant&gt;  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Oct 10 21:25:10 2011">Oct 10, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Peter, are you sure you understand what @Beta means?  You seem to believe it means &quot;unfinished software&quot;, but in fact, ALL of Guava is &quot;unfinished software&quot;.  So you might not want to use any of it. </p><p>From the project page: &quot;APIs marked with the @Beta annotation at the class or method level are subject to change. They can be modified in any way, or even removed, in any major release. If your code is a library itself (i.e. it is used on the CLASSPATH of users outside your own control), you should not use beta APIs, unless you repackage them (e.g. using ProGuard<a href="/p/guava-libraries/w/edit/ProGuard">?</a>).&quot;  Why do you suggest we make things harder on both application developers and library developers who are willing to repackage, both of which groups can now use @Beta APIs without much difficulty? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Oct 10 21:26:54 2011">Oct 10, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>We have changed a few things over time, it&#x27;s true. I&#x27;m sorry that this has irritated you. Is there a particular reason you&#x27;re afraid we&#x27;re going to change back? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103237256888075560098/">peter.wa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Oct 11 02:13:37 2011">Oct 11, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>&quot;@Beta means? You seem to believe it means &quot;unfinished software&quot;, but in fact, ALL of Guava is &quot;unfinished software&quot;. So you might not want to use any of it.&quot;  </p><p>If all of guava is unfinished, then why not mark everything as @Beta (or nothing and release the thing as beta release)? But you don&#x27;t because there is a difference between @Beta code and the rest, isn&#x27;t it?  </p><p>There is a difference between a library, that is under active development and hence will change over time (which is true for almost all open source libs unless development is &#x27;dead&#x27; and the code becomes static in which case you might not want to use the library anyway) and beta code.  </p><p>All advantages of using a library is moot when the code base is so unstable that using the next update generates more work than writing your own library.  </p><p>My understandig of @Beta is, that these are the higly unstable parts of guava, so I don&#x27;t want to use them (and I guess most developers don&#x27;t want to because why should anybody make his lives more difficult when moving to the next version).  </p><p>But how do I do that? I don&#x27;t want to look all the time at the source code when programming to make sure I didn&#x27;t use the beta parts. Code completion knows nothing about @Beta (and it shouldn&#x27;t!). Hence I have to remove all the beta parts. But why should the user handle the repackaging thing when you can simple release two versions: a beta / instable version and a stable / release version. Simple as that. Anybody can use the version he likes.  </p><p>Other OSS projects handle this much better. The same goes vor versioning, naming, packaging, downloading, etc. E. g. I never had such fruitless discussions with Apache software (and in case Apache commons collection ever releases a &quot;generified&quot; version, I&#x27;ll most certainly switch back to that). </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Oct 11 11:11:32 2011">Oct 11, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Peter, if the amount of work required to roll with the changes we make to @Beta APIs is actually exceeding the benefit you&#x27;re getting from using Guava in the first place, I strongly urge you not use Guava. We will issue you a full refund, no questions asked. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Oct 11 11:51:40 2011">Oct 11, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Out of curiosity, do we have any statistics on how unstable @Beta things actually are? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102097673053618254951/">sujeetku...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Oct 11 22:15:06 2011">Oct 11, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@Peter </p><p>You have three options </p><p>1. Remove all @Beta classes and methods and build Guava from source (If it works) 2. Use common collections with generics support available at <a href="http://sourceforge.net/projects/collections/" rel="nofollow">http://sourceforge.net/projects/collections/</a> 3. Checkout the code of common collections 4.0, build and use it. Only caveat is no compatibility with its old releases as all deprecated methods and classes are removed. </p><p>As a developer you have choice!! </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103237256888075560098/">peter.wa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Oct 13 04:17:44 2011">Oct 13, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>&quot;if the amount of work required to roll with the changes we make to @Beta APIs is actually exceeding the benefit you&#x27;re getting from using Guava in the first place, I strongly urge you not use Guava.&quot; You mix things up. This is not a black-white thing, since not all parts of guava are @Beta (unless you want to say, that everything is unstable and should be marked @Beta but you didn&#x27;t bother adding it everywhere - in this case, the question would be: why using @Beta anyway?). My problem is: I want to use guava, but not the instable parts (which - as far as a understand - are market as @Beta).  </p><p>Why don&#x27;t you just remove instable parts like the rest of the world does when doing releases? Why should N users have to do what you can do without much work in your build process?  </p><p>Just ask yourself: Whould you use Java if Oracle releases Java as &quot;work in progress&quot; without any distinction of things that are stable and ready for use and things that are instable / buggy / unclear weather it will remain in the source tree, etc.? Would you say &#x27;cool&#x27; if Oracle releases Java in such a way that you have to repackage it first, because it contains parts that are marked as unfinished which you naturally don&#x27;t want to use in order to make migration to the next version as easy as possible? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103237256888075560098/">peter.wa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Oct 13 04:24:21 2011">Oct 13, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>&quot;You have three options&quot; </p><p>Thanks about the input. 1. Removing beta code should be part of releasing software (see previous comment). 2. <a href="http://sourceforge.net/projects/collections/" rel="nofollow">http://sourceforge.net/projects/collections/</a> is a dead project. NO updates, no bug fixes. Not an option 3. Where did you find common collections 4.0? Current release is 3.2.1. I can&#x27;t find this version in the repository. The jdk5 branch (<a href="http://svn.apache.org/viewvc/commons/proper/collections/branches/collections_jdk5_branch/" rel="nofollow">http://svn.apache.org/viewvc/commons/proper/collections/branches/collections_jdk5_branch/</a>) is dead, too. </p><p>Not much choice if you want to build maintainable software .. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/117679010609155180272/">j...@nwsnet.de</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Oct 13 05:09:15 2011">Oct 13, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Peter: I don&#x27;t see a problem with reading the docs before using an API, then skipping the parts marked as @Beta as you don&#x27;t want to take the risk. </p><p>I find it rather helpful to be able to use a maybe-not-final implementation into which people already put some thought and that probably has seen quite some use by Googlers instead of rolling my own stuff. </p><p>Not using classes is easier than having to update to a snapshot version of a library as that risks issues in basically stable code between releases. Also, releasing code as beta should drive faster towards stability than keeping it in trunk only by increasing awareness, use and feedback by users. </p><p>IMHO, Apache Commons Collections is no alternative to Guava, so you might just want to get over it. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/105058075491380096916/">dlan...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Oct 13 07:22:07 2011">Oct 13, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>I agree with yo...@nwsnet.de, as a long time user of the library in my projects I really like having the Beta stuff in there. I&#x27;ve never had an issue figuring out what is Beta and what isn&#x27;t. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102097673053618254951/">sujeetku...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Oct 13 21:54:58 2011">Oct 13, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@Peter </p><p>I will check about common collection 4.0 stuff. If I get time, will try to provide you a guava build  without @Beta classes and methods. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/103237256888075560098/">peter.wa...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Oct 14 04:00:58 2011">Oct 14, 2011</span>
+ <div>
+<div class="commentcontent">
+<p><strong>sigh</strong> </p><p>&quot;I don&#x27;t see a problem with reading the docs&quot; </p><p>.. except that this is unnecessary overhead when the alternative is to not ship unfinished code (it&#x27;s like saying a bug is not a bug when the API documentation contains a work-around). </p><p>&quot;I find it rather helpful&quot; </p><p>Guess what: I don&#x27;t! And if YOU like to use those parts - no problem with my solution: Two versions - a stable/release version and a nightly / snapshot / developer / &lt;call it whatever you like&gt;  build. </p><p>&quot;to use a maybe-not-final implementation into which people already put some thought&quot; </p><p>You are already using Java 8 developer builds? Because these are not final and people already put some thoughts in it. No? Why not? (BTW: I have some hopes that every developer &quot;put some thought in it&quot; before writing code). </p><p>&quot;Not using classes is easier than having to update to a snapshot version [..]&quot; </p><p>??? Don&#x27;t know what you mean. That&#x27;s what I&#x27;m saying. I don&#x27;t want to use classes that are likly to change when updating. </p><p>&quot;I really like having the Beta stuff in there.&quot; </p><p>So use the (instable) developer release. Easy, isn&#x27;t it? But I don&#x27;t and hence can use the stable release. Both sides are happy. </p><p>&quot;I&#x27;ve never had an issue figuring out what is Beta and what isn&#x27;t.&quot; </p><p>I don&#x27;t have a issue figuring that out. Don&#x27;t try to willfully missunderstand me. It just way easier not having those classes if you don&#x27;t want them and hence not having to figure anything out. </p><p>Almost all software projects I know make a clear, physical distinction by releasing stable parts as stable release and the stable + instable parts as developer release. Live could be so simple. No need for reading source code annotation, documentation, repackaging .. </p><p>&quot;If I get time, will try to provide you a guava build without @Beta classes and methods.&quot; </p><p>Thank you very much. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Oct 16 09:22:01 2011">Oct 16, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>&quot;Sujeetku&quot;, I&#x27;m sorry to say it won&#x27;t work, for multiple reasons. If anyone here were actually interested in understanding the history of how things got to be this way, and why the seemingly-easier alternatives don&#x27;t work, they could find it all in the mail archives (e.g. &quot;The Guava Conundrum.&quot;) </p><p>There <strong>does</strong> exist a practical way that people like Peter to get what they <strong>really</strong> want here. But the discussion hasn&#x27;t gone that way, because Peter is less interested in actually getting his problem solved than in lecturing us on how wrong we are. </p><p>But if the need is real enough, we will eventually be contacted by other users, some of whom will have a constructive attitude, so we&#x27;ll just hold off so we can work with those people (if they exist). We have zero incentive to spend our time dealing with condescending people, so why would we? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/107998449400544566824/">kpietrza...@rajant.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Oct 17 04:56:43 2011">Oct 17, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@kevinb and others: </p><p>Guava is amazing!  Hope all the smack talk doesn&#x27;t discourage you guys. ;) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102097673053618254951/">sujeetku...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Oct 17 06:16:27 2011">Oct 17, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@Kevin </p><p>I did checked the source and all the mail archives. Out of 327 files, 126 files are in beta. That means 38.5% of all source is in beta. One can create a jar without beta classes but it will destroy the whole purpose and meaning of Guava libraries (after reading the mail chain I got the message). It was not intended to disturb you, but if it had, sincere apologies. </p><p>@Peter Request you to check the source and see if you are willing to lose that much functionality. If you still think it is worth doing it, tell me. It will take a long time to create a build though. Also you have to test it thoroughly before even thinking of using it. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102197328982447274508/">cpov...@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Oct 20 09:25:18 2011">Oct 20, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>I&#x27;ve been assuming that the approach people will take would be to check for @Beta calls with AspectJ.  This seems to work: </p><pre class="prettyprint">import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.DeclareError;
+
+@Aspect
+public class BetaError {
+  @DeclareError(&quot;call(@com.google.common.annotations.Beta * *(..))&quot;)
+  static final String callToBetaMethod = &quot;Call to Beta method&quot;;
+
+  // TODO(cpovirk): same thing for field access, others?
+}</pre>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ <br>
+ <div class="artifactcomment">
+ <span class="indicator">&#9658;</span> <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FRelease10&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FRelease10"
+ >Sign in</a> to add a comment
+ </div>
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="Release10" >
+ <input type="hidden" name="token" value="" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+

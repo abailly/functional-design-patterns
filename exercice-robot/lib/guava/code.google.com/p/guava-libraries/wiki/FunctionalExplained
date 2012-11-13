@@ -1,0 +1,1307 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/guava-libraries/wiki/FunctionalExplained" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"profileUrl":null,"token":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/17134919371905794448","projectHomeUrl":"/p/guava-libraries","relativeBaseUrl":"","projectName":"guava-libraries","loggedInUserEmail":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>FunctionalExplained - 
+ guava-libraries -
+ 
+ Functional idioms in Guava, explained. - 
+ Guava: Google Core Libraries for Java 1.6+ - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/guava-libraries/gitchanges/basic?repo=wiki&amp;path=/FunctionalExplained.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FFunctionalExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FFunctionalExplained" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/guava-libraries">
+ <a href="/p/guava-libraries/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/search-48.gif" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/guava-libraries/"><span itemprop="name">guava-libraries</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/guava-libraries/"><span itemprop="description">Guava: Google Core Libraries for Java 1.6+</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/guava-libraries/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/wiki/GuavaExplained?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/guava-libraries/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/guava-libraries/wiki/GuavaExplained">Introduction</a> </li><li>Basic Utilities </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained">Using/avoiding null</a> </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </li></ul><li><a href="/p/guava-libraries/wiki/PreconditionsExplained">Preconditions</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained">Ordering</a> </li><ul><li><a href="/p/guava-libraries/wiki/OrderingExplained#Creation">Creation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Manipulation">Manipulation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Application">Application</a> </li></ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained">Object methods</a> </li><ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#equals">equals</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#hashCode">hashCode</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#toString">toString</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#compare/compareTo">compare/compareTo</a> </li></ul><li><a href="/p/guava-libraries/wiki/ThrowablesExplained">Throwables</a> </li></ul><li>Collections </li><ul><li><a href="/p/guava-libraries/wiki/ImmutableCollectionsExplained">Immutable collections</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained">New collection types</a> </li><ul><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">Multiset</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">Multimap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">Table</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">ClassToInstanceMap</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">Utility Classes</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Iterables">Iterables</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Lists">Lists</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Sets">Sets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Maps">Maps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multisets">Multisets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multimaps">Multimaps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Tables">Tables</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained">Extension Utilities</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#Forwarding_Decorators">Forwarding Decorators</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">PeekingIterator</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#AbstractIterator">AbstractIterator</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/CachesExplained">Caches</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Applicability">Applicability</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Population">Population</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Eviction">Eviction</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Removal_Listeners">Removal Listeners</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Refresh">Refresh</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Timed_Eviction">Timed Eviction</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Size-based_Eviction">Size Caps</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Reference-based_Eviction">Garbage Collection</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Explicit_Removals">Explicit Removals</a> </li></ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Features">Features</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Statistics">Statistics</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained">Functional Idioms</a> </li><ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions_and_Predicates">Obtaining</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Predicates">Using Predicates</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions">Using Functions</a> </li></ul><li>Concurrency </li><ul><li><a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained">Service</a> </li><ul><li><a href="/p/guava-libraries/wiki/ServiceExplained#Using_a_Service">Using</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained#Implementations">Implementations</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/StringsExplained">Strings</a> </li><ul><li><a href="/p/guava-libraries/wiki/StringsExplained#Joiner">Joiner</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">CharMatcher</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Charsets">Charsets</a> </li></ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained">Primitives</a> </li><ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Primitive_array_utilities">Primitive arrays</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#General_utility_methods">General utilities</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Byte_conversion_methods">Byte conversion</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support">Unsigned support</a> </li></ul><li><a href="/p/guava-libraries/wiki/RangesExplained">Ranges</a> </li><ul><li><a href="/p/guava-libraries/wiki/RangesExplained#Building_Ranges">Building</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Operations">Operations</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Discrete_Domains">Discrete Domains</a> </li></ul><li><a href="/p/guava-libraries/wiki/IOExplained">I/O</a> </li><li><a href="/p/guava-libraries/wiki/HashingExplained">Hashing</a> </li><ul><li><a href="/p/guava-libraries/wiki/HashingExplained#BloomFilter">BloomFilter</a> </li></ul><li><a href="/p/guava-libraries/wiki/EventBusExplained">EventBus</a> </li><li><a href="/p/guava-libraries/wiki/MathExplained">Math</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Math_on_Integral_Types">Integral</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Checked_Arithmetic">Overflow Checking</a> </li></ul><li><a href="/p/guava-libraries/wiki/MathExplained#Floating-point_arithmetic">Floating Point</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained">Reflection</a> </li><ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained#TypeToken">TypeToken</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReleaseHistory">Releases</a> </li><ul><li><a href="/p/guava-libraries/wiki/Release13">Release 13</a> </li><li><a href="/p/guava-libraries/wiki/Release12">Release 12</a> </li><li><a href="/p/guava-libraries/wiki/Release11">Release 11</a> </li><li><a href="/p/guava-libraries/wiki/Release10">Release 10</a> </li></ul><li>Tips </li><ul><li><a href="/p/guava-libraries/wiki/PhilosophyExplained">Philosophy</a> </li><li><a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">Building with Guava</a> </li><li><a href="/p/guava-libraries/wiki/UsingProGuardWithGuava">Shrinking JARs with ProGuard</a> </li><li><a href="/p/guava-libraries/wiki/ApacheCommonCollectionsEquivalents">Translating from Apache Commons</a> </li><li><a href="/p/guava-libraries/wiki/Compatibility">Guava and Compatibility</a> </li><li><a href="/p/guava-libraries/wiki/IdeaGraveyard">Idea Graveyard</a> </li><li><a href="/p/guava-libraries/wiki/FriendsOfGuava">Friends of Guava</a> </li><li><a href="/p/guava-libraries/wiki/HowToContribute">How to Contribute</a> </li></ul><li><a href="/p/guava-libraries/wiki/GuavaTermsExplained">Glossary</a> </li><li><a href="http://groups.google.com/group/guava-discuss" rel="nofollow">Mailing List</a> </li><li><a href="http://stackoverflow.com/questions/tagged/guava" rel="nofollow">Stack Overflow</a> </li><li><a href="http://code.google.com/p/memory-measurer/wiki/ElementCostInDataStructures" rel="nofollow">Footprint of JDK/Guava data structures</a> </li></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <span style="font-size:120%;font-weight:bold">FunctionalExplained</span>
+ &nbsp;
+ <div> 
+ 
+ <i>Functional idioms in Guava, explained.</i>
+ 
+ 
+ <br/>
+ 
+ <a class="label" style="padding-top: 2px"
+ href="/p/guava-libraries/w/list?q=label:explained"
+ title=""
+ >explained</a>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Mon Apr  2 08:37:07 2012">
+ Apr 2, 2012</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Caveats"></a>Caveats<a href="#Caveats" class="section_anchor"></a></h1><p>As of Java 7, functional programming in Java can only be approximated through awkward and verbose use of anonymous classes.  This is expected to change in Java 8, but Guava is currently aimed at users of Java 5 and above. </p><p>Excessive use of Guava&#x27;s functional programming idioms can lead to verbose, confusing, unreadable, and inefficient code.  These are by far the most easily (and most commonly) abused parts of Guava, and when you go to preposterous lengths to make your code &quot;a one-liner,&quot; the Guava team weeps. </p><p>Compare the following code: </p><pre class="prettyprint">Function&lt;String, Integer&gt; lengthFunction = new Function&lt;String, Integer&gt;() {
+  public Integer apply(String string) {
+    return string.length();
+  }
+};
+Predicate&lt;String&gt; allCaps = new Predicate&lt;String&gt;() {
+  public boolean apply(String string) {
+    return CharMatcher.JAVA_UPPER_CASE.matchesAllOf(string);
+  }
+};
+Multiset&lt;Integer&gt; lengths = HashMultiset.create(
+  Iterables.transform(Iterables.filter(strings, allCaps), lengthFunction));</pre><p>or the <tt>FluentIterable</tt> version </p><pre class="prettyprint">Multiset&lt;Integer&gt; lengths = HashMultiset.create(
+  FluentIterable.from(strings)
+    .filter(new Predicate&lt;String&gt;() {
+       public boolean apply(String string) {
+         return CharMatcher.JAVA_UPPER_CASE.matchesAllOf(string);
+       }
+     })
+    .transform(new Function&lt;String, Integer&gt;() {
+       public Integer apply(String string) {
+         return string.length();
+       }
+     }));</pre><p>with: </p><pre class="prettyprint">Multiset&lt;Integer&gt; lengths = HashMultiset.create();
+for (String string : strings) {
+  if (CharMatcher.JAVA_UPPER_CASE.matchesAllOf(string)) {
+    lengths.add(string.length());
+  }
+}</pre><p>Even using static imports, even if the Function and the Predicate declarations are moved to a different file, the first implementation is less concise, less readable, and less efficient.   </p><p>Imperative code should be your <i>default</i>, your <i>first choice</i> as of Java 7.  You should not use functional idioms unless you are <i>absolutely</i> sure of one of the following: </p><ul><li>Use of functional idioms will result in <i>net</i> savings of lines of code for your entire project.  In the example above, the &quot;functional&quot; version used 11 lines, the imperative version 6.  Moving the definition of a function to another file, or a constant, does not help. </li><li>For efficiency, you need a lazily computed view of the transformed collection and cannot settle for an explicitly computed collection.  Additionally, you have read and reread Effective Java, item 55, and besides following those instructions, you have actually done benchmarking to prove that this version is faster, and can cite  numbers to prove it. </li></ul><p>Please be sure, when using Guava&#x27;s functional utilities, that the traditional imperative way of doing things isn&#x27;t more readable.  Try writing it out.  Was that so bad?  Was that more readable than the preposterously awkward functional approach you were about to try? </p><h1><a name="Functions_and_Predicates"></a>Functions and Predicates<a href="#Functions_and_Predicates" class="section_anchor"></a></h1><p>This article discusses only those Guava features dealing directly with <tt>Function</tt> and <tt>Predicate</tt>.  Some other utilities are associated with the &quot;functional style,&quot; such as concatenation and other methods which return views in constant time.  Try looking in the <a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">collection utilities</a> article. </p><p>Guava provides two basic &quot;functional&quot; interfaces: <ul><li><tt>Function&lt;A, B&gt;</tt>, which has the single method <tt>B apply(A input)</tt>.  Instances of <tt>Function</tt> are generally expected to be referentially transparent -- no side effects -- and to be consistent with equals, that is, <tt>a.equals(b)</tt> implies that <tt>function.apply(a).equals(function.apply(b))</tt>. </li><li><tt>Predicate&lt;T&gt;</tt>, which has the single method <tt>boolean apply(T input)</tt>.  Instances of <tt>Predicate</tt> are generally expected to be side-effect-free and consistent with equals. </li></ul></p><h3><a name="Special_predicates"></a>Special predicates<a href="#Special_predicates" class="section_anchor"></a></h3><p>Characters get their own specialized version of <tt>Predicate</tt>, <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/CharMatcher.html" rel="nofollow"><tt>CharMatcher</tt></a>, which is typically more efficient and more useful for those needs. <tt>CharMatcher</tt> already implements <tt>Predicate&lt;Character&gt;</tt>, and can be used correspondingly, while conversion from a <tt>Predicate</tt> to a <tt>CharMatcher</tt> can be done using <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/CharMatcher.html#forPredicate(com.google.common.base.Predicate)" rel="nofollow"><tt>CharMatcher.forPredicate</tt></a>.  Consult <a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">the CharMatcher article</a> for details. </p><p>Additionally, for comparable types and comparison-based predicates, most needs can be fulfilled using the <tt>Range</tt> type, which implements an immutable interval.  The <tt>Range</tt> type implements <tt>Predicate</tt>, testing containment in the range.  For example, <tt>Ranges.atMost(2)</tt> is a perfectly valid <tt>Predicate&lt;Integer&gt;</tt>.  More details on using ranges can be found <a href="/p/guava-libraries/wiki/RangesExplained">in the corresponding article</a>. </p><h3><a name="Manipulating_Functions_and_Predicates"></a>Manipulating Functions and Predicates<a href="#Manipulating_Functions_and_Predicates" class="section_anchor"></a></h3><p>Simple <tt>Function</tt> construction and manipulation methods are provided in <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/Functions.html" rel="nofollow">Functions</a>, including  </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Functions.html#forMap(java.util.Map)" rel="nofollow"><tt>forMap(Map&lt;A, B&gt;)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Functions.html#compose(com.google.common.base.Function, com.google.common.base.Function)" rel="nofollow"><tt>compose(Function&lt;B, C&gt;, Function&lt;A, B&gt;)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Functions.html#constant(E)" rel="nofollow"><tt>constant(T)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;">  <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Functions.html#identity()" rel="nofollow"><tt>identity()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Functions.html#toStringFunction()" rel="nofollow"><tt>toStringFunction()</tt></a> </td></tr> </table></p><p>Consult the Javadoc for details. </p><p>There are considerably more construction and manipulation methods available in <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/Predicates.html" rel="nofollow">Predicates</a>, but a sample includes: </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#instanceOf(java.lang.Class)" rel="nofollow"><tt>instanceOf(Class)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#assignableFrom(java.lang.Class)" rel="nofollow"><tt>assignableFrom(Class)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#contains(java.util.regex.Pattern)" rel="nofollow"><tt>contains(Pattern)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#in(java.util.Collection)" rel="nofollow"><tt>in(Collection)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#isNull()" rel="nofollow"><tt>isNull()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#alwaysFalse()" rel="nofollow"><tt>alwaysFalse()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#alwaysTrue()" rel="nofollow"><tt>alwaysTrue()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#equalTo(T)" rel="nofollow"><tt>equalTo(Object)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#compose(com.google.common.base.Predicate, com.google.common.base.Function)" rel="nofollow"><tt>compose(Predicate, Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#and(com.google.common.base.Predicate...)" rel="nofollow"><tt>and(Predicate...)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#or(com.google.common.base.Predicate...)" rel="nofollow"><tt>or(Predicate...)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicates.html#not(com.google.common.base.Predicate)" rel="nofollow"><tt>not(Predicate)</tt></a> </td></tr> </table></p><p>Consult the Javadoc for details. </p><h1><a name="Using"></a>Using<a href="#Using" class="section_anchor"></a></h1><p>Guava provides many tools to manipulate collections using functions and predicates.  These can typically be found in the collection utility classes <tt>Iterables</tt>, <tt>Lists</tt>, <tt>Sets</tt>, <tt>Maps</tt>, <tt>Multimaps</tt>, and the like. </p><h2><a name="Predicates"></a>Predicates<a href="#Predicates" class="section_anchor"></a></h2><p>The most basic use of predicates is to filter collections.  All Guava filter methods return <i>views</i>. </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> Collection type </td><td style="border: 1px solid #ccc; padding: 5px;"> Filter method </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Iterable</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#filter(java.lang.Iterable, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterables.filter(Iterable, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/collect/FluentIterable.html#filter(com.google.common.base.Predicate)" rel="nofollow"><tt>FluentIterable.filter(Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Iterator</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#filter(java.util.Iterator, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterators.filter(Iterator, Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Collection</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Collections2.html#filter(java.util.Collection, com.google.common.base.Predicate)" rel="nofollow"><tt>Collections2.filter(Collection, Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Set</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Sets.html#filter(java.util.Set, com.google.common.base.Predicate)" rel="nofollow"><tt>Sets.filter(Set, Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>SortedSet</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Sets.html#filter(java.util.SortedSet, com.google.common.base.Predicate)" rel="nofollow"><tt>Sets.filter(SortedSet, Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Map</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#filterKeys(java.util.Map, com.google.common.base.Predicate)" rel="nofollow"><tt>Maps.filterKeys(Map, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#filterValues(java.util.Map, com.google.common.base.Predicate)" rel="nofollow"><tt>Maps.filterValues(Map, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#filterEntries(java.util.Map, com.google.common.base.Predicate)" rel="nofollow"><tt>Maps.filterEntries(Map, Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>SortedMap</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#filterKeys(java.util.SortedMap, com.google.common.base.Predicate)" rel="nofollow"><tt>Maps.filterKeys(SortedMap, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#filterValues(java.util.SortedMap, com.google.common.base.Predicate)" rel="nofollow"><tt>Maps.filterValues(SortedMap, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#filterEntries(java.util.SortedMap, com.google.common.base.Predicate)" rel="nofollow"><tt>Maps.filterEntries(SortedMap, Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Multimap</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimaps.html#filterKeys(com.google.common.collect.Multimap, com.google.common.base.Predicate)" rel="nofollow"><tt>Multimaps.filterKeys(Multimap, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimaps.html#filterValues(com.google.common.collect.Multimap, com.google.common.base.Predicate)" rel="nofollow"><tt>Multimaps.filterValues(Multimap, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimaps.html#filterEntries(com.google.common.collect.Multimap, com.google.common.base.Predicate)" rel="nofollow"><tt>Multimaps.filterEntries(Multimap, Predicate)</tt></a> </td></tr> </table></p><p><tt>*</tt> A filtered <tt>List</tt> view is omitted, because operations such as <tt>get(int)</tt> could not be supported efficiently.  Instead, use <tt>Lists.newArrayList(Collections2.filter(list, predicate))</tt> to make a copy. </p><p>Other than simple filtering, Guava provides a number of additional utilities to manipulate iterables with predicates -- typically in the <a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/collect/Iterables.html" rel="nofollow"><tt>Iterables</tt></a> utility class, and as &quot;fluent&quot; methods on a <a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/collect/FluentIterable.html" rel="nofollow"><tt>FluentIterable</tt></a>. </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Iterables</tt> Signature </td><td style="border: 1px solid #ccc; padding: 5px;"> Explanation</td><td style="border: 1px solid #ccc; padding: 5px;"> See also </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#all(java.lang.Iterable, com.google.common.base.Predicate)" rel="nofollow"><tt>boolean all(Iterable, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Do all the elements satisfy the predicate? Lazy: if it finds an element failing the predicate, doesn&#x27;t iterate further. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#all(java.util.Iterator, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterators.all(Iterator, Predicate)</tt></a><br><a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/collect/FluentIterable.html#allMatch(com.google.common.base.Predicate)" rel="nofollow"><tt>FluentIterable.allMatch(Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#any(java.lang.Iterable, com.google.common.base.Predicate)" rel="nofollow"><tt>boolean any(Iterable, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Do any of the elements satisfy the predicate? Lazy: only iterates until it finds an element satisfying the predicate. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#any(java.util.Iterator, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterators.any(Iterator, Predicate)</tt></a><br><a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/collect/FluentIterable.html#anyMatch(com.google.common.base.Predicate)" rel="nofollow"><tt>FluentIterable.anyMatch(Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#find(java.lang.Iterable, com.google.common.base.Predicate)" rel="nofollow"><tt>T find(Iterable, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Finds and returns an element satisfying the predicate, or throws a <tt>NoSuchElementException</tt>. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#find(java.util.Iterator, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterators.find(Iterator, Predicate)</tt></a><br> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#find(java.lang.Iterable, com.google.common.base.Predicate, T)" rel="nofollow"><tt>Iterables.find(Iterable, Predicate, T default)</tt></a><br><a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#find(java.util.Iterator, com.google.common.base.Predicate, T)" rel="nofollow"><tt>Iterators.find(Iterator, Predicate, T default)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#tryFind(java.lang.Iterable, com.google.common.base.Predicate)" rel="nofollow"><tt>Optional&lt;T&gt; tryFind(Iterable, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns an element satisfying the predicate, or <tt>Optional.absent()</tt>. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#tryFind(java.util.Iterator, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterators.tryFind(Iterator, Predicate)</tt></a><br><a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/collect/FluentIterable.html#firstMatch(com.google.common.base.Predicate)" rel="nofollow"><tt>FluentIterable.firstMatch(Predicate)</tt></a><br><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#indexOf(java.lang.Iterable, com.google.common.base.Predicate)" rel="nofollow"><tt>indexOf(Iterable, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns the index of the first element of the iterable satisfying the predicate, or -1 if no such element could be found. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#indexOf(java.util.Iterator, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterators.indexOf(Iterator, Predicate)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#removeIf(java.lang.Iterable, com.google.common.base.Predicate)" rel="nofollow"><tt>removeIf(Iterable, Predicate)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Removes all elements satisfying the predicate, using the <tt>Iterator.remove()</tt> method. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#removeIf(java.util.Iterator, com.google.common.base.Predicate)" rel="nofollow"><tt>Iterators.removeIf(Iterator, Predicate)</tt></a> </td></tr> </table></p><h2><a name="Functions"></a>Functions<a href="#Functions" class="section_anchor"></a></h2><p>By far the most common use of functions is transforming collections.  All Guava transform methods return views of the original collection. </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> Collection type </td><td style="border: 1px solid #ccc; padding: 5px;"> Transform method </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Iterable</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html#transform(java.lang.Iterable, com.google.common.base.Function)" rel="nofollow"><tt>Iterables.transform(Iterable, Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/collect/FluentIterable.html#transform(com.google.common.base.Function)" rel="nofollow"><tt>FluentIterable.transform(Function)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Iterator</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterators.html#transform(java.util.Iterator, com.google.common.base.Function)" rel="nofollow"><tt>Iterators.transform(Iterator, Function)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Collection</tt> </td><td style="border: 1px solid #ccc; padding: 5px;">  <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Collections2.html#transform(java.util.Collection, com.google.common.base.Function)" rel="nofollow"><tt>Collections2.transform(Collection, Function)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>List</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Lists.html#transform(java.util.List, com.google.common.base.Function)" rel="nofollow"><tt>Lists.transform(List, Function)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Map*</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#transformValues(java.util.Map, com.google.common.base.Function)" rel="nofollow"><tt>Maps.transformValues(Map, Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#transformEntries(java.util.Map, com.google.common.collect.Maps.EntryTransformer)" rel="nofollow"><tt>Maps.transformEntries(Map, EntryTransformer)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>SortedMap*</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#transformValues(java.util.SortedMap, com.google.common.base.Function)" rel="nofollow"><tt>Maps.transformValues(SortedMap, Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.html#transformEntries(java.util.SortedMap, com.google.common.collect.Maps.EntryTransformer)" rel="nofollow"><tt>Maps.transformEntries(SortedMap, EntryTransformer)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Multimap*</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimaps.html#transformValues(com.google.common.collect.Multimap, com.google.common.base.Function)" rel="nofollow"><tt>Multimaps.transformValues(Multimap, Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimaps.html#transformEntries(com.google.common.collect.Multimap, com.google.common.collect.Maps.EntryTransformer)" rel="nofollow"><tt>Multimaps.transformEntries(Multimap, EntryTransformer)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>ListMultimap*</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimaps.html#transformValues(com.google.common.collect.ListMultimap, com.google.common.base.Function)" rel="nofollow"><tt>Multimaps.transformValues(ListMultimap, Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimaps.html#transformEntries(com.google.common.collect.ListMultimap, com.google.common.collect.Maps.EntryTransformer)" rel="nofollow"><tt>Multimaps.transformEntries(ListMultimap, EntryTransformer)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Table</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Tables.html#transformValues(com.google.common.collect.Table, com.google.common.base.Function)" rel="nofollow"><tt>Tables.transformValues(Table, Function)</tt></a> </td></tr> </table></p><p><tt>*</tt> <tt>Map</tt> and <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Multimap.html" rel="nofollow"><tt>Multimap</tt></a> have special methods that accept an <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Maps.EntryTransformer.html" rel="nofollow"><tt>EntryTransformer&lt;K, V1, V2&gt;</tt></a>, which associates keys with a new value computed from both the original value and the key, instead of just the value.  </p><p><tt>**</tt> A transform operation for <tt>Set</tt> is omitted, since an efficient <tt>contains(Object)</tt> operation could not be supported.  Instead, use <tt>Sets.newHashSet(Collections2.transform(set, function))</tt> to create a copy of a transformed set. </p><pre class="prettyprint">List&lt;String&gt; names;
+Map&lt;String, Person&gt; personWithName;
+List&lt;Person&gt; people = Lists.transform(names, Functions.forMap(personWithName));</pre><pre class="prettyprint">ListMultimap&lt;String, String&gt; firstNameToLastNames;
+// maps first names to all last names of people with that first name
+
+ListMultimap&lt;String, String&gt; firstNameToName = Multimaps.transformEntries(firstNameToLastNames,
+  new EntryTransformer&lt;String, String, String&gt; () {
+    public String transformEntry(String firstName, String lastName) {
+      return firstName + &quot; &quot; + lastName;
+    }
+  });</pre><p>Types that can be &quot;composed&quot; with functions include: </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Ordering</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#onResultOf(com.google.common.base.Function)" rel="nofollow"><tt>Ordering.onResultOf(Function)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Predicate</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/Predicates.html#compose(com.google.common.base.Predicate, com.google.common.base.Function)" rel="nofollow"><tt>Predicates.compose(Predicate, Function)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Equivalence</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/Equivalence.html#onResultOf(com.google.common.base.Function)" rel="nofollow"><tt>Equivalence.onResultOf(Function)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Supplier</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/Suppliers.html#compose(com.google.common.base.Function, com.google.common.base.Supplier)" rel="nofollow"><tt>Suppliers.compose(Function, Supplier)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <tt>Function</tt> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/Functions.html#compose(com.google.common.base.Function, com.google.common.base.Function)" rel="nofollow"><tt>Functions.compose(Function, Function)</tt></a> </td></tr> </table></p><p>Additionally, the <a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> API supports transforming listenable futures.  <tt>Futures</tt> also provides methods accepting an <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/util/concurrent/AsyncFunction.html" rel="nofollow"><tt>AsyncFunction</tt></a>, a variation on <tt>Function</tt> that allows values to be computed asynchronously. </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/util/concurrent/Futures.html#transform(com.google.common.util.concurrent.ListenableFuture, com.google.common.base.Function)" rel="nofollow"><tt>Futures.transform(ListenableFuture, Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/util/concurrent/Futures.html#transform(com.google.common.util.concurrent.ListenableFuture, com.google.common.base.Function, java.util.concurrent.Executor)" rel="nofollow"><tt>Futures.transform(ListenableFuture, Function, Executor)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/util/concurrent/Futures.html#transform(com.google.common.util.concurrent.ListenableFuture, com.google.common.util.concurrent.AsyncFunction)" rel="nofollow"><tt>Futures.transform(ListenableFuture, AsyncFunction)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/util/concurrent/Futures.html#transform(com.google.common.util.concurrent.ListenableFuture, com.google.common.util.concurrent.AsyncFunction, java.util.concurrent.Executor)" rel="nofollow"><tt>Futures.transform(ListenableFuture, AsyncFunction, Executor)</tt></a> </td></tr> </table></p>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/105058075491380096916/">dlan...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 19 09:23:00 2011">Dec 19, 2011</span>
+ <div>
+<div class="commentcontent">
+<blockquote>Excessive use of Guava&#x27;s functional programming idioms can lead to verbose, confusing, unreadable,  
+and inefficient code. These are by far the most easily (and most commonly) abused parts of Guava,  
+and when you go to preposterous lengths to make your code &quot;a one-liner,&quot; the Guava team weeps. 
+</blockquote><blockquote>Please be sure, when using Guava&#x27;s functional utilities, that the traditional imperative way of 
+doing things isn&#x27;t more readable. Try writing it out. Was that so bad? Was that more readable than 
+the preposterously awkward functional approach you were about to try?  
+</blockquote><p>Would it be possible to see an example of this? I think the functional approach is often <strong>more</strong> readable, especially using static imports, but maybe I haven&#x27;t seen the <strong>preposterous</strong> examples you keep referring to. In other words, at what point does it become preposterous to use this Guava functionality? I just think it was a pretty strong statement so it would help to have something to illustrate what exactly you are talking about. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113703844887456602032/">amer...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 19 12:24:17 2011">Dec 19, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>I fall into that &quot;Excessive use of Guava&#x27;s functional programming idioms&quot;. </p><p>The one-lineer : </p><pre class="prettyprint">Iterable&lt;Target&gt; targetsWithAttribute = newArrayList(transform(filter(elements, withAttribute(someValue), toTarget(context))));</pre><p>For which we must define a <tt>static &lt;Function&lt;Element, Target&gt;&gt; toTarget(context)</tt> method, a <tt>static Predicate&lt;Element&gt; withAttribute(someValue)</tt> method, which both defined anonymous or static inner class. </p><p>It could be : </p><pre class="prettyprint">Collection&lt;Target&gt; targets = newArrayList();
+for (Element element : elements) {
+    if (withAttribute(element, someValue)) {
+        Target target = toTarget(element, context);
+        targets.add(target);
+    }
+}</pre><p>this way, only <tt>private withAttribute()</tt> and <tt>toTarget()</tt> methods without anonymous or static inner class. </p><p>The use of Function everytime I do data transformation, predicates here, predicates there. Guava is really cool but you need to strongly organize your code when creating all that Function and Predicate classes. </p><p>You need to understand well the lazy delegation of guava to not fall into inefficient code. Because some calculation should not be done on every iteration but once. So you need to but newArrayList() at some place to use it as calculation cache. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/105058075491380096916/">dlan...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 19 14:15:01 2011">Dec 19, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>I don&#x27;t follow you. You are just filtering an Iterable and then transforming it (not sure why you are creating a new array list after that but..). That is pretty much the most basic usage possible isn&#x27;t it? The original post is talking about <strong>excessive</strong> and <strong>preposterous</strong> usage patterns -- if they thought chaining a single filter and transform together fit that description why would they include it in the library? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/106308832246172744461/">tomas.za...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Dec 20 00:59:06 2011">Dec 20, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>I agree with dlan... the functional approach is often more readable, however the warning against preposterous one-liner is justifiable. The reason is the current state of Guava, especially implementing functional-programming-like concepts via static methods. In such an API the one-liners are evil because one has to read it in such an counter-intuitive way: </p><pre class="prettyprint">newArrayList(transform(filter(elements, withAttribute(someValue), toTarget(context))));
+                                  *
+                             start here
+       &lt;- read what to do                  read how to do it -&gt;</pre><p>Another weird features make situation even worse: poor generic type inference of older javac makes code less readable and make usage of static imports impossible (for example <tt>Maps.&lt;Key&lt;VeryLongClassName&gt;,ComplicatedClass&lt;VeryLongClassName&gt;&gt;filterEntries</tt>) or the order of <tt>Functions.compose()</tt> and <tt>Predicates.compose()</tt> method arguments. </p><p>I believe the fluent API will solve the most of these problems. If you agree, vote for issue <a href="http://code.google.com/p/guava-libraries/issues/detail?id=11" rel="nofollow">http://code.google.com/p/guava-libraries/issues/detail?id=11</a> . I am convinced it should have been in Guava for a long time. See rewritten example: </p><pre class="prettyprint">Iterable&lt;Target&gt; targetsWithAttribute = FluentIterable.from(elements)
+	.filter(attributeEqualTo(someValue))
+	.transform(toTarget(context));</pre><p>Until fluent API is released, one has to cope with current state - not to succumb illusion of one-liner readability and &quot;strongly organize your code&quot; - name conventions, indentation. These principles will be useful anyway. </p><p>BTW I would like to ask Guava team if there are some global recommendations or conventions of naming predicates and functions. For example in our project: having class <tt>Pojo</tt> with property  <tt>FooType foo</tt>, we add static methods <tt>Function&lt;Pojo,FooType&gt; toFoo()</tt> and <tt>Predicate&lt;Pojo&gt; fooEqualTo(FooType value)</tt> into <tt>Pojo</tt> class. </p><p>Tomáš Záluský </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/ogregoire/">ogregoire</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Dec 21 03:49:40 2011">Dec 21, 2011</span>
+ <div>
+<div class="commentcontent">
+<p><tt>Supplier</tt>s are also part of the functional programming, no? (see javadoc) Please add them to this page as well. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 23 04:57:33 2011">Dec 23, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Olivier, I&#x27;ve been trying to decide what to do with Suppliers.  I&#x27;ve dealt here with Function and Predicate because they&#x27;re expected to be &quot;functionally pure&quot;: to return the same result on the same input.  Suppliers are expected <i>not</i> to return the same result on the same input.  (I&#x27;ll reiterate that the &quot;Explained&quot; sequence is <i>very much</i> still under construction at the moment.) </p><p>That said, amertum, Tomas, dlandis, my personal inclination is that you&#x27;re already spending considerably more effort than you should in creating anonymous classes in the attributeEqualTo and toTarget methods, and making it harder for new developers to modify and use your code. </p><pre class="prettyprint">Collection&lt;Target&gt; targets = newArrayList();
+for (Element element : elements) {
+    if (element.getAttribute().equals(someValue)) {
+        targets.add(element.toTarget(context));
+    }
+}</pre><p>The important aspect of this code, as I&#x27;ve written it, is it <i>doesn&#x27;t require writing new methods that it wouldn&#x27;t already need to support</i>.  No anonymous classes.  No struggle to keep these things organized -- the &quot;strong organization&quot; amertum describes is, IMO, just as unnecessary as the gratuitous one-liners.  Java isn&#x27;t designed for you to write a new Function corresponding to each class method.  It&#x27;s designed for you to just use the class method you just wrote, without having to wrap it in anonymous classes and such. </p><p>Use Guava&#x27;s functional idioms only when you <i>need</i> laziness, or when you have <i>at least</i> six or so users of the same function, because otherwise you&#x27;re probably just creating unnecessary work for yourself. </p><p>In those (rare) cases where it is appropriate, I recommend the use of named constants, whenever possible: TO_FOO instead of toFoo(). </p><p>(I will mention, by the way, that my favorite programming language is Haskell, which is extremely functional, pure, and all of that.  I love functional programming, but I have no illusions about how usable it is in Java.  I&#x27;m going to try to get some of these ideas across on this page, now.) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/ogregoire/">ogregoire</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 23 06:46:55 2011">Dec 23, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Louis, I know this is still a work in progress. Don&#x27;t worry ;-) </p><p>Here I just saw the page was quite consequent already, but <tt>Supplier</tt> was not mentioned. I thought this was somehow forgotten. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113703844887456602032/">amer...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 23 09:14:39 2011">Dec 23, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>A little typo error in the imperative code example as <tt>lengths.add(string);</tt> should be <tt>lengths.add(string.length());</tt> ;-) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 25 04:58:46 2011">Dec 25, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Fixed. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/117479849156543213885/">bklo...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Jan  4 14:30:44 2012">Jan 4, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>&quot;and when you go to preposterous lengths to make your code &quot;a one-liner,&quot; the Guava team weeps. &quot; LOL.  Made my day.  Great wiki.  Thank you. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109304309634441997311/">rossjud...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Jan 20 12:32:45 2012">Jan 20, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>I have a little java bean annotation processor (doesn&#x27;t everybody) or at <a href="https://github.com/rossjudson/beanprocessor" rel="nofollow">https://github.com/rossjudson/beanprocessor</a> that generates Guava-compatible predicates (for testing if a property exists) or retrieving the value of a property. It&#x27;s a work in progress, but it does what I want it to, right now. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104733903875323881643/">dominic....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jan 23 06:13:38 2012">Jan 23, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>I believe Scala started life as a bean annotation processor... </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109304309634441997311/">rossjud...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jan 23 08:44:10 2012">Jan 23, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Back at the dawn of time I wrote a few bits into the scala compiler could emit standards-based JavaBean<a href="/p/guava-libraries/w/edit/JavaBean">?</a> property information, for Scala objects, if you put an annotation or two on them. I think i&#x27;s still there. Worked nicely with Java&#x27;s own, standards-following introspector. The problem often encountered was the fifty million Java libraries that decided to roll their own introspection, and got it utterly wrong by not following the spec. ;) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jan 23 09:19:15 2012">Jan 23, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Guava will not be moving towards heavy use of reflection, or JavaBeans<a href="/p/guava-libraries/w/edit/JavaBeans">?</a>, any time soon.  We will be waiting patiently for Java 8 and Project Lambda. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/108414509750218142427/">nickiand...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Jan 24 11:24:24 2012">Jan 24, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>There is a little typo in the first code example: &lt;code&gt; Function&lt;String, Integer&gt; lengthFunction = new Function&lt;String, Integer&gt;() {
+   public Integer apply(String string) {
+     return string.length();
+   }
+ }
+ &lt;/code&gt; misses a semicolon at the end.
+ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111372516352916035360/">kandpwel...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Feb  1 13:01:20 2012">Feb 1, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>I agree with the potential for making things more ugly and more verbose instead of the opposite, but for simple cases where the function/predicate needed exactly matches an already existing method, you can use my just released project, <a href="http://funcito.googlecode.com" rel="nofollow">Funcito</a>, to build a Function or Predicate in a single line, no annotations or APT, no double-brace initializers, no anonymous inner classes: </p><pre class="prettyprint">static final Predicate&lt;Worker&gt; IS_EMPLOYEE = predicateFor(callsTo(Worker.class).isEmployee());</pre>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/110634423212435208547/">chhenr...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Mar 25 23:34:19 2012">Mar 25, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>&quot;and when you go to preposterous lengths to make your code &quot;a one-liner,&quot; the Guava team weeps. &quot; I agree totally. I don&#x27;t think code &quot;compactness&quot; should be the motivator. But maybe reusability? Does&#x27;nt the functional potentially idiom help you, to provide finer granular reusability for &quot;core&quot; algorithmus aka Business Rules. Or am i falling for a &quot;hype&quot;?  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr  2 08:18:50 2012">Apr 2, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>chhenrici, not...always.  Functional idioms aren&#x27;t often any more reusable than methods provided in the &quot;normal&quot; way -- the ones that would already be a part of your class, anyway. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/108038094574046314383/">a.revolu...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Apr 11 19:51:37 2012">Apr 11, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>The main reason I use functional idioms is dependency injection...  If I write a method with purely imperative code, it becomes very hard to leave hooks for alternate implementations to swap out a bit of functionality. HashMultiset<a href="/p/guava-libraries/w/edit/HashMultiset">?</a>.create(FluentIterable<a href="/p/guava-libraries/w/edit/FluentIterable">?</a>.from(strings).filter(getFilter()).transform(getTransform())); can have slightly higher overhead {if your compiler can&#x27;t inline your hooks}, but it&#x27;s also a much cleaner way to manage dependencies or construct test cases without painfully copy/pasting code around. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/russ.abbott/">russ.abbott</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Apr 17 10:34:32 2012">Apr 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>I&#x27;m trying to use FluentIterable<a href="/p/guava-libraries/w/edit/FluentIterable">?</a>, but it doesn&#x27;t seem to be in the Guava download jar.  Is it somewhere else? </p><p>Thanks. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 23 12:43:05 2012">Apr 23, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>It&#x27;ll be in the Guava 12 jar when it&#x27;s released. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">wateriy4...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon May 28 02:38:10 2012">May 28, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>functional programming in java is a pain in the ass,use scala instead </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ <br>
+ <div class="artifactcomment">
+ <span class="indicator">&#9658;</span> <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FFunctionalExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FFunctionalExplained"
+ >Sign in</a> to add a comment
+ </div>
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="FunctionalExplained" >
+ <input type="hidden" name="token" value="" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+

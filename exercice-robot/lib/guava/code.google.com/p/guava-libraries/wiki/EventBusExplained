@@ -1,0 +1,763 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/guava-libraries/wiki/EventBusExplained" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"profileUrl":null,"token":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/17134919371905794448","projectHomeUrl":"/p/guava-libraries","relativeBaseUrl":"","projectName":"guava-libraries","loggedInUserEmail":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>EventBusExplained - 
+ guava-libraries -
+ 
+ Guava's event bus utility, explained. - 
+ Guava: Google Core Libraries for Java 1.6+ - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/guava-libraries/gitchanges/basic?repo=wiki&amp;path=/EventBusExplained.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FEventBusExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FEventBusExplained" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/guava-libraries">
+ <a href="/p/guava-libraries/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/search-48.gif" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/guava-libraries/"><span itemprop="name">guava-libraries</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/guava-libraries/"><span itemprop="description">Guava: Google Core Libraries for Java 1.6+</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/guava-libraries/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/wiki/GuavaExplained?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/guava-libraries/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/guava-libraries/wiki/GuavaExplained">Introduction</a> </li><li>Basic Utilities </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained">Using/avoiding null</a> </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </li></ul><li><a href="/p/guava-libraries/wiki/PreconditionsExplained">Preconditions</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained">Ordering</a> </li><ul><li><a href="/p/guava-libraries/wiki/OrderingExplained#Creation">Creation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Manipulation">Manipulation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Application">Application</a> </li></ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained">Object methods</a> </li><ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#equals">equals</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#hashCode">hashCode</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#toString">toString</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#compare/compareTo">compare/compareTo</a> </li></ul><li><a href="/p/guava-libraries/wiki/ThrowablesExplained">Throwables</a> </li></ul><li>Collections </li><ul><li><a href="/p/guava-libraries/wiki/ImmutableCollectionsExplained">Immutable collections</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained">New collection types</a> </li><ul><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">Multiset</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">Multimap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">Table</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">ClassToInstanceMap</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">Utility Classes</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Iterables">Iterables</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Lists">Lists</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Sets">Sets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Maps">Maps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multisets">Multisets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multimaps">Multimaps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Tables">Tables</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained">Extension Utilities</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#Forwarding_Decorators">Forwarding Decorators</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">PeekingIterator</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#AbstractIterator">AbstractIterator</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/CachesExplained">Caches</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Applicability">Applicability</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Population">Population</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Eviction">Eviction</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Removal_Listeners">Removal Listeners</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Refresh">Refresh</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Timed_Eviction">Timed Eviction</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Size-based_Eviction">Size Caps</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Reference-based_Eviction">Garbage Collection</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Explicit_Removals">Explicit Removals</a> </li></ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Features">Features</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Statistics">Statistics</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained">Functional Idioms</a> </li><ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions_and_Predicates">Obtaining</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Predicates">Using Predicates</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions">Using Functions</a> </li></ul><li>Concurrency </li><ul><li><a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained">Service</a> </li><ul><li><a href="/p/guava-libraries/wiki/ServiceExplained#Using_a_Service">Using</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained#Implementations">Implementations</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/StringsExplained">Strings</a> </li><ul><li><a href="/p/guava-libraries/wiki/StringsExplained#Joiner">Joiner</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">CharMatcher</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Charsets">Charsets</a> </li></ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained">Primitives</a> </li><ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Primitive_array_utilities">Primitive arrays</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#General_utility_methods">General utilities</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Byte_conversion_methods">Byte conversion</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support">Unsigned support</a> </li></ul><li><a href="/p/guava-libraries/wiki/RangesExplained">Ranges</a> </li><ul><li><a href="/p/guava-libraries/wiki/RangesExplained#Building_Ranges">Building</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Operations">Operations</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Discrete_Domains">Discrete Domains</a> </li></ul><li><a href="/p/guava-libraries/wiki/IOExplained">I/O</a> </li><li><a href="/p/guava-libraries/wiki/HashingExplained">Hashing</a> </li><ul><li><a href="/p/guava-libraries/wiki/HashingExplained#BloomFilter">BloomFilter</a> </li></ul><li><a href="/p/guava-libraries/wiki/EventBusExplained">EventBus</a> </li><li><a href="/p/guava-libraries/wiki/MathExplained">Math</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Math_on_Integral_Types">Integral</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Checked_Arithmetic">Overflow Checking</a> </li></ul><li><a href="/p/guava-libraries/wiki/MathExplained#Floating-point_arithmetic">Floating Point</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained">Reflection</a> </li><ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained#TypeToken">TypeToken</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReleaseHistory">Releases</a> </li><ul><li><a href="/p/guava-libraries/wiki/Release13">Release 13</a> </li><li><a href="/p/guava-libraries/wiki/Release12">Release 12</a> </li><li><a href="/p/guava-libraries/wiki/Release11">Release 11</a> </li><li><a href="/p/guava-libraries/wiki/Release10">Release 10</a> </li></ul><li>Tips </li><ul><li><a href="/p/guava-libraries/wiki/PhilosophyExplained">Philosophy</a> </li><li><a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">Building with Guava</a> </li><li><a href="/p/guava-libraries/wiki/UsingProGuardWithGuava">Shrinking JARs with ProGuard</a> </li><li><a href="/p/guava-libraries/wiki/ApacheCommonCollectionsEquivalents">Translating from Apache Commons</a> </li><li><a href="/p/guava-libraries/wiki/Compatibility">Guava and Compatibility</a> </li><li><a href="/p/guava-libraries/wiki/IdeaGraveyard">Idea Graveyard</a> </li><li><a href="/p/guava-libraries/wiki/FriendsOfGuava">Friends of Guava</a> </li><li><a href="/p/guava-libraries/wiki/HowToContribute">How to Contribute</a> </li></ul><li><a href="/p/guava-libraries/wiki/GuavaTermsExplained">Glossary</a> </li><li><a href="http://groups.google.com/group/guava-discuss" rel="nofollow">Mailing List</a> </li><li><a href="http://stackoverflow.com/questions/tagged/guava" rel="nofollow">Stack Overflow</a> </li><li><a href="http://code.google.com/p/memory-measurer/wiki/ElementCostInDataStructures" rel="nofollow">Footprint of JDK/Guava data structures</a> </li></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <span style="font-size:120%;font-weight:bold">EventBusExplained</span>
+ &nbsp;
+ <div> 
+ 
+ <i>Guava's event bus utility, explained.</i>
+ 
+ 
+ <br/>
+ 
+ <a class="label" style="padding-top: 2px"
+ href="/p/guava-libraries/w/list?q=label:explained"
+ title=""
+ >explained</a>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Fri Apr 13 07:11:09 2012">
+ Apr 13, 2012</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <p><tt>EventBus</tt> allows publish-subscribe-style communication between components without requiring the components to explicitly register with one another (and thus be aware of each other).  It is designed exclusively to replace traditional Java in-process event distribution using explicit registration. It is <i>not</i> a general-purpose publish-subscribe system, nor is it intended for interprocess communication. </p><h1><a name="Example"></a>Example<a href="#Example" class="section_anchor"></a></h1><pre class="prettyprint">// Class is typically registered by the container.
+class EventBusChangeRecorder {
+  @Subscribe public void recordCustomerChange(ChangeEvent e) {
+    recordChange(e.getChange());
+  }
+}
+// somewhere during initialization
+eventBus.register(new EventBusChangeRecorder());
+// much later
+public void changeCustomer() {
+  ChangeEvent event = getChangeEvent();
+  eventBus.post(event);
+}</pre><h1><a name="One-Minute_Guide"></a>One-Minute Guide<a href="#One-Minute_Guide" class="section_anchor"></a></h1><p>Converting an existing <tt>EventListener</tt>-based system to use the <tt>EventBus</tt> is easy. </p><h2><a name="For_Listeners"></a>For Listeners<a href="#For_Listeners" class="section_anchor"></a></h2><p>To listen for a specific flavor of event (say, a <tt>CustomerChangeEvent</tt>)...   <ul><li><strong>...in traditional Java events:</strong> implement an interface defined with the event -- such as <tt>CustomerChangeEventListener</tt>. </li><li><strong>...with <tt>EventBus</tt>:</strong> create a method that accepts <tt>CustomerChangeEvent</tt> as its sole argument, and mark it with the <a rel="nofollow"><tt>Subscribe</tt></a> annotation. </li></ul></p><p>To register your listener methods with the event producers...   <ul><li><strong>...in traditional Java events:</strong> pass your object to each producer&#x27;s <tt>registerCustomerChangeEventListener</tt> method.  These methods are rarely defined in common interfaces, so in addition to knowing every possible producer, you must also know its type.  </li><li><strong>...with <tt>EventBus</tt>:</strong> pass your object to the <a rel="nofollow"><tt>EventBus.register(Object)</tt></a> method on an <tt>EventBus</tt>.  You&#x27;ll need to make sure that your object shares an <tt>EventBus</tt> instance with the event producers. </li></ul>  To listen for a common event supertype (such as <tt>EventObject</tt> or <tt>Object</tt>)...   <ul><li><strong>...in traditional Java events:</strong> not easy. </li><li><strong>...with <tt>EventBus</tt>:</strong> events are automatically dispatched to listeners of any supertype, allowing listeners for interface types or &quot;wildcard listeners&quot; for <tt>Object</tt>.  </li></ul></p><p>To listen for and detect events that were dispatched without listeners... </p><ul><li><strong>...in traditional Java events:</strong> add code to each event-dispatching method (perhaps using AOP). </li><li><strong>...with <tt>EventBus</tt>:</strong> subscribe to <a rel="nofollow"><tt>DeadEvent</tt></a>.  The <tt>EventBus</tt> will notify you of any events that were posted but not delivered.  (Handy for debugging.) </li></ul><h2><a name="For_Producers"></a>For Producers<a href="#For_Producers" class="section_anchor"></a></h2><p>To keep track of listeners to your events... </p><ul><li><strong>...in traditional Java events:</strong> write code to manage a list of listeners to your object, including synchronization, or use a utility class like <tt>EventListenerList</tt>. </li><li><strong>...with <tt>EventBus</tt>:</strong> <tt>EventBus</tt> does this for you. </li></ul><p>  </p><p>To dispatch an event to listeners...   <ul><li><strong>...in traditional Java events:</strong> write a method to dispatch events to each event listener, including error isolation and (if desired) asynchronicity. </li><li><strong>...with <tt>EventBus</tt>:</strong> pass the event object to an <tt>EventBus</tt>&#x27;s <a rel="nofollow"><tt>EventBus.post(Object)</tt></a> method. </li></ul>  </p><h1><a name="Glossary"></a>Glossary<a href="#Glossary" class="section_anchor"></a></h1><p>The <tt>EventBus</tt> system and code use the following terms to discuss event distribution: <table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;">Event </td><td style="border: 1px solid #ccc; padding: 5px;"> Any object that may be <em>posted</em> to a bus.</td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;">Subscribing</td><td style="border: 1px solid #ccc; padding: 5px;">The act of registering a <em>listener</em> with an <tt>EventBus</tt>, so that its <em>handler methods</em> will receive events.</td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;">Listener</td><td style="border: 1px solid #ccc; padding: 5px;">An object that wishes to receive events, by exposing <em>handler methods</em>.</td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;">Handler method </td><td style="border: 1px solid #ccc; padding: 5px;"> A public method that the <tt>EventBus</tt> should use to deliver <em>posted</em> events.  Handler methods are marked by the <a title="annotation in com.google.common.eventbus" rel="nofollow"><tt>Subscribe</tt></a> annotation.</td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;">Posting an event </td><td style="border: 1px solid #ccc; padding: 5px;"> Making the event available to any <em>listeners</em> through the <tt>EventBus</tt>.</td></tr> </table></p><h1><a name="FAQ"></a>FAQ<a href="#FAQ" class="section_anchor"></a></h1><h3><a name="Why_must_I_create_my_own_Event_Bus,_rather_than_using_a_singleto"></a>Why must I create my own Event Bus, rather than using a singleton?<a href="#Why_must_I_create_my_own_Event_Bus,_rather_than_using_a_singleto" class="section_anchor"></a></h3><p><tt>EventBus</tt> doesn&#x27;t specify how you use it; there&#x27;s nothing stopping your application from having separate <tt>EventBus</tt> instances for each component, or using separate instances to separate events by context or topic.  This also makes it trivial to set up and tear down <tt>EventBus</tt> objects in your tests. </p><p>Of course, if you&#x27;d like to have a process-wide <tt>EventBus</tt> singleton, there&#x27;s nothing stopping you from doing it that way.  Simply have your container (such as Guice) create the <tt>EventBus</tt> as a singleton at global scope (or stash it in a static field, if you&#x27;re into that sort of thing).  </p><p>In short, <tt>EventBus</tt> is not a singleton because we&#x27;d rather not make that decision for you.  Use it how you like. </p><h3><a name="Can_I_unregister_a_listener_from_the_Event_Bus?"></a>Can I unregister a listener from the Event Bus?<a href="#Can_I_unregister_a_listener_from_the_Event_Bus?" class="section_anchor"></a></h3><p>Yes, using <tt>EventBus.unregister</tt>, but we find this is needed only rarely: </p><ul><li>Most listeners are registered on startup or lazy initialization, and persist for the life of the application. </li><li>Scope-specific <tt>EventBus</tt> instances can handle temporary event distribution (e.g. distributing events among request-scoped objects) </li><li>For testing, <tt>EventBus</tt> instances can be easily created and thrown away, removing the need for explicit unregistration. </li></ul><h3><a name="Why_use_an_annotation_to_mark_handler_methods,_rather_than_requi"></a>Why use an annotation to mark handler methods, rather than requiring the listener to implement an interface?<a href="#Why_use_an_annotation_to_mark_handler_methods,_rather_than_requi" class="section_anchor"></a></h3><p>We feel that the Event Bus&#x27;s <tt>@Subscribe</tt> annotation conveys your intentions just as explicitly as implementing an interface (or perhaps more so), while leaving you free to place event handler methods wherever you wish and give them intention-revealing names. </p><p>Traditional Java Events use a listener interface which typically sports only a handful of methods -- typically one.  This has a number of disadvantages:   <ul><li>Any one class can only implement a single response to a given event. </li><li>Listener interface methods may conflict. </li><li>The method must be named after the event (e.g. <tt>handleChangeEvent</tt>), rather than its purpose (e.g. <tt>recordChangeInJournal</tt>). </li><li>Each event usually has its own interface, without a common parent interface for a family of events (e.g. all UI events). </li></ul></p><p>The difficulties in implementing this cleanly has given rise to a pattern, particularly common in Swing apps, of using tiny anonymous classes to implement event listener interfaces. </p><p>Compare these two cases: </p><pre class="prettyprint">   class ChangeRecorder {
+     void setCustomer(Customer cust) {
+       cust.addChangeListener(new ChangeListener() {
+         public void customerChanged(ChangeEvent e) {
+           recordChange(e.getChange());
+         }
+       };
+     }
+   }</pre><p>versus </p><pre class="prettyprint">   // Class is typically registered by the container.
+   class EventBusChangeRecorder {
+     @Subscribe public void recordCustomerChange(ChangeEvent e) {
+       recordChange(e.getChange());
+     }
+   }</pre><blockquote>The intent is actually clearer in the second case: there&#x27;s less noise code, and the event handler has a clear and meaningful name. 
+</blockquote><h3><a name="What_about_a_generic_Handler&lt;T&gt;_interface?"></a>What about a generic <tt>Handler&lt;T&gt;</tt> interface?<a href="#What_about_a_generic_Handler&lt;T&gt;_interface?" class="section_anchor"></a></h3><blockquote>Some have proposed a generic <tt>Handler&lt;T&gt;</tt> interface for <tt>EventBus</tt> listeners.  This runs into issues with Java&#x27;s use of type erasure, not to mention problems in usability. 
+</blockquote><p>Let&#x27;s say the interface looked something like the following:  </p><pre class="prettyprint">interface Handler&lt;T&gt; {
+  void handleEvent(T event);
+}</pre><blockquote>Due to erasure, no single class can implement a generic interface more than once with different type parameters.  This is a giant step backwards from traditional Java Events, where even if <tt>actionPerformed</tt> and <tt>keyPressed</tt> aren&#x27;t very meaningful names, at least you can implement both methods! 
+</blockquote><h3><a name="Doesn&#x27;t_EventBus_destroy_static_typing_and_eliminate_automa"></a>Doesn&#x27;t <tt>EventBus</tt> destroy static typing and eliminate automated refactoring support?<a href="#Doesn&#x27;t_EventBus_destroy_static_typing_and_eliminate_automa" class="section_anchor"></a></h3><p>Some have freaked out about <tt>EventBus</tt>&#x27;s <tt>register(Object)</tt> and <tt>post(Object)</tt> methods&#x27; use of the <tt>Object</tt> type. </p><p><tt>Object</tt> is used here for a good reason: the Event Bus library places no restrictions on the types of either your event listeners (as in <tt>register(Object)</tt>) or the events themselves (in <tt>post(Object)</tt>). </p><p>Event handler methods, on the other hand, must explicitly declare their argument type -- the type of event desired (or one of its supertypes).  Thus, searching for references to an event class will instantly find all handler methods for that event, and renaming the type will affect all handler methods within view of your IDE (and any code that creates the event). </p><p>It&#x27;s true that you can rename your <tt>@Subscribed</tt> event handler methods at will; Event Bus will not stop this or do anything to propagate the rename because, to Event Bus, the names of your handler methods are irrelevant.  Test code that calls the methods directly, of course, will be affected by your renaming -- but that&#x27;s what your refactoring tools are for.  We see this as a feature, not a bug: being able to rename your handler methods at will lets you make their meaning clearer. </p><h3><a name="What_happens_if_I_register_a_listener_without_any_handler_method"></a>What happens if I <tt>register</tt> a listener without any handler methods?<a href="#What_happens_if_I_register_a_listener_without_any_handler_method" class="section_anchor"></a></h3><p>Nothing at all. </p><p>The Event Bus was designed to integrate with containers and module systems, with Guice as the prototypical example.  In these cases, it&#x27;s convenient to have the container/factory/environment pass <i>every</i> created object to an <tt>EventBus</tt>&#x27;s <tt>register(Object)</tt> method. </p><p>This way, any object created by the container/factory/environment can hook into the system&#x27;s event model simply by exposing handler methods. </p><h3><a name="What_Event_Bus_problems_can_be_detected_at_compile_time?"></a>What Event Bus problems can be detected at compile time?<a href="#What_Event_Bus_problems_can_be_detected_at_compile_time?" class="section_anchor"></a></h3><p>Any problem that can be unambiguously detected by Java&#x27;s type system.  For example, defining a handler method for a nonexistent event type. </p><h3><a name="What_Event_Bus_problems_can_be_detected_immediately_at_registrat"></a>What Event Bus problems can be detected immediately at registration?<a href="#What_Event_Bus_problems_can_be_detected_immediately_at_registrat" class="section_anchor"></a></h3><p>Immediately upon invoking <tt>register(Object)</tt> , the listener being registered is checked for the <i>well-formedness</i> of its handler methods. Specifically, any methods marked with <tt>@Subscribe</tt> must take only a single argument.  </p><p>Any violations of this rule will cause an <tt>IllegalArgumentException</tt> to be thrown. </p><p>(This check could be moved to compile-time using APT, a solution we&#x27;re researching.) </p><h3><a name="What_EventBus_problems_may_only_be_detected_later,_at_runtime?"></a>What <tt>EventBus</tt> problems may only be detected later, at runtime?<a href="#What_EventBus_problems_may_only_be_detected_later,_at_runtime?" class="section_anchor"></a></h3><p>If a component posts events with no registered listeners, it <i>may</i> indicate an error (typically an indication that you missed a <tt>@Subscribe</tt> annotation, or that the listening component is not loaded). </p><p>(Note that this is <i>not necessarily</i> indicative of a problem.  There are many cases where an application will deliberately ignore a posted event, particularly if the event is coming from code you don&#x27;t control.) </p><p>To handle such events, register a handler method for the <tt>DeadEvent</tt> class.  Whenever <tt>EventBus</tt> receives an event with no registered handlers, it will turn it into a <tt>DeadEvent</tt> and pass it your way -- allowing you to log it or otherwise recover. </p><h3><a name="How_do_I_test_event_listeners_and_their_handler_methods?"></a>How do I test event listeners and their handler methods?<a href="#How_do_I_test_event_listeners_and_their_handler_methods?" class="section_anchor"></a></h3><p>Because handler methods on your listener classes are normal methods, you can simply call them from your test code to simulate the <tt>EventBus</tt>. </p><h2><a name="Why_can&#x27;t_I_do_&lt;magic_thing&gt;_with_EventBus_?"></a>Why can&#x27;t I do &lt;magic thing&gt; with <tt>EventBus</tt>?<a href="#Why_can&#x27;t_I_do_&lt;magic_thing&gt;_with_EventBus_?" class="section_anchor"></a></h2><p><tt>EventBus</tt> is designed to deal with a large class of use cases really, really well.  We prefer hitting the nail on the head for most use cases to doing decently on all use cases. </p><p>Additionally, making <tt>EventBus</tt> extensible -- and making it useful and productive to extend, while <i>still</i> allowing ourselves to make additions to the core <tt>EventBus</tt> API that don&#x27;t conflict with any of your extensions -- is an extremely difficult problem. </p><p>If you really, really need magic thing X, that <tt>EventBus</tt> can&#x27;t currently provide, you should file an issue, and then design your own alternative. </p>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/110553052566180631607/">da...@grant.org.uk</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Mar  9 05:35:48 2012">Mar 9, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>How does EventBus<a href="/p/guava-libraries/w/edit/EventBus">?</a> handle parameterised event objects?  Suppose I have two listeners, one listening for e.g. List&lt;Integer&gt; and another listening for List&lt;Long&gt; - will EventBus<a href="/p/guava-libraries/w/edit/EventBus">?</a> dispatch correctly, or will it attempt to dispatch to both? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/115999858226902206087/">vle...@aviatorlabs.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Apr 12 12:00:50 2012">Apr 12, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>The @Subscribed method must be public (it is package scope in this above example).  AnnotationHndlerFinder<a href="/p/guava-libraries/w/edit/AnnotationHndlerFinder">?</a>.findAllHandlers call getMethods() on the class which only returns public methods. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113919310954897592144/">ku...@animeequation.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Apr 13 01:03:42 2012">Apr 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Just spent 4 hours trying to find this public visibility issue today! Found it then read this article, oops </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr 23 12:46:55 2012">Apr 23, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>david: Because of type erasure, it&#x27;s literally impossible for EventBus<a href="/p/guava-libraries/w/edit/EventBus">?</a> to figure out that you&#x27;re passing it a List&lt;Integer&gt;.  =(  Wrapping it in an object would work, though. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/liska.jakub/">liska.jakub</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Jul 10 09:51:28 2012">Jul 10, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Type erasure sucks... It is really hard to subscribe for listening collections of events. Almost impossible. If you have a lot of types of Events that may be posted in bulk there is no way of wrapping them... </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111770801853094422103/">dhrubo.k...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Aug 13 01:22:35 2012">Aug 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>What happens if I have 2 event listeners for a particular event? Will both be executed and in which order. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116145766307494321523/">jon.akh...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Sep 27 11:41:35 2012">Sep 27, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Event subscriptions carry over to derived classes. You can override the subscribing method and leave out the annotation. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ <br>
+ <div class="artifactcomment">
+ <span class="indicator">&#9658;</span> <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FEventBusExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FEventBusExplained"
+ >Sign in</a> to add a comment
+ </div>
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="EventBusExplained" >
+ <input type="hidden" name="token" value="" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+

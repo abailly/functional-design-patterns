@@ -1,0 +1,1395 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/guava-libraries/wiki/CachesExplained" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"profileUrl":null,"token":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/17134919371905794448","projectHomeUrl":"/p/guava-libraries","relativeBaseUrl":"","projectName":"guava-libraries","loggedInUserEmail":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>CachesExplained - 
+ guava-libraries -
+ 
+ Explanation for how to use Guava caches. - 
+ Guava: Google Core Libraries for Java 1.6+ - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/guava-libraries/gitchanges/basic?repo=wiki&amp;path=/CachesExplained.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FCachesExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FCachesExplained" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/guava-libraries">
+ <a href="/p/guava-libraries/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/search-48.gif" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/guava-libraries/"><span itemprop="name">guava-libraries</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/guava-libraries/"><span itemprop="description">Guava: Google Core Libraries for Java 1.6+</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/guava-libraries/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/wiki/GuavaExplained?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/guava-libraries/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/guava-libraries/wiki/GuavaExplained">Introduction</a> </li><li>Basic Utilities </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained">Using/avoiding null</a> </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </li></ul><li><a href="/p/guava-libraries/wiki/PreconditionsExplained">Preconditions</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained">Ordering</a> </li><ul><li><a href="/p/guava-libraries/wiki/OrderingExplained#Creation">Creation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Manipulation">Manipulation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Application">Application</a> </li></ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained">Object methods</a> </li><ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#equals">equals</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#hashCode">hashCode</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#toString">toString</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#compare/compareTo">compare/compareTo</a> </li></ul><li><a href="/p/guava-libraries/wiki/ThrowablesExplained">Throwables</a> </li></ul><li>Collections </li><ul><li><a href="/p/guava-libraries/wiki/ImmutableCollectionsExplained">Immutable collections</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained">New collection types</a> </li><ul><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">Multiset</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">Multimap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">Table</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">ClassToInstanceMap</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">Utility Classes</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Iterables">Iterables</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Lists">Lists</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Sets">Sets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Maps">Maps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multisets">Multisets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multimaps">Multimaps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Tables">Tables</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained">Extension Utilities</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#Forwarding_Decorators">Forwarding Decorators</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">PeekingIterator</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#AbstractIterator">AbstractIterator</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/CachesExplained">Caches</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Applicability">Applicability</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Population">Population</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Eviction">Eviction</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Removal_Listeners">Removal Listeners</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Refresh">Refresh</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Timed_Eviction">Timed Eviction</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Size-based_Eviction">Size Caps</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Reference-based_Eviction">Garbage Collection</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Explicit_Removals">Explicit Removals</a> </li></ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Features">Features</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Statistics">Statistics</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained">Functional Idioms</a> </li><ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions_and_Predicates">Obtaining</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Predicates">Using Predicates</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions">Using Functions</a> </li></ul><li>Concurrency </li><ul><li><a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained">Service</a> </li><ul><li><a href="/p/guava-libraries/wiki/ServiceExplained#Using_a_Service">Using</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained#Implementations">Implementations</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/StringsExplained">Strings</a> </li><ul><li><a href="/p/guava-libraries/wiki/StringsExplained#Joiner">Joiner</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">CharMatcher</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Charsets">Charsets</a> </li></ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained">Primitives</a> </li><ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Primitive_array_utilities">Primitive arrays</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#General_utility_methods">General utilities</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Byte_conversion_methods">Byte conversion</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support">Unsigned support</a> </li></ul><li><a href="/p/guava-libraries/wiki/RangesExplained">Ranges</a> </li><ul><li><a href="/p/guava-libraries/wiki/RangesExplained#Building_Ranges">Building</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Operations">Operations</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Discrete_Domains">Discrete Domains</a> </li></ul><li><a href="/p/guava-libraries/wiki/IOExplained">I/O</a> </li><li><a href="/p/guava-libraries/wiki/HashingExplained">Hashing</a> </li><ul><li><a href="/p/guava-libraries/wiki/HashingExplained#BloomFilter">BloomFilter</a> </li></ul><li><a href="/p/guava-libraries/wiki/EventBusExplained">EventBus</a> </li><li><a href="/p/guava-libraries/wiki/MathExplained">Math</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Math_on_Integral_Types">Integral</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Checked_Arithmetic">Overflow Checking</a> </li></ul><li><a href="/p/guava-libraries/wiki/MathExplained#Floating-point_arithmetic">Floating Point</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained">Reflection</a> </li><ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained#TypeToken">TypeToken</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReleaseHistory">Releases</a> </li><ul><li><a href="/p/guava-libraries/wiki/Release13">Release 13</a> </li><li><a href="/p/guava-libraries/wiki/Release12">Release 12</a> </li><li><a href="/p/guava-libraries/wiki/Release11">Release 11</a> </li><li><a href="/p/guava-libraries/wiki/Release10">Release 10</a> </li></ul><li>Tips </li><ul><li><a href="/p/guava-libraries/wiki/PhilosophyExplained">Philosophy</a> </li><li><a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">Building with Guava</a> </li><li><a href="/p/guava-libraries/wiki/UsingProGuardWithGuava">Shrinking JARs with ProGuard</a> </li><li><a href="/p/guava-libraries/wiki/ApacheCommonCollectionsEquivalents">Translating from Apache Commons</a> </li><li><a href="/p/guava-libraries/wiki/Compatibility">Guava and Compatibility</a> </li><li><a href="/p/guava-libraries/wiki/IdeaGraveyard">Idea Graveyard</a> </li><li><a href="/p/guava-libraries/wiki/FriendsOfGuava">Friends of Guava</a> </li><li><a href="/p/guava-libraries/wiki/HowToContribute">How to Contribute</a> </li></ul><li><a href="/p/guava-libraries/wiki/GuavaTermsExplained">Glossary</a> </li><li><a href="http://groups.google.com/group/guava-discuss" rel="nofollow">Mailing List</a> </li><li><a href="http://stackoverflow.com/questions/tagged/guava" rel="nofollow">Stack Overflow</a> </li><li><a href="http://code.google.com/p/memory-measurer/wiki/ElementCostInDataStructures" rel="nofollow">Footprint of JDK/Guava data structures</a> </li></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <span style="font-size:120%;font-weight:bold">CachesExplained</span>
+ &nbsp;
+ <div> 
+ 
+ <i>Explanation for how to use Guava caches.</i>
+ 
+ 
+ <br/>
+ 
+ <a class="label" style="padding-top: 2px"
+ href="/p/guava-libraries/w/list?q=label:explained"
+ title=""
+ >explained</a>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Thu Jun 21 14:04:19 2012">
+ Jun 21, 2012</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Example"></a>Example<a href="#Example" class="section_anchor"></a></h1><pre class="prettyprint">LoadingCache&lt;Key, Graph&gt; graphs = CacheBuilder.newBuilder()
+       .maximumSize(1000)
+       .expireAfterWrite(10, TimeUnit.MINUTES)
+       .removalListener(MY_LISTENER)
+       .build(
+           new CacheLoader&lt;Key, Graph&gt;() {
+             public Graph load(Key key) throws AnyException {
+               return createExpensiveGraph(key);
+             }
+           });</pre><h1><a name="Applicability"></a>Applicability<a href="#Applicability" class="section_anchor"></a></h1><p>Caches are tremendously useful in a wide variety of use cases.  For example, you should consider using caches when a value is expensive to compute or retrieve, and you will need its value on a certain input more than once. </p><p>A <tt>Cache</tt> is similar to <tt>ConcurrentMap</tt>, but not quite the same.  The most fundamental difference is that a <tt>ConcurrentMap</tt> persists all elements that are added to it until they are explicitly removed. A <tt>Cache</tt> on the other hand is generally configured to evict entries automatically, in order to constrain its memory footprint. In some cases a <tt>LoadingCache</tt> can be useful even if it doesn&#x27;t evict entries, due to its automatic cache loading. </p><p>Generally, the Guava caching utilities are applicable whenever: </p><ul><li>You are willing to spend some memory to improve speed. </li><li>You expect that keys will sometimes get queried more than once. </li><li>Your cache will not need to store more data than what would fit in RAM.  (Guava caches are <strong>local</strong> to a single run of your application.  They do not store data in files, or on outside servers.  If this does not fit your needs, consider a tool like <a href="http://memcached.org/" rel="nofollow">Memcached</a>.) </li></ul><p>If each of these apply to your use case, then the Guava caching utilities could be right for you! </p><p>Obtaining a <tt>Cache</tt> is done using the <tt>CacheBuilder</tt> builder pattern as demonstrated by the example code above, but customizing your cache is the interesting part. </p><p><i>Note:</i> If you do not need the features of a <tt>Cache</tt>, <tt>ConcurrentHashMap</tt> is more memory-efficient -- but it is extremely difficult or impossible to duplicate most <tt>Cache</tt> features with any old <tt>ConcurrentMap</tt>. </p><h1><a name="Population"></a>Population<a href="#Population" class="section_anchor"></a></h1><p>The first question to ask yourself about your cache is: is there some <i>sensible default</i> function to load or compute a value associated with a key?  If so, you should use a <tt>CacheLoader</tt>.  If not, or if you need to override the default, but you still want atomic &quot;get-if-absent-compute&quot; semantics, you should pass a <tt>Callable</tt> into a <tt>get</tt> call.  Elements can be inserted directly, using <tt>Cache.put</tt>, but automatic cache loading is preferred as it makes it easier to reason about consistency across all cached content. </p><h3><a name="From_a"></a>From a <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheLoader.html" rel="nofollow">CacheLoader</a><a href="#From_a" class="section_anchor"></a></h3><p>A <tt>LoadingCache</tt> is a <tt>Cache</tt> built with an attached <tt>CacheLoader</tt>.  Creating a <tt>CacheLoader</tt> is typically as easy as implementing the method <tt>V load(K key) throws Exception</tt>.  So, for example, you could create a <tt>LoadingCache</tt> with the following code: </p><pre class="prettyprint">LoadingCache&lt;Key, Graph&gt; graphs = CacheBuilder.newBuilder()
+       .maximumSize(1000)
+       .build(
+           new CacheLoader&lt;Key, Graph&gt;() {
+             public Graph load(Key key) throws AnyException {
+               return createExpensiveGraph(key);
+             }
+           });
+
+...
+try {
+  return graphs.get(key);
+} catch (ExecutionException e) {
+  throw new OtherException(e.getCause());
+}</pre><p>The canonical way to query a <tt>LoadingCache</tt> is with the method <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/LoadingCache.html#get(K)" rel="nofollow">get(K)</a>. This will either return an already cached value, or else use the cache&#x27;s <tt>CacheLoader</tt> to atomically load a new value into the cache. Because <tt>CacheLoader</tt> might throw an <tt>Exception</tt>, <tt>LoadingCache.get(K)</tt> throws <tt>ExecutionException</tt>. If you have defined a <tt>CacheLoader</tt> that does <i>not</i> declare any checked exceptions then you can perform cache lookups using <tt>getUnchecked(K)</tt>; however care must be taken not to call <tt>getUnchecked</tt> on caches whose <tt>CacheLoader</tt>s declare checked exceptions. </p><pre class="prettyprint">LoadingCache&lt;Key, Graph&gt; graphs = CacheBuilder.newBuilder()
+       .expireAfterAccess(10, TimeUnit.MINUTES)
+       .build(
+           new CacheLoader&lt;Key, Graph&gt;() {
+             public Graph load(Key key) { // no checked exception
+               return createExpensiveGraph(key);
+             }
+           });
+
+...
+return graphs.getUnchecked(key);</pre><p>Bulk lookups can be performed with the method <tt>getAll(Iterable&lt;? extends K&gt;)</tt>.  By default, <tt>getAll</tt> will issue a a separate call to <tt>CacheLoader.load</tt> for each key which is absent from the cache. When bulk retrieval is more efficient than many individual lookups, you can override <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheLoader.html#loadAll(java.lang.Iterable)" rel="nofollow"><tt>CacheLoader.loadAll</tt></a> to exploit this.  The performance of <tt>getAll(Iterable)</tt> will improve accordingly. </p><p>Note that you can write a <tt>CacheLoader.loadAll</tt> implementation that loads values for keys that were not specifically requested.  For example, if computing the value of any key from some group gives you the value for all keys in the group, <tt>loadAll</tt> might load the rest of the group at the same time. </p><h3><a name="From_a_Callable"></a>From a <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html" rel="nofollow"><tt>Callable</tt></a><a href="#From_a_Callable" class="section_anchor"></a></h3><p>All Guava caches, loading or not, support the method <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/Cache.html#get(java.lang.Object,java.util.concurrent.Callable)" rel="nofollow"><tt>get(K, Callable&lt;V&gt;)</tt></a>.  This method returns the value associated with the key in the cache, or computes it from the specified <tt>Callable</tt> and adds it to the cache.  No observable state associated with this cache is modified until loading completes. This method provides a simple substitute for the conventional &quot;if cached, return; otherwise create, cache and return&quot; pattern. </p><pre class="prettyprint">Cache&lt;Key, Value&gt; cache = CacheBuilder.newBuilder()
+    .maximumSize(1000)
+    .build(); // look Ma, no CacheLoader
+...
+try {
+  // If the key wasn&#x27;t in the &quot;easy to compute&quot; group, we need to
+  // do things the hard way.
+  cache.get(key, new Callable&lt;Value&gt;() {
+    @Override
+    public Value call() throws AnyException {
+      return doThingsTheHardWay(key);
+    }
+  });
+} catch (ExecutionException e) {
+  throw new OtherException(e.getCause());
+}</pre><h3><a name="Inserted_Directly"></a>Inserted Directly<a href="#Inserted_Directly" class="section_anchor"></a></h3><p>Values may be inserted into the cache directly with <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/Cache.html#put(K, V)" rel="nofollow"><tt>cache.put(key, value)</tt></a>.  This overwrites any previous entry in the cache for the specified value.  Changes can also be made to a cache using any of the <tt>ConcurrentMap</tt> methods exposed by the <tt>Cache.asMap()</tt> view. Note that no method on the <tt>asMap</tt> view will ever cause entries to be automatically loaded into the cache. Further, the atomic operations on that view operate outside the scope of automatic cache loading, so <tt>Cache.get(K, Callable&lt;V&gt;)</tt> should always be preferred over <tt>Cache.asMap().putIfAbsent</tt> in caches which load values using either <tt>CacheLoader</tt> or <tt>Callable</tt>. </p><h1><a name="Eviction"></a>Eviction<a href="#Eviction" class="section_anchor"></a></h1><p>The cold hard reality is that we almost <i>certainly</i> don&#x27;t have enough memory to cache everything we could cache.  You must decide: when is it not worth keeping a cache entry? Guava provides three basic types of eviction: size-based eviction, time-based eviction, and reference-based eviction. </p><h2><a name="Size-based_Eviction"></a>Size-based Eviction<a href="#Size-based_Eviction" class="section_anchor"></a></h2><p>If your cache should not grow beyond a certain size, just use <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#maximumSize(long)" rel="nofollow"><tt>CacheBuilder.maximumSize(long)</tt></a>.  The cache will try to evict entries that haven&#x27;t been used recently or very often. <i>Warning</i>: the cache may evict entries before this limit is exceeded -- typically when the cache size is approaching the limit. </p><p>Alternately, if different cache entries have different &quot;weights&quot; -- for example, if your cache values have radically different memory footprints -- you may specify a weight function with <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#weigher(com.google.common.cache.Weigher)" rel="nofollow"><tt>CacheBuilder.weigher(Weigher)</tt></a> and a maximum cache weight with <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#maximumWeight(long)" rel="nofollow"><tt>CacheBuilder.maximumWeight(long)</tt></a>.  In addition to the same caveats as <tt>maximumSize</tt> requires, be aware that weights are computed at entry creation time, and are static thereafter. </p><pre class="prettyprint">LoadingCache&lt;Key, Graph&gt; graphs = CacheBuilder.newBuilder()
+       .maximumWeight(100000)
+       .weigher(new Weigher&lt;Key, Graph&gt;() {
+          public int weigh(Key k, Graph g) {
+            return g.vertices().size();
+          }
+        })
+       .build(
+           new CacheLoader&lt;Key, Graph&gt;() {
+             public Graph load(Key key) { // no checked exception
+               return createExpensiveGraph(key);
+             }
+           });</pre><h2><a name="Timed_Eviction"></a>Timed Eviction<a href="#Timed_Eviction" class="section_anchor"></a></h2><p><tt>CacheBuilder</tt> provides two approaches to timed eviction: </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#expireAfterAccess(long, java.util.concurrent.TimeUnit)" rel="nofollow"><tt>expireAfterAccess(long, TimeUnit)</tt></a> Only expire entries after the specified duration has passed since the entry was last accessed by a read or a write. Note that the order in which entries are evicted will be similar to that of <a href="#Size-based_Eviction">size-based eviction</a>. </li><li><a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#expireAfterWrite(long, java.util.concurrent.TimeUnit)" rel="nofollow"><tt>expireAfterWrite(long, TimeUnit)</tt></a> Expire entries after the specified duration has passed since the entry was created, or the most recent replacement of the value. This could be desirable if cached data grows stale after a certain amount of time. </li></ul><p>Timed expiration is performed with periodic maintenance during writes and occasionally during reads, as discussed below. </p><h3><a name="Testing_Timed_Eviction"></a>Testing Timed Eviction<a href="#Testing_Timed_Eviction" class="section_anchor"></a></h3><p>Testing timed eviction doesn&#x27;t have to be painful...and doesn&#x27;t actually have to take you two seconds to test a two-second expiration.  Use the <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/base/Ticker.html" rel="nofollow">Ticker</a> interface and the <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#ticker(com.google.common.base.Ticker)" rel="nofollow"><tt>CacheBuilder.ticker(Ticker)</tt></a> method to specify a time source in your cache builder, rather than having to wait for the system clock. </p><h2><a name="Reference-based_Eviction"></a>Reference-based Eviction<a href="#Reference-based_Eviction" class="section_anchor"></a></h2><p>Guava allows you to set up your cache to allow the garbage collection of entries, by using <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/ref/WeakReference.html" rel="nofollow">weak references</a> for keys or values, and by using <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/ref/SoftReference.html" rel="nofollow">soft references</a> for values. </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheBuilder.html#weakKeys()" rel="nofollow"><tt>CacheBuilder.weakKeys()</tt></a> stores keys using weak references.  This allows entries to be garbage-collected if there are no other (strong or soft) references to the keys.  Since garbage collection depends only on identity equality, this causes the whole cache to use identity (<tt>==</tt>) equality to compare keys, instead of <tt>equals()</tt>. </li><li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheBuilder.html#weakValues()" rel="nofollow"><tt>CacheBuilder.weakValues()</tt></a> stores values using weak references.  This allows entries to be garbage-collected if there are no other (strong or soft) references to the values.  Since garbage collection depends only on identity equality, this causes the whole cache to use identity (<tt>==</tt>) equality to compare values, instead of <tt>equals()</tt>. </li><li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheBuilder.html#softValues()" rel="nofollow"><tt>CacheBuilder.softValues()</tt></a> wraps values in soft references.  Softly referenced objects are garbage-collected in a globally least-recently-used manner, <i>in response to memory demand</i>.  Because of the performance implications of using soft references, we generally recommend using the more predictable <a href="#Size-based_Eviction">maximum cache size</a> instead.  Use of <tt>softValues()</tt> will cause values to be compared using identity (<tt>==</tt>) equality instead of <tt>equals()</tt>. </li></ul><h2><a name="Explicit_Removals"></a>Explicit Removals<a href="#Explicit_Removals" class="section_anchor"></a></h2><p>At any time, you may explicitly invalidate cache entries rather than waiting for entries to be evicted.  This can be done: </p><ul><li>individually, using <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/Cache.html#invalidate(java.lang.Object)" rel="nofollow"><tt>Cache.invalidate(key)</tt></a> </li><li>in bulk, using <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/Cache.html#invalidateAll(java.lang.Iterable)" rel="nofollow"><tt>Cache.invalidateAll(keys)</tt></a> </li><li>to all entries, using <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/Cache.html#invalidateAll()" rel="nofollow"><tt>Cache.invalidateAll()</tt></a> </li></ul><h2><a name="Removal_Listeners"></a>Removal Listeners<a href="#Removal_Listeners" class="section_anchor"></a></h2><p>You may specify a removal listener for your cache to perform some operation when an entry is removed, via <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#removalListener(com.google.common.cache.RemovalListener)" rel="nofollow"><tt>CacheBuilder.removalListener(RemovalListener)</tt></a>.  The <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/RemovalListener.html" rel="nofollow"><tt>RemovalListener</tt></a> gets passed a <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/RemovalNotification.html" rel="nofollow"><tt>RemovalNotification</tt></a>, which specifies the <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/RemovalCause.html" rel="nofollow"><tt>RemovalCause</tt></a>, key, and value. </p><p>Note that any exceptions thrown by the <tt>RemovalListener</tt> are logged (using <tt>Logger</tt>) and swallowed. </p><pre class="prettyprint">CacheLoader&lt;Key, DatabaseConnection&gt; loader = new CacheLoader&lt;Key, DatabaseConnection&gt; () {
+  public DatabaseConnection load(Key key) throws Exception {
+    return openConnection(key);
+  }
+};
+RemovalListener&lt;Key, DatabaseConnection&gt; removalListener = new RemovalListener&lt;Key, DatabaseConnection&gt;() {
+  public void onRemoval(RemovalNotification&lt;Key, DatabaseConnection&gt; removal) {
+    DatabaseConnection conn = removal.getValue();
+    conn.close(); // tear down properly
+  }
+};
+
+return CacheBuilder.newBuilder()
+  .expireAfterWrite(2, TimeUnit.MINUTES)
+  .removalListener(removalListener)
+  .build(loader);</pre><p><strong>Warning</strong>: removal listener operations are executed synchronously by default, and since cache maintenance is normally performed during normal cache operations, expensive removal listeners can slow down normal cache function! If you have an expensive removal listener, use <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/RemovalListeners.html#asynchronous(com.google.common.cache.RemovalListener, java.util.concurrent.Executor)" rel="nofollow"><tt>RemovalListeners.asynchronous(RemovalListener, Executor)</tt></a> to decorate a <tt>RemovalListener</tt> to operate asynchronously. </p><h2><a name="When_Does_Cleanup_Happen?"></a>When Does Cleanup Happen?<a href="#When_Does_Cleanup_Happen?" class="section_anchor"></a></h2><p>Caches built with <tt>CacheBuilder</tt> do <i>not</i> perform cleanup and evict values &quot;automatically,&quot; or instantly after a value expires, or anything of the sort.  Instead, it performs small amounts of maintenance during write operations, or during occasional read operations if writes are rare. </p><p>The reason for this is as follows: if we wanted to perform <tt>Cache</tt> maintenance continuously, we would need to create a thread, and its operations would be competing with user operations for shared locks.  Additionally, some environments restrict the creation of threads, which would make <tt>CacheBuilder</tt> unusable in that environment. </p><p>Instead, we put the choice in your hands.  If your cache is high-throughput, then you don&#x27;t have to worry about performing cache maintenance to clean up expired entries and the like.  If your cache does writes only rarely and you don&#x27;t want cleanup to block cache reads, you may wish to create your own maintenance thread that calls <a href="http://docs.guava-libraries.googlecode.com/git-history/v11.0.1/javadoc/com/google/common/cache/Cache.html#cleanUp()" rel="nofollow"><tt>Cache.cleanUp()</tt></a> at regular intervals. </p><p>If you want to schedule regular cache maintenance for a cache which only rarely has writes, just schedule the maintenance using <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/concurrent/ScheduledExecutorService.html" rel="nofollow"><tt>ScheduledExecutorService</tt></a>. </p><h2><a name="Refresh"></a>Refresh<a href="#Refresh" class="section_anchor"></a></h2><p>Refreshing is not quite the same as eviction.  As specified in <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/LoadingCache.html#refresh(K)" rel="nofollow"><tt>LoadingCache.refresh(K)</tt></a>, refreshing a key loads a new value for the key, possibly asynchronously.  The old value (if any) is still returned while the key is being refreshed, in contrast to eviction, which forces retrievals to wait until the value is loaded anew. </p><p>If an exception is thrown while refreshing, the old value is kept, and the exception is logged and swallowed. </p><p>A <tt>CacheLoader</tt> may specify smart behavior to use on a refresh by overriding <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheLoader.html#reload(K, V)" rel="nofollow"><tt>CacheLoader.reload(K, V)</tt></a>, which allows you to use the old value in computing the new value. </p><pre class="prettyprint">// Some keys don&#x27;t need refreshing, and we want refreshes to be done asynchronously.
+LoadingCache&lt;Key, Graph&gt; graphs = CacheBuilder.newBuilder()
+       .maximumSize(1000)
+       .refreshAfterWrite(1, TimeUnit.MINUTES)
+       .build(
+           new CacheLoader&lt;Key, Graph&gt;() {
+             public Graph load(Key key) { // no checked exception
+               return getGraphFromDatabase(key);
+             }
+
+             public ListenableFuture&lt;Graph&gt; reload(final Key key, Graph prevGraph) {
+               if (neverNeedsRefresh(key)) {
+                 return Futures.immediateFuture(prevGraph);
+               } else {
+                 // asynchronous!
+                 ListenableFutureTask&lt;Graph&gt; task = ListenableFutureTask.create(new Callable&lt;Graph&gt;() {
+                   public Graph call() {
+                     return getGraphFromDatabase(key);
+                   }
+                 });
+                 executor.execute(task);
+                 return task;
+               }
+             }
+           });</pre><p>Automatically timed refreshing can be added to a cache using <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/cache/CacheBuilder.html#refreshAfterWrite(long, java.util.concurrent.TimeUnit)" rel="nofollow"><tt>CacheBuilder.refreshAfterWrite(long, TimeUnit)</tt></a>.  In contrast to <tt>expireAfterWrite</tt>, <tt>refreshAfterWrite</tt> will make a key <i>eligible</i> for refresh after the specified duration, but a refresh will only be actually initiated when the entry is queried.  (If <tt>CacheLoader.refresh</tt> is implemented to be asynchronous, then the query will not be slowed down by the refresh.)  So, for example, you can specify both <tt>refreshAfterWrite</tt> and <tt>expireAfterWrite</tt> on the same cache, so that the expiration timer on an entry isn&#x27;t blindly reset whenever an entry becomes eligible for a refresh, so if an entry isn&#x27;t queried after it comes eligible for refreshiing, it is allowed to expire. </p><h1><a name="Features"></a>Features<a href="#Features" class="section_anchor"></a></h1><h2><a name="Statistics"></a>Statistics<a href="#Statistics" class="section_anchor"></a></h2><p>By using <a href="http://docs.guava-libraries.googlecode.com/git-history/release12/javadoc/com/google/common/cache/CacheBuilder.html#recordStats()" rel="nofollow"><tt>CacheBuilder.recordStats()</tt></a>, you can turn on statistics collection for Guava caches. The <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/Cache.html#stats()" rel="nofollow"><tt>Cache.stats()</tt></a> method returns a <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheStats.html" rel="nofollow"><tt>CacheStats</tt></a> object, which provides statistics such as  </p><ul><li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheStats.html#hitRate()" rel="nofollow"><tt>hitRate()</tt></a>, which returns the ratio of hits to requests </li><li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheStats.html#averageLoadPenalty()" rel="nofollow"><tt>averageLoadPenalty()</tt></a>, the average time spent loading new values, in nanoseconds </li><li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/cache/CacheStats.html#evictionCount()" rel="nofollow"><tt>evictionCount()</tt></a>, the number of cache evictions </li></ul><p>and many more statistics besides.  These statistics are critical in cache tuning, and we advise keeping an eye on these statistics in performance-critical applications. </p><h2><a name="asMap"></a><tt>asMap</tt><a href="#asMap" class="section_anchor"></a></h2><p>You can view any <tt>Cache</tt> as a <tt>ConcurrentMap</tt> using its <tt>asMap</tt> view, but how the <tt>asMap</tt> view interacts with the <tt>Cache</tt> requires some explanation. </p><ul><li><tt>cache.asMap()</tt> contains all entries that are <i>currently loaded</i> in the cache.  So, for example, <tt>cache.asMap().keySet()</tt> contains all the currently loaded keys. </li><li><tt>asMap().get(key)</tt> is essentially equivalent to <tt>cache.getIfPresent(key)</tt>, and never causes values to be loaded.  This is consistent with the <tt>Map</tt> contract. </li><li>Access time is reset by all cache read and write operations (including <tt>Cache.asMap().get(Object)</tt> and <tt>Cache.asMap().put(K, V)</tt>), but not by <tt>containsKey(Object)</tt>, nor by operations on the collection-views of <tt>Cache.asMap()</tt>.  So, for example, iterating through <tt>cache.entrySet()</tt> does not reset access time for the entries you retrieve. </li></ul>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109821596443794915874/">vkopiche...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 23 08:38:09 2011">Dec 23, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>The latest release 10.0.1 still has no support for population from Callable: </p><pre class="prettyprint">Cache&lt;Key, Value&gt; cache = CacheBuilder.newBuilder()
+    .maximumSize(10000)
+    .build(); // look Ma, no CacheLoader
+...
+// If the key wasn&#x27;t in the &quot;easy to compute&quot; group, we need to 
+// do things the hard way.
+cache.get(key, new Callable&lt;Value&gt;() {
+  @Override
+  public Value load(Key key) {
+    return doThingsTheHardWay();
+  }
+};</pre>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 23 15:17:45 2011">Dec 23, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Release candidate 1 of Guava 11 is already out, and I&#x27;m aiming at that release. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109821596443794915874/">vkopiche...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 25 10:41:19 2011">Dec 25, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>It appears that release 10.0.1 listed at main project&#x27;s page is already not really the latest. </p><p>There is <a href="https://groups.google.com/forum/#!topic/guava-discuss/Hmnm1JE0KQg" rel="nofollow">announse message</a> and <a href="http://code.google.com/p/guava-libraries/wiki/Release11" rel="nofollow">wiki page</a> for release 11. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 25 14:08:35 2011">Dec 25, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>It&#x27;s an ongoing process; typically we might have some more review candidate releases first. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109821596443794915874/">vkopiche...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Dec 27 05:41:45 2011">Dec 27, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>BTW, Callable has &quot;call&quot; method, not &quot;load&quot;. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/109821596443794915874/">vkopiche...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Dec 27 07:07:36 2011">Dec 27, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>See also <a href="http://stackoverflow.com/questions/8645965/guava-cache-and-preserving-checked-exceptions/" rel="nofollow">http://stackoverflow.com/questions/8645965/guava-cache-and-preserving-checked-exceptions/</a>. It would be very nice to have this noted in this doc. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116658917155462694901/">tpeie...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Jan  7 08:53:43 2012">Jan 7, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Possible pronoun reference ambiguity in the CacheBuilder<a href="/p/guava-libraries/w/edit/CacheBuilder">?</a>.softValues() bullet item: &quot;This will cause ...&quot; I suggest moving that sentence earlier to make it clear that &quot;this&quot; is CacheBuilder<a href="/p/guava-libraries/w/edit/CacheBuilder">?</a>.softValues() and not the use of maximum cache size. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111852800543889545274/">raymond....@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Feb 10 06:49:23 2012">Feb 10, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>The wiki states: </p><blockquote>Use of softValues() will cause values to be compared using identity (==) equality instead of equals(). 
+</blockquote><p>Under what circumstance would Guava&#x27;s cache be attempting to compare the values of a cache, whether via identity or equality? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Feb 10 12:24:31 2012">Feb 10, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Not many! Things like asMap().containsValue(). </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111478139922153483513/">andr...@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Feb 12 16:06:01 2012">Feb 12, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>It would be nice if the asMap javadoc was expanded. With a glance, I&#x27;m not sure if asMap().get(key) counts as an access, or if a put counts as a write. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/108120882621846669533/">tucker...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu Mar  1 07:29:47 2012">Mar 1, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>How do you all feel about &quot;expire if&quot; or &quot;reload if&quot; capability for the cache? </p><p>What I am thinking is a function can be provided to check at expire time to indicate whether or not the value should actually expire.  For example, the cahe is a reflection of a database table that does not change very often, but when it does it needs to eventually propogate to the app.  The function would check the table for an update date or something like that and return a boolean as to whether or not the value should expire. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/105477964709388043956/">bernhard...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Mar  5 08:10:26 2012">Mar 5, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>In the example code of &quot;From a Callable&quot;-section, the closing &quot;)&quot; is missing in line 13. It should be &quot; });&quot; instead of &quot; };&quot;. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Apr  2 09:00:32 2012">Apr 2, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>@tuckerpmt, &quot;reload if&quot; behavior is already implicitly provided: you can override CacheLoader<a href="/p/guava-libraries/w/edit/CacheLoader">?</a>.reload(K key, V oldValue) to return the old value under desired conditions. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/118038388541822606712/">yusufay...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Apr 24 01:13:42 2012">Apr 24, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Can someone explain how caches are saved. I mean after cache.put(K key, V value) or another one. Is there a method that saves the cache. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Apr 24 10:30:44 2012">Apr 24, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>@yusufaytas, I&#x27;m not sure what you mean?  Do you mean saving caches between runs of the application, like to a file? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/118038388541822606712/">yusufay...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Thu May 24 04:07:58 2012">May 24, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>@wasserman.louis, that was the thing I was asking. Sorry for misunderstanding. I can figure it out now by the help of asMap function. Thank you very much. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116983895706879447190/">jor...@knewton.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue Jun 26 13:22:34 2012">Jun 26, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Does anyone have thoughts on the possibility of a concurrent skip list backed cache? I&#x27;d really like my cache to be sorted! Is there a good way to do that right now? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jul  2 06:51:01 2012">Jul 2, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>@jordan, I think the biggest difficulty with a skip-list backed cache is that all the &quot;maintenance operations&quot; are done on a per-segment basis in the segmented concurrent hash table.  It&#x27;s important for cache upkeep, like deleting expired entries and the like, that the cache be able every so often to obtain an exclusive lock on an entire chunk of the cache so it can e.g. remove expired entries, identify and delete garbage-collected entries, and so on.  I don&#x27;t think it&#x27;s as easy to get such a feature into a skip list based map. </p><p>That said, what particular operations are you looking for?  Are you actually iterating over the cache entries?  Or do you want higher/lower operations and the like? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/116983895706879447190/">jor...@knewton.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jul  2 06:55:16 2012">Jul 2, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>I&#x27;m interested in the usual higher/lower operations. At the moment the solution is to keep a separate sorted index on the entries - would be nice if the cache could do that for me at the same time. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jul  9 14:10:39 2012">Jul 9, 2012</span>
+ <div>
+<div class="commentcontent">
+<p><a href="http://code.google.com/p/guava-libraries/issues/detail?id=504" rel="nofollow">http://code.google.com/p/guava-libraries/issues/detail?id=504</a> pretty much rejected that feature for MapMaker<a href="/p/guava-libraries/w/edit/MapMaker">?</a>, and discusses more of the reasons; I&#x27;d be surprised if the situation were significantly different for Cache. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104379794518123041179/">Maaarti...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Jul 11 15:58:54 2012">Jul 11, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Some links (anchors) here (#Timed, #Size/Weight_Caps<a href="/p/guava-libraries/w/edit/Weight_Caps">?</a>, and #Garbage_Collection<a href="/p/guava-libraries/w/edit/Garbage_Collection">?</a>) are dead. </p><p>The sentence &quot;Because of the performance implications of using soft references...&quot; is unclear to me. Do you mean Java bugs like 6912889 or something different? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Jul 29 08:33:08 2012">Jul 29, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Yep, that&#x27;s exactly what we mean.  Soft references work in theory, but they can cause serious performance problems in practice. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/107405686217524109406/">anandsan...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Aug  3 01:23:27 2012">Aug 3, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Posting this question on behalf of how the LoadAll<a href="/p/guava-libraries/w/edit/LoadAll">?</a>? implementation needs to be implemented. </p><p>Return type defined for LoadAll<a href="/p/guava-libraries/w/edit/LoadAll">?</a>? is like Map&lt;Key, Graph&gt; but when I call LoadAll<a href="/p/guava-libraries/w/edit/LoadAll">?</a>? method and create a getAll method to load data in cache eg :: </p><blockquote>private Map&lt;Key, Graph&gt; getGraphMasterCache(Iterable&lt;? extends key&gt; keys) 
+</blockquote><blockquote>{ 
+</blockquote><blockquote>lListOfGraph = //resultset got from DB Call  
+</blockquote><p>for (lCount = 0; lCount &lt; lListOfGraph.size(); lCount++) </p><blockquote>{ 
+</blockquote><blockquote>lGraph = (Graph)lListOfGraph.get(lCount).get(0); graphs.asMap().put((key , lGraph);  
+</blockquote><blockquote>} return (Map&lt;key, Graph&gt;) graphs;  
+</blockquote><blockquote>}  
+</blockquote><p>(As return type is assumed as Map) but it throws classcastexception </p><p>java.lang.ClassCastException<a href="/p/guava-libraries/w/edit/ClassCastException">?</a>?: com.google.common.cache.LocalCache<a href="/p/guava-libraries/w/edit/LocalCache">?</a>?$LocalLoadingCache<a href="/p/guava-libraries/w/edit/LocalLoadingCache">?</a>? cannot be cast to java.util.Map </p><p>Please let me know how it should be implemented so that error is resolved, as I am trying to use guava for prepopulated data caching. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ <br>
+ <div class="artifactcomment">
+ <span class="indicator">&#9658;</span> <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FCachesExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FCachesExplained"
+ >Sign in</a> to add a comment
+ </div>
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="CachesExplained" >
+ <input type="hidden" name="token" value="" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+
