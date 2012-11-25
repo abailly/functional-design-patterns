@@ -62,6 +62,14 @@ img {
     background: white;
 }
 
+
+img.overlay {
+    width: 70%;
+    margin-top:-400px;
+    margin-left:100px;
+    background: none;
+}
+
 /* Transition effect */
 /* Feel free to change the transition effect for original
    animations. See here:
