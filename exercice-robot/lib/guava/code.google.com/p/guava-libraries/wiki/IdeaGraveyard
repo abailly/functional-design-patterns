@@ -1,0 +1,1289 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/guava-libraries/wiki/IdeaGraveyard" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"profileUrl":null,"token":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/17134919371905794448","projectHomeUrl":"/p/guava-libraries","relativeBaseUrl":"","projectName":"guava-libraries","loggedInUserEmail":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>IdeaGraveyard - 
+ guava-libraries -
+ 
+ Idea Graveyard - ideas we have rejected - 
+ Guava: Google Core Libraries for Java 1.6+ - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/guava-libraries/gitchanges/basic?repo=wiki&amp;path=/IdeaGraveyard.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FIdeaGraveyard&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FIdeaGraveyard" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/guava-libraries">
+ <a href="/p/guava-libraries/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/search-48.gif" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/guava-libraries/"><span itemprop="name">guava-libraries</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/guava-libraries/"><span itemprop="description">Guava: Google Core Libraries for Java 1.6+</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/guava-libraries/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/wiki/GuavaExplained?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/guava-libraries/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/guava-libraries/wiki/GuavaExplained">Introduction</a> </li><li>Basic Utilities </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained">Using/avoiding null</a> </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </li></ul><li><a href="/p/guava-libraries/wiki/PreconditionsExplained">Preconditions</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained">Ordering</a> </li><ul><li><a href="/p/guava-libraries/wiki/OrderingExplained#Creation">Creation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Manipulation">Manipulation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Application">Application</a> </li></ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained">Object methods</a> </li><ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#equals">equals</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#hashCode">hashCode</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#toString">toString</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#compare/compareTo">compare/compareTo</a> </li></ul><li><a href="/p/guava-libraries/wiki/ThrowablesExplained">Throwables</a> </li></ul><li>Collections </li><ul><li><a href="/p/guava-libraries/wiki/ImmutableCollectionsExplained">Immutable collections</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained">New collection types</a> </li><ul><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">Multiset</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">Multimap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">Table</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">ClassToInstanceMap</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">Utility Classes</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Iterables">Iterables</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Lists">Lists</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Sets">Sets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Maps">Maps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multisets">Multisets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multimaps">Multimaps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Tables">Tables</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained">Extension Utilities</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#Forwarding_Decorators">Forwarding Decorators</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">PeekingIterator</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#AbstractIterator">AbstractIterator</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/CachesExplained">Caches</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Applicability">Applicability</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Population">Population</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Eviction">Eviction</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Removal_Listeners">Removal Listeners</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Refresh">Refresh</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Timed_Eviction">Timed Eviction</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Size-based_Eviction">Size Caps</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Reference-based_Eviction">Garbage Collection</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Explicit_Removals">Explicit Removals</a> </li></ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Features">Features</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Statistics">Statistics</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained">Functional Idioms</a> </li><ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions_and_Predicates">Obtaining</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Predicates">Using Predicates</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions">Using Functions</a> </li></ul><li>Concurrency </li><ul><li><a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained">Service</a> </li><ul><li><a href="/p/guava-libraries/wiki/ServiceExplained#Using_a_Service">Using</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained#Implementations">Implementations</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/StringsExplained">Strings</a> </li><ul><li><a href="/p/guava-libraries/wiki/StringsExplained#Joiner">Joiner</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">CharMatcher</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Charsets">Charsets</a> </li></ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained">Primitives</a> </li><ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Primitive_array_utilities">Primitive arrays</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#General_utility_methods">General utilities</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Byte_conversion_methods">Byte conversion</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support">Unsigned support</a> </li></ul><li><a href="/p/guava-libraries/wiki/RangesExplained">Ranges</a> </li><ul><li><a href="/p/guava-libraries/wiki/RangesExplained#Building_Ranges">Building</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Operations">Operations</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Discrete_Domains">Discrete Domains</a> </li></ul><li><a href="/p/guava-libraries/wiki/IOExplained">I/O</a> </li><li><a href="/p/guava-libraries/wiki/HashingExplained">Hashing</a> </li><ul><li><a href="/p/guava-libraries/wiki/HashingExplained#BloomFilter">BloomFilter</a> </li></ul><li><a href="/p/guava-libraries/wiki/EventBusExplained">EventBus</a> </li><li><a href="/p/guava-libraries/wiki/MathExplained">Math</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Math_on_Integral_Types">Integral</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Checked_Arithmetic">Overflow Checking</a> </li></ul><li><a href="/p/guava-libraries/wiki/MathExplained#Floating-point_arithmetic">Floating Point</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained">Reflection</a> </li><ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained#TypeToken">TypeToken</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReleaseHistory">Releases</a> </li><ul><li><a href="/p/guava-libraries/wiki/Release13">Release 13</a> </li><li><a href="/p/guava-libraries/wiki/Release12">Release 12</a> </li><li><a href="/p/guava-libraries/wiki/Release11">Release 11</a> </li><li><a href="/p/guava-libraries/wiki/Release10">Release 10</a> </li></ul><li>Tips </li><ul><li><a href="/p/guava-libraries/wiki/PhilosophyExplained">Philosophy</a> </li><li><a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">Building with Guava</a> </li><li><a href="/p/guava-libraries/wiki/UsingProGuardWithGuava">Shrinking JARs with ProGuard</a> </li><li><a href="/p/guava-libraries/wiki/ApacheCommonCollectionsEquivalents">Translating from Apache Commons</a> </li><li><a href="/p/guava-libraries/wiki/Compatibility">Guava and Compatibility</a> </li><li><a href="/p/guava-libraries/wiki/IdeaGraveyard">Idea Graveyard</a> </li><li><a href="/p/guava-libraries/wiki/FriendsOfGuava">Friends of Guava</a> </li><li><a href="/p/guava-libraries/wiki/HowToContribute">How to Contribute</a> </li></ul><li><a href="/p/guava-libraries/wiki/GuavaTermsExplained">Glossary</a> </li><li><a href="http://groups.google.com/group/guava-discuss" rel="nofollow">Mailing List</a> </li><li><a href="http://stackoverflow.com/questions/tagged/guava" rel="nofollow">Stack Overflow</a> </li><li><a href="http://code.google.com/p/memory-measurer/wiki/ElementCostInDataStructures" rel="nofollow">Footprint of JDK/Guava data structures</a> </li></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <span style="font-size:120%;font-weight:bold">IdeaGraveyard</span>
+ &nbsp;
+ <div> 
+ 
+ <i>Idea Graveyard - ideas we have rejected</i>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Tue Mar 20 16:30:33 2012">
+ Mar 20, 2012</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <p>The goal for this page is to flesh it out to contain a reasonably complete explanation of why we rejected each of these ideas. </p><h2><a name="com.google.common.base"></a>com.google.common.base<a href="#com.google.common.base" class="section_anchor"></a></h2><h3><a name="Tuples_for_n_&gt;=_2"></a>Tuples for n &gt;= 2<a href="#Tuples_for_n_&gt;=_2" class="section_anchor"></a></h3><p>Tuple types are awful obfuscators.  Tuples obfuscate what the fields actually mean (<tt>getFirst</tt> and <tt>getSecond</tt> are almost completely meaningless), and anything known about the field values.  Tuples obfuscate method signatures: <tt>ListMultimap&lt;Route, Pair&lt;Double, Double&gt;&gt;</tt> is much less readable than <tt>ListMultimap&lt;Route, LatLong&gt;</tt>. </p><p>It&#x27;s obfuscating, awkward, and it will <i>inevitably</i> be abused. </p><p><a href="http://stackoverflow.com/questions/156275/what-is-the-equivalent-of-the-c-pairl-r-in-java/156685#156685" rel="nofollow">StackOverflow</a> has some explanation here, too. </p><h3><a name="Predicates.sameAs()"></a><tt>Predicates.sameAs()</tt><a href="#Predicates.sameAs()" class="section_anchor"></a></h3><p>See <a title="Preditates.sameAs" class=closed_ref href="/p/guava-libraries/issues/detail?id=355">&nbsp;Issue 355&nbsp;</a> (thanks, lnezda). </p><p>We experimented with this internally, but we found that all of its users could be better served in other ways. </p><h2><a name="com.google.common.collect"></a>com.google.common.collect<a href="#com.google.common.collect" class="section_anchor"></a></h2><h3><a name="counting/indexed_iterator"></a>counting/indexed iterator<a href="#counting/indexed_iterator" class="section_anchor"></a></h3><h3><a name="A_method_to_view_an_iterator_as_an_iterable"></a>A method to view an iterator as an iterable<a href="#A_method_to_view_an_iterator_as_an_iterable" class="section_anchor"></a></h3><p>The biggest concern is that <tt>Iterable</tt> is generally assumed to be able to produce multiple independent iterators. The doc doesn&#x27;t say this, but the <tt>Collection</tt> doc doesn&#x27;t say this, either, and yet we assume it of its iterators.  We have had breakages in Google when this assumption was violated. </p><p>The simplest workaround is <tt>ImmutableList.copyOf(Iterator)</tt>, which is pretty fast, safe, and provides many other advantages besides. </p><h3><a name="Lists.filter"></a><tt>Lists.filter</tt><a href="#Lists.filter" class="section_anchor"></a></h3><p>See <a title="Please explain why Lists doesn't have filter method" class=closed_ref href="/p/guava-libraries/issues/detail?id=505">&nbsp;issue 505&nbsp;</a>. </p><p>The biggest concern here is that too many operations become expensive, linear-time propositions.  If you want to filter a list and get a <i>list</i> back, and not just a <tt>Collection</tt> or an <tt>Iterable</tt>, you can use <tt>ImmutableList.copyOf(Iterables.filter(list, predicate))</tt>, which &quot;states up front&quot; what it&#x27;s doing and how expensive it is. </p><h3><a name="more_varargs_factory_methods_(e.g._Lists.newLinkedList(E...)_)"></a>more varargs factory methods (e.g. <tt>Lists.newLinkedList(E...)</tt>)<a href="#more_varargs_factory_methods_(e.g._Lists.newLinkedList(E...)_)" class="section_anchor"></a></h3><p>Almost all the cases we&#x27;ve encountered for this in reality would really have been better off with an immutable collection; they never actually changed the collection. </p><p>For the remaining cases, using a copy factory wrapped around <tt>Arrays.asList</tt> is a perfectly good one-line workaround.  Alternatively, you <i>are</i> building a <i>mutable</i> collection, so you can afford to use e.g. <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#addAll(java.util.Collection, T...)" rel="nofollow"><tt>Collections.addAll(Collection&lt;E&gt;, E...)</tt></a>. </p><h3><a name="create_a_map_from_an_Iterable&lt;Pair&gt;_,_Iterable&lt;Map.Entr"></a>create a map from an <tt>Iterable&lt;Pair&gt;</tt>, <tt>Iterable&lt;Map.Entry&gt;</tt>, <tt>Object[]</tt> (alternating keys and values), or from <tt>List&lt;K&gt;</tt> + <tt>List&lt;V&gt;</tt><a href="#create_a_map_from_an_Iterable&lt;Pair&gt;_,_Iterable&lt;Map.Entr" class="section_anchor"></a></h3><h3><a name="Lists.equalIgnoringOrder(list1,_list2)"></a><tt>Lists.equalIgnoringOrder(list1, list2)</tt><a href="#Lists.equalIgnoringOrder(list1,_list2)" class="section_anchor"></a></h3><p>As Kevin stated on StackOverflow, &quot;the fact that you want to do this in the first place is a strong signal that you want one or both of these collections to be represented as Multisets in the first place. They cannot really logically be Lists if you don&#x27;t care about their order. If you do represent both as Multisets, then guess what? You&#x27;ve got your single-method-call solution!&quot; </p><p>The single-line solution for any arbitrary pair of <tt>Iterables</tt>, by the way, is </p><pre class="prettyprint">return ImmutableMultiset.copyOf(elems1).equals(ImmutableMultiset.copyOf(elems2));</pre><p>which is linear-time, linear-memory, and makes those costs obvious up front. </p><h3><a name="Iterables.countMatching(Iterable,_Predicate)"></a><tt>Iterables.countMatching(Iterable, Predicate)</tt><a href="#Iterables.countMatching(Iterable,_Predicate)" class="section_anchor"></a></h3><p>A fully equivalent solution is </p><pre class="prettyprint">return Iterables.length(Iterables.filter(iterable, predicate));</pre><h3><a name="Sets.transform()"></a><tt>Sets.transform()</tt><a href="#Sets.transform()" class="section_anchor"></a></h3><p>See <a title="Sets.transform(Set&lt;F&gt;, Converter&lt;F, T&gt;) or the equivalent - WontFix: Use ImmutableSet.copyOf(Collections2.transform(...)…" class=closed_ref href="/p/guava-libraries/issues/detail?id=219">&nbsp;issue 219&nbsp;</a>. </p><p>A <tt>Set</tt> with a slow <tt>contains</tt> method is a non-starter, and a <tt>Function</tt> isn&#x27;t necessarily bijective.  Prefer </p><pre class="prettyprint">ImmutableSet.copyOf(Collections2.transform(set, func));</pre>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111811412877802036875/">lne...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jun 13 07:00:05 2011">Jun 13, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Predicates.sameAs is <a title="Preditates.sameAs" class=closed_ref href="/p/guava-libraries/issues/detail?id=355">&nbsp;Issue 355&nbsp;</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/harmathdenes/">harmathdenes</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jul 25 06:22:34 2011">Jul 25, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>What&#x27;s the explanation for omitting a method to view an iterator as an iterable? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/102197328982447274508/">cpov...@google.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jul 25 07:17:41 2011">Jul 25, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>1) For the foreach case (the most obvious use case), the savings aren&#x27;t huge: </p><pre class="prettyprint">    while (foos.hasNext()) {
+      Foo foo = foos.next();
+      // ...
+    }</pre><p>vs. </p><pre class="prettyprint">    for (Foo foo : Iterables.forIterator(foos)) {
+      // ...
+    }</pre><p>Static import can help a little, of course, and arguably the <i>conceptual</i> savings are larger than the number of characters suggests. </p><p>2) The bigger concern is that Iterable is generally assumed to be able to produce multiple independent iterators.  The doc doesn&#x27;t <i>say</i> this, but the <tt>Collection</tt> doc doesn&#x27;t say this, either, and yet we assume it of its iterators.  We have had breakages in Google when this assumption was violated.  (Just this weekend I had a similar problem with SAX&#x27;s <tt>InputSource</tt>, which didn&#x27;t even have the courtesy to throw an <tt>IllegalStateException</tt> or something when I asked for a second copy of the input.  That was probably more my fault, since the name <tt>getInputStream</tt> doesn&#x27;t suggest multiple input streams and doesn&#x27;t have years of <tt>Iterable</tt> associations in my head, but I bring it up to say that, if I can get that wrong, I can certainly make the equivalent mistake with a single-use <tt>Iterable</tt>.) </p><p>3) <tt>ImmutableList.copyOf(iterator)</tt> (or <tt>newArrayList(iterator)</tt> if the iterator may contain nulls) is probably fast enough for most lists that an application will encounter, and it produces well behaved iterables (and, of course, provides the whole <tt>List</tt> API). </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/harmathdenes/">harmathdenes</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Aug 10 06:49:34 2011">Aug 10, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Thanks for the explanation! </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">Joel.Thi...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Sun Aug 21 13:53:15 2011">Aug 21, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Just FYI, the tuple type has mad its way to the C++0x specification : <a href="https://secure.wikimedia.org/wikipedia/en/wiki/C%2B%2B0x#Tuple_types" rel="nofollow">https://secure.wikimedia.org/wikipedia/en/wiki/C%2B%2B0x#Tuple_types</a> . </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Oct 16 22:10:17 2011">Oct 16, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>We should add Optionals-as-iterables to this. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/106447514859009974212/">lankala...@126.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 25 06:35:56 2011">Dec 25, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>How about adding a null safe compare() in Objects? <blockquote>Like: 
+</p><pre class="prettyprint">	public static &lt;T extends Comparable&gt; int compare(T t1, T t2) {
+		if (t1 == t2)
+			return 0;
+		if (t1 == null)
+			return -1;
+		if (t2 == null)
+			return 1;
+		return t1.compareTo(t2);
+	}</pre></blockquote>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 25 08:25:53 2011">Dec 25, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Already basically available as Ordering.natural().nullsFirst(). </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/106447514859009974212/">lankala...@126.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 06:03:53 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>I&#x27;m afraid Ordering.nullsFirst() can&#x27;t cover some common scenarios. For example, let&#x27;s sort a list of Beans ordering by the value of &#x27;sortedBy&#x27;: </p><pre class="prettyprint">//The bean
+public class Bean {
+  String sortedBy; //nullable
+  int otherField;
+}</pre><p>What&#x27;s the cleanest way to sort it in Guava APIs? Null checking on &#x27;sortedBy&#x27; seems unavoidable: </p><pre class="prettyprint">List&lt;Bean&gt; beans = Lists.newArrayList();
+//Add values to the list
+
+//setup Ordering
+Ordering&lt;Bean&gt; order = new Ordering&lt;Bean&gt;() {
+    public int compare(Bean o1, Bean o2) {
+        if (o1.sortedBy == o2.sortedBy) 
+            return 0;
+        if (o1.sortedBy == null)
+            return RIGHT_IS_GREATER;
+        if (o2.sortedBy == null)
+            return LEFT_IS_GREATER;
+        return o1.sortedBy.compareTo(o2.sortedBy);
+    }
+};
+
+Collections.sort(beans, order.nullsFirst());</pre>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104542531797213689648/">ipremra...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 07:04:51 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>How about  -  </p><pre class="prettyprint">Ordering&lt;Bean&gt; order = new Ordering&lt;Bean&gt;() {
+    public int compare(Bean o1, Bean o2) {
+        if (Objects.equal(o1, o2)) 
+            return 0;        
+        return o1.sortedBy.compareTo(o2.sortedBy);
+    }
+};
+
+beans = order.sortedCopy(beans);</pre>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104542531797213689648/">ipremra...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 07:08:18 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>Or you can use -  </p><pre class="prettyprint">order.immutableSortedCopy(beans);</pre>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113937141757020325516/">cgdec...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 07:51:24 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@lankalanka: Seems to me that you need Ordering.natural().nullsFirst().onResultOf(function to get sortedBy field). That won&#x27;t cover the case when a Bean can be null, but I&#x27;d recommend trying to avoid that situation anyway. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104542531797213689648/">ipremra...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 08:36:31 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@Colin - It will need a Function to extract sortedBy field, which I feel is not a good option, also it doesn&#x27;t cover the case where sortedBy field is null, right? </p><p>I realized that my example also has the same flaw and should be modified as - </p><pre class="prettyprint">Ordering&lt;Bean&gt; order = new Ordering&lt;Bean&gt;() {
+    public int compare(Bean o1, Bean o2) {
+        if (Objects.equal(o1.sortedBy, o2.sortedBy)) 
+            return 0;        
+        return o1.sortedBy.compareTo(o2.sortedBy);
+    }
+};
+
+beans = order.sortedCopy(beans); // or immutableBeans = order.immutableSortedCopy(beans);</pre><p>I do agree that Bean being null should be avoided. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 09:11:38 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>There&#x27;s no problem with Function and null.  Any of these approaches is going to basically require an anonymous class -- why not the Function? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/113937141757020325516/">cgdec...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 09:26:36 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@ipremraj11: Whether using a Function is a &quot;good option&quot; or not is a matter of opinion, but if you want to do this using Ordering and without any manual null checking it&#x27;s certainly an option that works. And it does cover the case where the sortedBy field is null, which was the point. </p><p>Actually, it can cover the case when there&#x27;s nulls in the Bean list as well, by having the Function return null when its input is null as well as when its input&#x27;s sortedBy field is null. It seems that adding an additional nullsFirst() or nullsLast() after onResultOf() can also change where null Beans in the list are placed versus where Beans with a null sortedBy field are placed. </p><p>You could also just write your own Ordering with less complicated null checking like this: </p><pre class="prettyprint">Ordering&lt;Bean&gt; order = new Ordering&lt;Bean&gt;() {
+  public int compare(Bean o1, Bean o2) {
+    return Ordering.natural().nullsFirst().compare(o1.sortedBy, o2.sortedBy);
+  }
+}.nullsFirst();</pre>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/104542531797213689648/">ipremra...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 31 10:46:02 2011">Dec 31, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>@wasserman.louis - yes, both needs anonymous class, but to me, defining a <tt>Ordering</tt> is more intuitive (than <tt>Function</tt> for <tt>Ordering</tt>), but like Colin said, it&#x27;s just a matter of opinion ;-)  </p><p>@Colin - I thought <tt>Function</tt> approach doesn&#x27;t cover the <tt>sortedBy</tt> being <tt>null</tt> but apparently it does (forgot nulls[First/Last]()), liked the another solution as well.  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/111682133409490229438/">fin...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Feb 17 11:19:47 2012">Feb 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p><tt>Lists.equalIgnoringOrder(list1, list2)</tt> is the subject of <a href="http://stackoverflow.com/q/1565214/12048" rel="nofollow">a StackOverflow question</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/110360037156215047837/">kevin.cl...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Apr 11 14:01:46 2012">Apr 11, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>There is no explanation following this header: <blockquote>create a map from an Iterable&lt;Pair&gt;, Iterable&lt;Map.Entry&gt;, Object<a href=""></a> (alternating keys and values), or from List&lt;K&gt; + List&lt;V&gt; 
+</blockquote></p><p>I would find this quite useful when writing unit tests.  Would anyone care to add an explanation? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Sun May 20 19:12:17 2012">May 20, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>It&#x27;s fine when writing unit tests, but Guava&#x27;s not a unit tests library -- and using that approach in production code would be pretty code-smelly. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/114476338910467525253/">sammthom...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Sat Jun 30 12:39:16 2012">Jun 30, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>That&#x27;s begging the question; why would creating a Map from Iterable&lt;Map.Entry&gt; be code-smelly? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/105761516346405237523/">dan...@alexiuc.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Wed Oct  3 19:27:51 2012">Oct 3, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Guava&#x27;s not a unit tests library? Come on. That doesn&#x27;t even make any sense. </p><p>Creating a map from Iterable&lt;Map.Entry&gt; is useful. Here&#x27;s proof: You&#x27;ve already implemented it in Guava as a private static method! Obviously you found it useful. </p><p>Please just make ImmutableMap<a href="/p/guava-libraries/w/edit/ImmutableMap">?</a>.fromEntryList() public. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/106531943124211063458/">jaredjac...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Fri Oct  5 16:40:04 2012">Oct 5, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>+1 for exposing <tt>ImmutableMap.fromEntryList()</tt> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ <br>
+ <div class="artifactcomment">
+ <span class="indicator">&#9658;</span> <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FIdeaGraveyard&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FIdeaGraveyard"
+ >Sign in</a> to add a comment
+ </div>
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="IdeaGraveyard" >
+ <input type="hidden" name="token" value="" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+

@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /p/*/issues/csv
+Disallow: /p/*/source/diff
+Disallow: /a/
+Allow: /a/eclipselabs.org/
+Allow: /a/apache-extras.org/
+Disallow: /a/*/p/*/issues/csv
+Disallow: /a/*/p/*/source/diff
+Crawl-delay: 120

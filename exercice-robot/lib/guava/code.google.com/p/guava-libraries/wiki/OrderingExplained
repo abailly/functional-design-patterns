@@ -1,0 +1,614 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/guava-libraries/wiki/OrderingExplained" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"profileUrl":null,"token":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/17134919371905794448","projectHomeUrl":"/p/guava-libraries","relativeBaseUrl":"","projectName":"guava-libraries","loggedInUserEmail":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>OrderingExplained - 
+ guava-libraries -
+ 
+ Guava's fluent comparator class, Ordering, explained. - 
+ Guava: Google Core Libraries for Java 1.6+ - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/guava-libraries/gitchanges/basic?repo=wiki&amp;path=/OrderingExplained.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FOrderingExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FOrderingExplained" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/guava-libraries">
+ <a href="/p/guava-libraries/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/search-48.gif" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/guava-libraries/"><span itemprop="name">guava-libraries</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/guava-libraries/"><span itemprop="description">Guava: Google Core Libraries for Java 1.6+</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/guava-libraries/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/wiki/GuavaExplained?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/guava-libraries/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/guava-libraries/wiki/GuavaExplained">Introduction</a> </li><li>Basic Utilities </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained">Using/avoiding null</a> </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </li></ul><li><a href="/p/guava-libraries/wiki/PreconditionsExplained">Preconditions</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained">Ordering</a> </li><ul><li><a href="/p/guava-libraries/wiki/OrderingExplained#Creation">Creation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Manipulation">Manipulation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Application">Application</a> </li></ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained">Object methods</a> </li><ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#equals">equals</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#hashCode">hashCode</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#toString">toString</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#compare/compareTo">compare/compareTo</a> </li></ul><li><a href="/p/guava-libraries/wiki/ThrowablesExplained">Throwables</a> </li></ul><li>Collections </li><ul><li><a href="/p/guava-libraries/wiki/ImmutableCollectionsExplained">Immutable collections</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained">New collection types</a> </li><ul><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">Multiset</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">Multimap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">Table</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">ClassToInstanceMap</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">Utility Classes</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Iterables">Iterables</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Lists">Lists</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Sets">Sets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Maps">Maps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multisets">Multisets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multimaps">Multimaps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Tables">Tables</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained">Extension Utilities</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#Forwarding_Decorators">Forwarding Decorators</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">PeekingIterator</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#AbstractIterator">AbstractIterator</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/CachesExplained">Caches</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Applicability">Applicability</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Population">Population</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Eviction">Eviction</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Removal_Listeners">Removal Listeners</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Refresh">Refresh</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Timed_Eviction">Timed Eviction</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Size-based_Eviction">Size Caps</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Reference-based_Eviction">Garbage Collection</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Explicit_Removals">Explicit Removals</a> </li></ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Features">Features</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Statistics">Statistics</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained">Functional Idioms</a> </li><ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions_and_Predicates">Obtaining</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Predicates">Using Predicates</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions">Using Functions</a> </li></ul><li>Concurrency </li><ul><li><a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained">Service</a> </li><ul><li><a href="/p/guava-libraries/wiki/ServiceExplained#Using_a_Service">Using</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained#Implementations">Implementations</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/StringsExplained">Strings</a> </li><ul><li><a href="/p/guava-libraries/wiki/StringsExplained#Joiner">Joiner</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">CharMatcher</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Charsets">Charsets</a> </li></ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained">Primitives</a> </li><ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Primitive_array_utilities">Primitive arrays</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#General_utility_methods">General utilities</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Byte_conversion_methods">Byte conversion</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support">Unsigned support</a> </li></ul><li><a href="/p/guava-libraries/wiki/RangesExplained">Ranges</a> </li><ul><li><a href="/p/guava-libraries/wiki/RangesExplained#Building_Ranges">Building</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Operations">Operations</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Discrete_Domains">Discrete Domains</a> </li></ul><li><a href="/p/guava-libraries/wiki/IOExplained">I/O</a> </li><li><a href="/p/guava-libraries/wiki/HashingExplained">Hashing</a> </li><ul><li><a href="/p/guava-libraries/wiki/HashingExplained#BloomFilter">BloomFilter</a> </li></ul><li><a href="/p/guava-libraries/wiki/EventBusExplained">EventBus</a> </li><li><a href="/p/guava-libraries/wiki/MathExplained">Math</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Math_on_Integral_Types">Integral</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Checked_Arithmetic">Overflow Checking</a> </li></ul><li><a href="/p/guava-libraries/wiki/MathExplained#Floating-point_arithmetic">Floating Point</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained">Reflection</a> </li><ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained#TypeToken">TypeToken</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReleaseHistory">Releases</a> </li><ul><li><a href="/p/guava-libraries/wiki/Release13">Release 13</a> </li><li><a href="/p/guava-libraries/wiki/Release12">Release 12</a> </li><li><a href="/p/guava-libraries/wiki/Release11">Release 11</a> </li><li><a href="/p/guava-libraries/wiki/Release10">Release 10</a> </li></ul><li>Tips </li><ul><li><a href="/p/guava-libraries/wiki/PhilosophyExplained">Philosophy</a> </li><li><a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">Building with Guava</a> </li><li><a href="/p/guava-libraries/wiki/UsingProGuardWithGuava">Shrinking JARs with ProGuard</a> </li><li><a href="/p/guava-libraries/wiki/ApacheCommonCollectionsEquivalents">Translating from Apache Commons</a> </li><li><a href="/p/guava-libraries/wiki/Compatibility">Guava and Compatibility</a> </li><li><a href="/p/guava-libraries/wiki/IdeaGraveyard">Idea Graveyard</a> </li><li><a href="/p/guava-libraries/wiki/FriendsOfGuava">Friends of Guava</a> </li><li><a href="/p/guava-libraries/wiki/HowToContribute">How to Contribute</a> </li></ul><li><a href="/p/guava-libraries/wiki/GuavaTermsExplained">Glossary</a> </li><li><a href="http://groups.google.com/group/guava-discuss" rel="nofollow">Mailing List</a> </li><li><a href="http://stackoverflow.com/questions/tagged/guava" rel="nofollow">Stack Overflow</a> </li><li><a href="http://code.google.com/p/memory-measurer/wiki/ElementCostInDataStructures" rel="nofollow">Footprint of JDK/Guava data structures</a> </li></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <span style="font-size:120%;font-weight:bold">OrderingExplained</span>
+ &nbsp;
+ <div> 
+ 
+ <i>Guava's fluent comparator class, Ordering, explained.</i>
+ 
+ 
+ <br/>
+ 
+ <a class="label" style="padding-top: 2px"
+ href="/p/guava-libraries/w/list?q=label:explained"
+ title=""
+ >explained</a>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Tue Mar 20 16:30:33 2012">
+ Mar 20, 2012</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Example"></a>Example<a href="#Example" class="section_anchor"></a></h1><pre class="prettyprint">Ordering&lt;String&gt; byLengthOrdering = new Ordering&lt;String&gt;() {
+     public int compare(String left, String right) {
+       return Ints.compare(left.length(), right.length());
+     }
+   };
+
+if (Ordering.from(comparator).reverse().isOrdered(list)) { ... }</pre><h1><a name="Overview"></a>Overview<a href="#Overview" class="section_anchor"></a></h1><p><a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html" rel="nofollow"><tt>Ordering</tt></a> is Guava&#x27;s &quot;fluent&quot; <tt>Comparator</tt> class, which can be used to manipulate, extend, and make use of comparators. </p><p>Besides just manipulating the <tt>Ordering</tt> itself, support is provided for manipulating collections and other objects with the ordering as well. </p><h1><a name="Creation"></a>Creation<a href="#Creation" class="section_anchor"></a></h1><p>Common orderings are provided by static methods:  </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> Method </td><td style="border: 1px solid #ccc; padding: 5px;"> Description </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#natural()" rel="nofollow"><tt>natural()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Uses the <i>natural ordering</i> on Comparable types. </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#usingToString()" rel="nofollow"><tt>usingToString()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Compares Objects by the lexicographical ordering of their string representations, as returned by <tt>toString()</tt>. </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#arbitrary()" rel="nofollow"><tt>arbitrary()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns an arbitrary ordering over all objects, for which <tt>compare(a, b) == 0</tt> implies <tt>a == b</tt> (identity equality). There is no meaning whatsoever to the order imposed, but it is constant for the life of the VM. </td></tr> </table></p><p>Making a preexisting <tt>Comparator</tt> into an <tt>Ordering</tt> is as simple as using <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#from(java.util.Comparator)" rel="nofollow"><tt>Ordering.from(Comparator)</tt></a>.  This method can be used freely, as it is smart enough to recognize when the <tt>Comparator</tt> argument is already an <tt>Ordering</tt>. </p><p>Alternately, the <tt>Comparator</tt> may be skipped entirely, just extending the <tt>Ordering</tt> abstract class directly, as in the example: </p><pre class="prettyprint">Ordering&lt;String&gt; byLengthOrdering = new Ordering&lt;String&gt;() {
+     public int compare(String left, String right) {
+       return Ints.compare(left.length(), right.length());
+     }
+   };</pre><h1><a name="Manipulation"></a>Manipulation<a href="#Manipulation" class="section_anchor"></a></h1><p>A given <tt>Ordering</tt> can be modified to obtain many other useful derived orderings.  Some of the most commonly used variations include: </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> Method </td><td style="border: 1px solid #ccc; padding: 5px;"> Description </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#reverse()" rel="nofollow"><tt>reverse()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns the reverse ordering. </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#nullsFirst()" rel="nofollow"><tt>nullsFirst()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns an <tt>Ordering</tt> that orders nulls before non-null elements, and otherwise behaves the same as the original <tt>Ordering</tt>. See also <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#nullsLast()" rel="nofollow"><tt>nullsLast()</tt></a>. </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#compound(java.util.Comparator)" rel="nofollow"><tt>compound(Comparator)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns an <tt>Ordering</tt> which uses the specified <tt>Comparator</tt> to &quot;break ties.&quot; </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#lexicographical()" rel="nofollow"><tt>lexicographical()</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns an <tt>Ordering</tt> that orders iterables lexicographically by their elements. </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#onResultOf(com.google.common.base.Function)" rel="nofollow"><tt>onResultOf(Function)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns an <tt>Ordering</tt> which orders values by applying the function to them and then comparing the results using the original <tt>Ordering</tt>. </td></tr> </table></p><p>For example, let&#x27;s say you want to have a comparator for the class </p><pre class="prettyprint">class Foo {
+  @Nullable String sortedBy;
+  int notSortedBy;
+}</pre><p>that can deal with null values of <tt>sortedBy</tt>.  This can be done in a few ways, most simply: </p><pre class="prettyprint">Ordering&lt;Foo&gt; ordering = Ordering.natural().nullsFirst().onResultOf(new Function&lt;Foo, String&gt;() {
+    public String apply(Foo foo) {
+      return foo.sortedBy;
+    }
+  });</pre><h1><a name="Application"></a>Application<a href="#Application" class="section_anchor"></a></h1><p>Guava provides a number of methods to manipulate or examine values or collections using the ordering.  We list some of the most popular here. </p><p><table class="wikitable"><tr><td style="border: 1px solid #ccc; padding: 5px;"> Method </td><td style="border: 1px solid #ccc; padding: 5px;"> Description </td><td style="border: 1px solid #ccc; padding: 5px;"> See also </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#greatestOf(java.lang.Iterable, int)" rel="nofollow"><tt>greatestOf(Iterable iterable, int k)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns the <tt>k</tt> greatest elements of the specified iterable, according to this ordering, in order from greatest to least.  Not necessarily stable.  </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#leastOf(java.lang.Iterable, int)" rel="nofollow"><tt>leastOf</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#isOrdered(java.lang.Iterable)" rel="nofollow"><tt>isOrdered(Iterable)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Tests if the specified <tt>Iterable</tt> is in nondecreasing order according to this ordering. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#isStrictlyOrdered(java.lang.Iterable)" rel="nofollow"><tt>isStrictlyOrdered</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#sortedCopy(java.lang.Iterable)" rel="nofollow"><tt>sortedCopy(Iterable)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns a sorted copy of the specified elements as a <tt>List</tt>. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#immutableSortedCopy(java.lang.Iterable)" rel="nofollow"><tt>immutableSortedCopy</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#min(E, E)" rel="nofollow"><tt>min(E, E)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns the minimum of its two arguments according to this ordering.  If the values compare as equal, the first argument is returned. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#max(E, E)" rel="nofollow"><tt>max(E, E)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#min(E, E, E, E...)" rel="nofollow"><tt>min(E, E, E, E...)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns the minimum of its arguments according to this ordering.  If there are multiple least values, the first is returned. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#max(E, E, E, E...)" rel="nofollow"><tt>max(E, E, E, E...)</tt></a> </td></tr> <tr><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#min(java.lang.Iterable)" rel="nofollow"><tt>min(Iterable)</tt></a> </td><td style="border: 1px solid #ccc; padding: 5px;"> Returns the minimum element of the specified <tt>Iterable</tt>.  Throws a <tt>NoSuchElementException</tt> if the <tt>Iterable</tt> is empty. </td><td style="border: 1px solid #ccc; padding: 5px;"> <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#max(java.lang.Iterable)" rel="nofollow"><tt>max(Iterable)</tt></a>, <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#min(java.util.Iterator)" rel="nofollow"><tt>min(Iterator)</tt></a>, <a href="http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Ordering.html#max(java.util.Iterator)" rel="nofollow"><tt>max(Iterator)</tt></a> </td></tr> </table></p>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/105766086244428057700/">thomas.a...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 26 23:34:38 2011">Dec 26, 2011</span>
+ <div>
+<div class="commentcontent">
+<p>&gt; Alternately, the Comparator may be skipped entirely, just extending the Ordering abstract class directly, as in the example: Ordering&lt;String&gt; byLengthOrdering ... </p><p>Same example as above. (I would keep it here.) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/107536507430739347968/">sergiofb...@gmail.com</a
+>,
+ 
+ </span>
+ <span class="date" title="Tue May 29 10:06:07 2012">May 29, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Ordering should be able to return immutableSet. The returning collection could be a TreeSet<a href="/p/guava-libraries/w/edit/TreeSet">?</a>.  A List is not enough when you don&#x27;t want to have repeated items in the collection. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment"
+ 
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by  project member 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/wasserman.louis/">wasserman.louis</a
+>,
+ 
+ </span>
+ <span class="date" title="Mon Jun 11 09:37:27 2012">Jun 11, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>@sergiofbsilva: I&#x27;m not sure I follow, but it&#x27;s fairly straightforward to make an ImmutableSortedSet<a href="/p/guava-libraries/w/edit/ImmutableSortedSet">?</a> or TreeSet<a href="/p/guava-libraries/w/edit/TreeSet">?</a> with an Ordering: you just use it as a Comparator.  ImmutableSortedSet<a href="/p/guava-libraries/w/edit/ImmutableSortedSet">?</a>.copyOf(myOrdering, iterable) works, or Sets.newTreeSet(ordering). </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ <br>
+ <div class="artifactcomment">
+ <span class="indicator">&#9658;</span> <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FOrderingExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FOrderingExplained"
+ >Sign in</a> to add a comment
+ </div>
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="OrderingExplained" >
+ <input type="hidden" name="token" value="" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+

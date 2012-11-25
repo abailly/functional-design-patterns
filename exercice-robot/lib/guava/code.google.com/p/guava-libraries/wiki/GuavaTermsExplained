@@ -1,0 +1,453 @@
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/guava-libraries/wiki/GuavaTermsExplained" />
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"profileUrl":null,"token":null,"assetHostPath":"http://www.gstatic.com/codesite/ph","domainName":null,"assetVersionPath":"http://www.gstatic.com/codesite/ph/17134919371905794448","projectHomeUrl":"/p/guava-libraries","relativeBaseUrl":"","projectName":"guava-libraries","loggedInUserEmail":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>GuavaTermsExplained - 
+ guava-libraries -
+ 
+ List of terms used in Guava documentation and communications - 
+ Guava: Google Core Libraries for Java 1.6+ - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/ph_detail.css" >
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="/feeds/p/guava-libraries/gitchanges/basic?repo=wiki&amp;path=/GuavaTermsExplained.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/17134919371905794448/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+</head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FGuavaTermsExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FGuavaTermsExplained" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/guava-libraries">
+ <a href="/p/guava-libraries/">
+ 
+ <img src="http://www.gstatic.com/codesite/ph/images/search-48.gif" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/guava-libraries/"><span itemprop="name">guava-libraries</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/guava-libraries/"><span itemprop="description">Guava: Google Core Libraries for Java 1.6+</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/guava-libraries/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/wiki/GuavaExplained?tm=6" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/guava-libraries/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/guava-libraries/w/list" method="GET" style="display:inline">
+ <select id="can" name="can" >
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1" >&nbsp;All wiki pages</option>
+ <option value="3" >&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="4" >&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input type="text" size="38" id="searchq" name="q" value=""
+ autocomplete="off" ></span>
+ 
+ 
+ 
+ <input type="submit" value="Search" >
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+ 
+ style="padding:0 3px 3px 0; margin:0"
+ 
+ 
+>
+
+ 
+
+
+
+
+
+
+ 
+<style type="text/css">
+ #wikimaincol { padding-top: 6px; padding-left:1em}
+ #sidebarcontainer {
+ padding: 1.5em 2px 2px 2px;
+ min-width: 15em;
+ max-width: 20em;
+ overflow:hidden;
+}
+ .sidebartop ul { margin:0 0 0 .5em; padding-left:0 !important; list-style:none}
+ .sidebartop ul ul { margin-left:1em; padding-left:0; list-style:none; display:none}
+ .sidebartop li { margin:0 0 2px 0; padding:1px; padding-left:14px; cursor:pointer}
+ .sidebartop li a { padding:2px}
+ .sidebartop li { background: url(http://www.gstatic.com/codesite/ph/images/plus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeopen { background: url(http://www.gstatic.com/codesite/ph/images/minus.gif) no-repeat 1px 3px}
+ .sidebartop li.treeleaf { background:none}
+ .currentpagelink { 
+ font-weight: bold;
+ text-decoration: none;
+ color: black !important; 
+ background: #c3d9ff;
+ }
+ .sidebartop ul.treeleafcontainer { display:block;}
+ .sidebarcontent { 
+ vertical-align:top;
+ padding-right: 3px;
+ border-right: 2px solid #ccc;
+ }
+</style>
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tr>
+ 
+ 
+ <td class="sidebarcontent">
+ <div class="vt expand" id="wikisidebar">
+ <div>
+ 
+ <div style="float:right;">
+ <a class="ifExpand" style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Hide sidebar"><b>&lsaquo;&lsaquo;</b></a>
+ </div>
+ <div class="ifCollapse" style="padding:0 2px">
+ <a style="font-size:130%; color:blue; text-decoration:none"
+ href="#" onclick="_DW_toggleSidebar(this); return false;"
+ title="Show sidebar"><b>&rsaquo;&rsaquo;</b></a>
+ </div>
+ 
+ 
+ <div id="sidebarcontainer" class="sidebartop ifExpand">
+ <ul><li><a href="/p/guava-libraries/wiki/GuavaExplained">Introduction</a> </li><li>Basic Utilities </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained">Using/avoiding null</a> </li><ul><li><a href="/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">Optional</a> </li></ul><li><a href="/p/guava-libraries/wiki/PreconditionsExplained">Preconditions</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained">Ordering</a> </li><ul><li><a href="/p/guava-libraries/wiki/OrderingExplained#Creation">Creation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Manipulation">Manipulation</a> </li><li><a href="/p/guava-libraries/wiki/OrderingExplained#Application">Application</a> </li></ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained">Object methods</a> </li><ul><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#equals">equals</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#hashCode">hashCode</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#toString">toString</a> </li><li><a href="/p/guava-libraries/wiki/CommonObjectUtilitiesExplained#compare/compareTo">compare/compareTo</a> </li></ul><li><a href="/p/guava-libraries/wiki/ThrowablesExplained">Throwables</a> </li></ul><li>Collections </li><ul><li><a href="/p/guava-libraries/wiki/ImmutableCollectionsExplained">Immutable collections</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained">New collection types</a> </li><ul><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">Multiset</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">Multimap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#Table">Table</a> </li><li><a href="/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">ClassToInstanceMap</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained">Utility Classes</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Iterables">Iterables</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Lists">Lists</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Sets">Sets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Maps">Maps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multisets">Multisets</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Multimaps">Multimaps</a> </li><li><a href="/p/guava-libraries/wiki/CollectionUtilitiesExplained#Tables">Tables</a> </li></ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained">Extension Utilities</a> </li><ul><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#Forwarding_Decorators">Forwarding Decorators</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">PeekingIterator</a> </li><li><a href="/p/guava-libraries/wiki/CollectionHelpersExplained#AbstractIterator">AbstractIterator</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/CachesExplained">Caches</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Applicability">Applicability</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Population">Population</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Eviction">Eviction</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Removal_Listeners">Removal Listeners</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Refresh">Refresh</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Timed_Eviction">Timed Eviction</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Size-based_Eviction">Size Caps</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Reference-based_Eviction">Garbage Collection</a> </li><li><a href="/p/guava-libraries/wiki/CachesExplained#Explicit_Removals">Explicit Removals</a> </li></ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Features">Features</a> </li><ul><li><a href="/p/guava-libraries/wiki/CachesExplained#Statistics">Statistics</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained">Functional Idioms</a> </li><ul><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions_and_Predicates">Obtaining</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Predicates">Using Predicates</a> </li><li><a href="/p/guava-libraries/wiki/FunctionalExplained#Functions">Using Functions</a> </li></ul><li>Concurrency </li><ul><li><a href="/p/guava-libraries/wiki/ListenableFutureExplained">ListenableFuture</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained">Service</a> </li><ul><li><a href="/p/guava-libraries/wiki/ServiceExplained#Using_a_Service">Using</a> </li><li><a href="/p/guava-libraries/wiki/ServiceExplained#Implementations">Implementations</a> </li></ul></ul><li><a href="/p/guava-libraries/wiki/StringsExplained">Strings</a> </li><ul><li><a href="/p/guava-libraries/wiki/StringsExplained#Joiner">Joiner</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#CharMatcher">CharMatcher</a> </li><li><a href="/p/guava-libraries/wiki/StringsExplained#Charsets">Charsets</a> </li></ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained">Primitives</a> </li><ul><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Primitive_array_utilities">Primitive arrays</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#General_utility_methods">General utilities</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Byte_conversion_methods">Byte conversion</a> </li><li><a href="/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support">Unsigned support</a> </li></ul><li><a href="/p/guava-libraries/wiki/RangesExplained">Ranges</a> </li><ul><li><a href="/p/guava-libraries/wiki/RangesExplained#Building_Ranges">Building</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Operations">Operations</a> </li><li><a href="/p/guava-libraries/wiki/RangesExplained#Discrete_Domains">Discrete Domains</a> </li></ul><li><a href="/p/guava-libraries/wiki/IOExplained">I/O</a> </li><li><a href="/p/guava-libraries/wiki/HashingExplained">Hashing</a> </li><ul><li><a href="/p/guava-libraries/wiki/HashingExplained#BloomFilter">BloomFilter</a> </li></ul><li><a href="/p/guava-libraries/wiki/EventBusExplained">EventBus</a> </li><li><a href="/p/guava-libraries/wiki/MathExplained">Math</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Math_on_Integral_Types">Integral</a> </li><ul><li><a href="/p/guava-libraries/wiki/MathExplained#Checked_Arithmetic">Overflow Checking</a> </li></ul><li><a href="/p/guava-libraries/wiki/MathExplained#Floating-point_arithmetic">Floating Point</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained">Reflection</a> </li><ul><li><a href="/p/guava-libraries/wiki/ReflectionExplained#TypeToken">TypeToken</a> </li></ul><li><a href="/p/guava-libraries/wiki/ReleaseHistory">Releases</a> </li><ul><li><a href="/p/guava-libraries/wiki/Release13">Release 13</a> </li><li><a href="/p/guava-libraries/wiki/Release12">Release 12</a> </li><li><a href="/p/guava-libraries/wiki/Release11">Release 11</a> </li><li><a href="/p/guava-libraries/wiki/Release10">Release 10</a> </li></ul><li>Tips </li><ul><li><a href="/p/guava-libraries/wiki/PhilosophyExplained">Philosophy</a> </li><li><a href="/p/guava-libraries/wiki/UseGuavaInYourBuild">Building with Guava</a> </li><li><a href="/p/guava-libraries/wiki/UsingProGuardWithGuava">Shrinking JARs with ProGuard</a> </li><li><a href="/p/guava-libraries/wiki/ApacheCommonCollectionsEquivalents">Translating from Apache Commons</a> </li><li><a href="/p/guava-libraries/wiki/Compatibility">Guava and Compatibility</a> </li><li><a href="/p/guava-libraries/wiki/IdeaGraveyard">Idea Graveyard</a> </li><li><a href="/p/guava-libraries/wiki/FriendsOfGuava">Friends of Guava</a> </li><li><a href="/p/guava-libraries/wiki/HowToContribute">How to Contribute</a> </li></ul><li><a href="/p/guava-libraries/wiki/GuavaTermsExplained">Glossary</a> </li><li><a href="http://groups.google.com/group/guava-discuss" rel="nofollow">Mailing List</a> </li><li><a href="http://stackoverflow.com/questions/tagged/guava" rel="nofollow">Stack Overflow</a> </li><li><a href="http://code.google.com/p/memory-measurer/wiki/ElementCostInDataStructures" rel="nofollow">Footprint of JDK/Guava data structures</a> </li></ul>
+ </div>
+ </div>
+</div>
+
+ </td>
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <span style="font-size:120%;font-weight:bold">GuavaTermsExplained</span>
+ &nbsp;
+ <div> 
+ 
+ <i>List of terms used in Guava documentation and communications</i>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Tue Mar 20 16:30:32 2012">
+ Mar 20, 2012</span>
+ 
+ by 
+
+ <a class="userlink"
+ href="/u/kevinb@google.com/">kevinb@google.com</a
+>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Glossary"></a>Glossary<a href="#Glossary" class="section_anchor"></a></h1><h2><a name="antisymmetric"></a>antisymmetric<a href="#antisymmetric" class="section_anchor"></a></h2><p>An <strong>antisymmetric relation</strong> is any <a href="#relation">relation</a> such that <tt>a.relation(b) &amp;&amp; b.relation(a)</tt> always implies that <tt>a</tt> and <tt>b</tt> are <a href="#equal">equal</a>. </p><h2><a name="associative"></a>associative<a href="#associative" class="section_anchor"></a></h2><p>An <strong>associative operation</strong> is any <a href="#binary_operation">binary operation</a> for which <tt>a.operation(b).operation(c)</tt> always equals <tt>a.operation(b.operation(c))</tt>. </p><h2><a name="binary_operation"></a>binary operation<a href="#binary_operation" class="section_anchor"></a></h2><p>A binary operator (such as <tt>+</tt>), or a method of the form <tt>static A operation(A first, A second)</tt>, or a method in a class <tt>A</tt> of the form <tt>A operation(A second)</tt>. </p><h2><a name="commutative"></a>commutative<a href="#commutative" class="section_anchor"></a></h2><p>An <a href="#binary_operation">operation</a> is <strong>commutative</strong> if <tt>a.operation(b)</tt> always equals <tt>b.operation(a)</tt>. </p><p>See <a href="#symmetric">symmetric</a> for the analogous property of relations. </p><h2><a name="equal"></a>equal<a href="#equal" class="section_anchor"></a></h2><p>In referring to <a href="#primitive">primitives</a>, <tt>p1</tt> and <tt>p2</tt> are called equal if and only if <tt>p1 == p2</tt>. In referring to objects, <i>unless specified otherwise</i>, <tt>a1</tt> and <tt>a2</tt> are called equal if and only if <tt>a1.equals(a2)</tt>. When we intend identity equality we will clearly say, &quot;the same instance as.&quot; (Range is an example of a class that specifies a different meaning for &quot;equal&quot;.) </p><h2><a name="equivalence_relation"></a>equivalence relation<a href="#equivalence_relation" class="section_anchor"></a></h2><p>An <strong>equivalence relation</strong> is any binary <a href="#relation">relation</a> that is <a href="#reflexive">reflexive</a>, <a href="#symmetric">symmetric</a> and <a href="#transitive">transitive</a>.  The contract of <tt>Object.equals</tt> specifies that it must define an equivalence relation. </p><h2><a name="idempotent"></a>idempotent<a href="#idempotent" class="section_anchor"></a></h2><p>In an <strong>idempotent operation</strong>, <tt>a.operation().operation()</tt> always equals <tt>a.operation()</tt>. </p><h2><a name="lazy"></a>lazy<a href="#lazy" class="section_anchor"></a></h2><p>A <strong>lazy view</strong> does not query the backing object until it absolutely has to.  For example, <tt>Iterators.filter(Iterator, Predicate)</tt> returns an <tt>Iterator</tt> that only advances the backing iterator when a new element is demanded. </p><h2><a name="partial_ordering"></a>partial ordering<a href="#partial_ordering" class="section_anchor"></a></h2><p>A <a href="#relation">relation</a> is said to be a <strong>partial ordering</strong> if it is <a href="#reflexive">reflexive</a>, <a href="#transitive">transitive</a>, and <a href="#antisymmetric">antisymmetric</a>.  If it also has the property that <tt>a.relation(b) || b.relation(a)</tt> for all <tt>a</tt> and <tt>b</tt>, it is a <a href="#total_ordering">total ordering</a>. </p><h2><a name="primitive"></a>primitive<a href="#primitive" class="section_anchor"></a></h2><p>A <tt>boolean</tt>, <tt>byte</tt>, <tt>short</tt>, <tt>char</tt>, <tt>int</tt>, <tt>float</tt>, <tt>long</tt> or <tt>double</tt>. </p><h2><a name="reflexive"></a>reflexive<a href="#reflexive" class="section_anchor"></a></h2><p>In a reflexive <a href="#relation">relation</a>, <tt>a.relation(a)</tt> is always <tt>true</tt>. </p><h2><a name="relation"></a>relation<a href="#relation" class="section_anchor"></a></h2><p>A relational operator (such as <tt>&lt;</tt>), or a method of the form <tt>static boolean relation(A first, A second)</tt>, or a method in a class <tt>A</tt> of the form <tt>boolean relation(A second)</tt>. </p><h2><a name="symmetric"></a>symmetric<a href="#symmetric" class="section_anchor"></a></h2><p>In a <strong>symmetric <a href="#relation">relation</a></strong>, <tt>a1.relation(a2)</tt> always has the same boolean value as <tt>a2.relation(a1)</tt>. </p><h2><a name="total_ordering"></a>total ordering<a href="#total_ordering" class="section_anchor"></a></h2><p>A <strong>total ordering</strong> is any <a href="#relation">relation</a> that is <a href="#antisymmetric">antisymmetric</a>, <a href="#transitive">transitive</a>, and has the property that <tt>a.relation(b)</tt> or <tt>b.relation(a)</tt> holds.  (It follows that <tt>relation</tt> is <a href="#reflexive">reflexive</a>.) </p><p>For example, when we say that a <tt>Comparator</tt> must define a total ordering, we mean that the relation <tt>comparator.compare(a, b) &lt;= 0</tt> satisfies: </p><ul><li><tt>comparator.compare(a, b) &lt;= 0 &amp;&amp; comparator.compare(b, a) &lt;= 0</tt> does imply that <tt>comparator.compare(a, b) == 0</tt>, and if the ordering is <i>consistent with equals</i>, <tt>a.equals(b)</tt>. </li><li><tt>comparator.compare(a, b) &lt;= 0 &amp;&amp; comparator.compare(b, c) &lt;= 0</tt> implies that <tt>comparator.compare(a, c) &lt;= 0</tt>. </li><li>For all <tt>a, b</tt>, <tt>comparator.compare(a, b) &lt;= 0 || comparator.compare(b, a) &lt;= 0</tt>. </li></ul><h2><a name="transitive"></a>transitive<a href="#transitive" class="section_anchor"></a></h2><p>For a <strong>transitive <a href="#relation">relation</a></strong>, <tt>a1.relation(a2) &amp;&amp; a2.relation(a3)</tt> always implies that <tt>a1.relation(a3)</tt>. </p>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+
+
+ 
+ 
+ 
+ 
+ <br>
+ <div class="artifactcomment">
+ <span class="indicator">&#9658;</span> <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FGuavaTermsExplained&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fguava-libraries%2Fwiki%2FGuavaTermsExplained"
+ >Sign in</a> to add a comment
+ </div>
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input type="hidden" name="sequence_num" value="" >
+ <input type="hidden" name="create_time" value="" >
+ <input type="hidden" name="mode" value="" >
+ <input type="hidden" name="pagename" value="GuavaTermsExplained" >
+ <input type="hidden" name="token" value="" >
+ </form>
+
+
+ <script src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/prettify/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/17134919371905794448/js/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+
+
