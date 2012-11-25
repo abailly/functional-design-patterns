@@ -20,4 +20,4 @@ $$
 F (g ∙ f) = F g ∙ F f 
 $$
 
-Cette règle somme toute assez naturelle, elle exprime le simple fait que le foncteur ne change pas les valeurs qu'il contient, qu'il est un simple conteneur de valeurs. 
+Cette règle somme toute est assez naturelle, elle exprime le simple fait que le foncteur ne change pas les valeurs qu'il contient, qu'il est un simple conteneur de valeurs. 

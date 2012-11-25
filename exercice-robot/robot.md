@@ -28,7 +28,7 @@ A robot is caracterized by:
 * A battery level which is a floating point value between 0
   and 100
 
-[robot-mars.png](robot-mars.png)
+![robot-mars.png](robot-mars.png)
 
 ## Plateau
 
@@ -37,6 +37,10 @@ each coordinate location is assigned an altitude which is a positive
 integer between 0 and 10. For the purpose of the simulation, the size
 and characteristics of the plateau may evolve but it shall never be
 greater than 10 x 10 kilometers. 
+
+The plateau contains a "base camp", actually an solar powered plant
+into which robots can tap to refill their battery. This base camp is
+considered to occupy a  1 sq.m. space on the plateau.
 
 ## Movement Rules
 
@@ -49,12 +53,13 @@ greater than 10 x 10 kilometers.
 * A robot can act as long as its battery level is greater than 0. When
   this level reaches 0 (or below), any remaining orders are ignored by
   the robot
-* A robot's battery decrease by `1` for each move on flat
-  terrain. 
-  * Energy consumption is increased by 10% per meter difference in height when moving from lower to
-    higher terrain
-  * It is decreased by a flat 10% when moving from upper to lower
-    terrain
+* A robot consumes energy which is drawn from its battery according to
+  the following formula, where $h_n$ and $h_{n+1}$ stand for the start
+  and end height respectively and $G$ for Mars' gravitational constant
+  which is 3.7:
+  
+     $$((h_{n+1} - h_{n})/h_{n+1} + 1) * G$$
+  
 * A robot cannot move when the height difference between its source
   and destination is greater than 2 meters.        
 * When not moving, robot does not consume battery power
@@ -171,6 +176,8 @@ Unfortunately, it is not clear what are the implemented features of the
 simulation, but it is sure that energy consumption was not
 implemented. 
 
+## Goal
+
 Your task will then consist in completing the simulation
 program with missing features and improve the current design of the
 sytem. To sum-up, are here the goals of this exercise:
@@ -180,3 +187,34 @@ sytem. To sum-up, are here the goals of this exercise:
 * Implement correctly the above specification. There should of course
   be (automated) tests to demonstrate the correct behaviour of this
   specification
+
+## Hints
+
+Here is a list of *hotspots*, methods and classes whose design could
+benefit from applying functional principles and patterns. This list is
+of course non exhaustive...
+
+* `Simulation.run()`: Separate I/O actions from orders' execution
+  (*purity*)
+* `Simulation.routine()`: Robot's position are updated then
+  potentially rollbacked if they conflict (*immutability*)
+* `Simulation.routine()`: One can compose different levels of
+  execution for orders (*expressivity*, *composability*), Various
+  patterns can apply here such *Closure of Operations*:
+    * Execute 1 order for 1 robot
+    * Execute n orders for 1 robot
+    * Execute n orders for m robots
+  
+* `Simulation.initXXX()`: Initialisation of objects is complex and
+  error-prone, one can use Builder pattern to siplify logic-checking
+  (*immutability*, *expressivity*)
+* `Simulation.initXXX()`: Separate verification logic from objects'
+  construction, using for example `filter()` higher-order function on
+  input lists (*expressivity*, *purity*)
+* `Saver.askFileNameText()`: Separate I/O from interaction logic and
+  verification to provide better testability (*purity*) 
+* `Batterie`: Energy consumption logic should preserve objects'
+  immutability yet be practical. *Closure of operations* might be a
+  good candidate (*immutability*) 
+* `Main.gestionLigneCmd()` (not for the faint of heart!): Need
+  complete rewrite.

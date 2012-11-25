@@ -1,4 +1,5 @@
-Une exploration des _motifs de conception_ de la programmation fonctionnelle à l'usage des simples mortels.
+Une exploration des _motifs de conception_ de la programmation fonctionnelle 
+à l'usage des simples mortels.
 
 * [Foncteurs](functor.md)
 * [Foncteurs applicatifs](applicative.html)
