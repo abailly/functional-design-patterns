@@ -58,7 +58,7 @@ interface Stream<A> {
 
 ~~~~~~~~~ {.java .numberLines}
 abstract class Streams {
-  <A> Stream<A> cons(A a, Stream<A> tail) {
+  static <A> Stream<A> cons(A a, Stream<A> tail) {
 }
 ~~~~~~~~~
 
@@ -82,7 +82,7 @@ provide a base value (eg. Null Object) and some operation for composing objects 
 
 ### Option
 
-Signals the possibility of a   non-existing value (eg. Null object)
+* *Intent*: Signals the possibility of a   non-existing value (eg. Null object)
 
 * Guava's Optional:
 
@@ -92,15 +92,82 @@ Optional<String> optional = Optional.fromNullable(aString);
 return optional.or(defaultValue); 
 ~~~~~~~~~
 
+### Lens
+
+* *Intent*: Decouple the operations on element contained in an object from its concrete structure
+* *Motivation*:
+
+When Objects are immutable, traversing them when we want to modify/update a value is cumbersome
+
+Example: Update ZIP code of a User
+    
+~~~~~~~~~ {.java .numberLines}
+User user = ...
+Address address = user.address;
+
+User updated = user.builder().(
+   address.builder().zip("12345").build()
+  ).build();
+~~~~~~~~~
+
+We would like to have a way to express this update as a composable transformation over Users and addresses. 
+
+Lenses provide this feature as a pair of functions: one for *get*, one for *set*. 
+
+~~~~~~~~~ {.java .numberLines}
+User user = ...
+
+Lens<User> userZip = lens("zip", Address.class).in(lens("address", User.class));
+
+User updated = userZip.set(user, "12345");
+~~~~~~~~~ 
+
+* *Advantages*:
+    * Change logic is manipulable as a first class object, thus decoupling business logic and algorithms from the concrete structure of objecs. One only has to manipulate lenses, compose them, then feed objects at a later stage
+    * Depending on implementation, it can be typesafe, checked at compile-time and/or generated automatically from an Object's structure
+    * Provides copy-on-write semantics when changing immutable objects
+* *Drawbacks*:
+    * Awkward to implement in Java, need use of reflection or compile-time magic or bytecode instrumentation to work efficiently
+    
 ### Zipper
 
-Provide a way to traverse and modify immutable structures
+* *Intent*: Provide a way to traverse and modify immutable structures
+* *AKA*: Derivatives, One-hole Strucuture
+* *Relations*:
+    * *Lens* pattern: Both let user express and compose changes on an object. But the zipper keeps track of a context thus allowing more complex operations
+* *Motivation*:
 
+While modifying complex or nested immutable data structures, one needs to keep track of the context of the traversal and operations on the data to be able to reconstruct a new data which is equivalent to the old one but for some changes. This bookkeeping is tedious, cumbersome and error-prone. 
+
+Example: update all postings related to a user using some conversion function
+
+~~~~~~~~~ {.java .numberLines}
+User user = ...
+Function updatePostings = ...
+
+User newUser = UserZipper.zip(user).postings().update(updatePostings).build();
+~~~~~~~~~
+
+* *Advantages*: 
+    * Remove bookkeeping burden from the developer while retaining the ability to point to some part of structure 
+    * Simplify updates of immutable structure
+    * Decouple transformations of values within structures from the structure holding them
+* *Drawbacks*: 
+    * Each type need a specific Zipper construct as its navigation is specific
+    
 ### Iteratee
 
-Decouple enumerating values in a stream of data from computation
+* *Intent*: Decouple enumerating values in a stream of data from computation
+
+### Applicative
+
 
 ### Monad
 
-compose operations while maintaining a context
+* *Intent*: provide a context for composing operations
+
+### Co-monad
+
+* *Intent*: ???
+
 
