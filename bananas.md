@@ -193,3 +193,24 @@ intcoalgebra 0 = Zero
 intcoalgebra n = Succ (n - 1)
 ~~~~~~~~~
 
+From FPOO:
+Stream functions. It is very interesting to note that the value, step, and eos interface
+of ContFunc (see section 8.10 on page 130) is justified by a categorical
+interpretation of streams as coinductive types [Jacobs & Rutten97]. Here,
+streams over a type A are modeled as a state of type B (state of a ContFunc
+object) and two functions: Function h : B!A produces a new stream element
+(value) and function t : B!B produces a new state (step).
+Then, an anamorphism on h and t (a stream generating function) is defined
+to be the unique function f : B!Str A such that diagram 8.6 on the next page
+commutes. A stream generator f , hence, needs to build a list cell (eventually
+StreamValue) from calling an element generator h (value) and itself composed
+with a state transformer t (step): f = Cons ∙ 〈 head, f ∙ tail 〉 [Pardo98b].
+This view concerns infinite streams only. Introducing finite streams
+
+~~~~~~~~~ {.haskell .numberLines}
+head :: Stream a → a
+tail :: Stream a → Stream a
+
+-- generator function
+f    :: b → Stream a
+~~~~~~~~~
