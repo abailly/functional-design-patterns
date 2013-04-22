@@ -58,6 +58,11 @@ prop_owner_and_next_ballot_are_consistent :: Configuration -> Bool
 prop_owner_and_next_ballot_are_consistent (Conf max current priest) =
   (owner max (myNextBallot max current priest) == priest)
 
+prop_try_new_ballot_is_greater_than_previous (Conf max current priest) =
+  (lastTried.priestLog.fst) (tryNewBallot newPriest) > lastTried (priestLog newPriest)
+  where
+    newPriest = (idlePriest 10 priest)
+  
 prop_update_next_ballot_when_greater_than_own_next_ballot :: Int -> Priest Int -> Bool
 prop_update_next_ballot_when_greater_than_own_next_ballot ballot priest =  
   let priest'       = receive (NextBallot ballot) priest
