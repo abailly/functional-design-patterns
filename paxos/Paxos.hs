@@ -36,7 +36,7 @@ import Data.Ord(comparing)
 import System.IO.Unsafe(unsafePerformIO)
 import System.Random(randomRIO)
 import Debug.Trace
-import Control.Arrow((***))
+import Control.Arrow((***),second)
 type Ballot = Int
 
 type PriestId = Int
@@ -267,17 +267,22 @@ random :: Int -> Int
 random m = unsafePerformIO $ randomRIO (0,m-1)
 
 randomlySelectOneOf :: [(String,a)] -> a
-randomlySelectOneOf xs = snd sel
+randomlySelectOneOf xs = trace ("selecting " ++ fst sel) $ snd sel
   where
     sel = select xs
 
 select xs = xs !! random (length xs)
   
 stepPriest :: (Priest Int, [MessageBody Int]) -> (Priest Int, ([MessageBody Int], Maybe (Message Int)))
-stepPriest (priest, message:messages) = let futures = map (id *** (($priest).($ (Just message)))) actions
+stepPriest (priest, message:messages) = let futures = possibleFutures priest $ Just message
                                         in case randomlySelectOneOf futures of
-                                          (priest', (Nothing,Just _)) -> (priest',(messages, Nothing))
-                                          (priest', (output,_))       -> (priest',(message:messages,output))
-stepPriest (priest, [])               = let futures = map (id *** (($priest).($ Nothing))) actions
+                                          (priest', (Nothing,Just _))  -> (priest',(messages, Nothing))
+                                          (priest', (output,_))        -> (priest',(message:messages,output))
+stepPriest (priest, [])               = let futures = possibleFutures priest Nothing
                                         in case randomlySelectOneOf futures of
                                           (priest', (output,Nothing))  -> (priest',([],output))
+
+possibleFutures :: Priest Int
+                   -> Maybe (MessageBody Int)
+                   -> [(String,(Priest Int, (Maybe (Message Int), Maybe (MessageBody Int))))]
+possibleFutures priest m = map (second (($ priest).($ m))) actions
