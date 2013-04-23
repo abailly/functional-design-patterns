@@ -118,9 +118,12 @@ negInf = (-2^31)
 
 type ActionResult a = (Priest a, Maybe (Message a), String)
 
+idle :: (Show a) => Priest a -> ActionResult a
+idle p = (p,Nothing,"idling")
+
 tryNewBallot :: (Show a) => Priest a -> ActionResult a
 tryNewBallot priest@(Priest maxp myId log status votes poll)
-  | priestStatus priest /= Trying && priestStatus priest /= Polling = (Priest maxp myId (log { lastTried = nextbal }) Trying emptyVotes poll, 
+  | myId == 0 && priestStatus priest /= Trying && priestStatus priest /= Polling = (Priest maxp myId (log { lastTried = nextbal }) Trying emptyVotes poll, 
                                                                 Nothing,
                                                                 "trying new ballot " ++ (show nextbal))
   | otherwise                     = (priest,Nothing,"")
@@ -208,7 +211,7 @@ receive (LastVote ballot vote) priest   = if priestStatus priest == Trying && ba
                                              , "receiving last vote " ++ (show vote) ++","++ (show ballot))
                                           else   
                                             (priest,"")
-receive (BeginBallot ballot dec) priest = if ballot == (fromJust$ nextBal priest) && ballot > (fromJust$ prevBal priest) then
+receive (BeginBallot ballot dec) priest = if ballot == (fromJust$ nextBal priest) &&  (maybe True (ballot >) (prevBal priest)) then
                                             (priest { priestLog = (priestLog priest) { previousBallot = Just ballot 
                                                                                      , previousDecree = Just dec }}
                                              ,"receiving begin ballot "++ (show ballot))
@@ -249,7 +252,8 @@ receiveAct (Just input) priest = let (priest', log) = receive input priest
                                        (priest', (Nothing, Nothing), log)
 receiveAct Nothing      priest = (priest, (Nothing, Nothing),"")
 
-actions = receiveAct : map action [ tryNewBallot
+actions = receiveAct : receiveAct : receiveAct : receiveAct : receiveAct : receiveAct : receiveAct : map action [ idle
+                                  , tryNewBallot
                                   , sendNextBallot
                                   , sendLastVote
                                   , startPolling 1
