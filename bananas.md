@@ -1,4 +1,10 @@
+# Références
+
  - [Discussion sur implémenter filter avec foldr](http://stackoverflow.com/questions/3632999/implementing-filter-using-hof-in-haskell)
+ - [Free monads](http://www.haskell.org/haskellwiki/Free_monad)
+ - [Free monads and interpretation](http://www.haskellforall.com/2012/06/you-could-have-invented-free-monads.html)
+ - [Metaprogramming & Free monads](http://newartisans.com/2012/08/meta-programming-with-the-free-monad/)
+ - [Another blog on interpretation](http://debasishg.blogspot.fr/2013/01/a-language-and-its-interpretation.html)
 
 # Bananes, lentilles, enveloppes et barbelés
 
