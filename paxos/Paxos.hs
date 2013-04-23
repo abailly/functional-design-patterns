@@ -116,126 +116,147 @@ data MessageBody a =
 
 negInf = (-2^31)
 
-tryNewBallot :: Priest a -> (Priest a, Maybe (Message a))
-tryNewBallot (Priest maxp myId log status votes poll) = 
-  (Priest maxp 
-   myId
-   log { lastTried = nextbal }
-   Trying
-   emptyVotes
-   poll, Nothing)
+type ActionResult a = (Priest a, Maybe (Message a), String)
+
+tryNewBallot :: (Show a) => Priest a -> ActionResult a
+tryNewBallot priest@(Priest maxp myId log status votes poll)
+  | priestStatus priest /= Trying && priestStatus priest /= Polling = (Priest maxp myId (log { lastTried = nextbal }) Trying emptyVotes poll, 
+                                                                Nothing,
+                                                                "trying new ballot " ++ (show nextbal))
+  | otherwise                     = (priest,Nothing,"")
  where
    nextbal = myNextBallot maxp (lastTried log) myId
 
-sendNextBallot :: Priest a -> (Priest a, Maybe (Message a))
+sendNextBallot :: (Show a) => Priest a -> ActionResult a
 sendNextBallot priest 
-  | priestStatus priest == Trying = (priest, Just $ Message Nothing $ NextBallot (lastTried $ priestLog priest))
-  | otherwise                     = (priest, Nothing)
-
-sendLastVote :: Priest a -> (Priest a, Maybe (Message a))
+  | priestStatus priest == Trying = (priest, Just $ Message Nothing $ NextBallot tried, "sending nextBallot " ++ (show tried))
+  | otherwise                     = (priest, Nothing, "")
+  where tried = (lastTried $ priestLog priest)
+        
+sendLastVote :: (Show a) => Priest a -> ActionResult a
 sendLastVote priest@(Priest max pid _ _ _ _)
   | nextBal priest > prevBal priest = (priest, Just $ Message
                                                (Just (owner max $ fromJust $ nextBal priest))
-                                               (LastVote (fromJust$nextBal priest) (Vote pid (prevBal priest) (prevDec priest))))
-  | otherwise                       = (priest, Nothing)
+                                               lastvote,"sending last vote " ++ (show lastvote))
+  | otherwise                       = (priest, Nothing, "")
+ where 
+   lastvote = (LastVote (fromJust$nextBal priest) (Vote pid (prevBal priest) (prevDec priest)))
 
 
-startPolling :: a -> Priest a -> (Priest a, Maybe (Message a))
+startPolling :: (Show a) => a -> Priest a -> ActionResult a
 startPolling anyVote priest@(Priest max pid _ _ _ _) 
   = if priestStatus priest == Trying && quorumReached  then
       (priest { priestStatus = Polling
               , pollStatus = (pollStatus priest)  { quorum = majoritySet
                                                   , voters = [] 
                                                   , decree = maxVote}}
-      , Nothing)
+      , Nothing
+      , "start polling decree " ++ (show maxVote))
     else
-      (priest, Nothing)
+      (priest, Nothing,"")
   where
     votingPriests = nub $ map emitter (prevVotes priest)
     quorumReached = length votingPriests >= (max `div` 2 ) + 1
     majoritySet   = take (max `div` 2 + 1) votingPriests
     maxVote       = fromMaybe anyVote $ decreeNumber $ head $ reverse $ sortBy (comparing ballotNumber) (prevVotes priest)
 
-sendBeginBallot :: Priest a -> (Priest a, Maybe (Message a))
+sendBeginBallot :: (Show a) => Priest a -> ActionResult a
 sendBeginBallot priest@(Priest max pid _ Polling _ _) = (priest, Just $ Message
                                                                  (Just $ select $ quorum $ pollStatus priest)
-                                                                 (BeginBallot (lastTried $ priestLog priest) (decree $ pollStatus priest)))
-sendBeginBallot priest                                = (priest, Nothing)                                                                  
+                                                                 (BeginBallot last dec)
+                                                        , "sending begin ballot "++ (show last) ++"," ++ (show dec))
+  where
+    last = (lastTried $ priestLog priest)
+    dec  = (decree $ pollStatus priest)
+sendBeginBallot priest                                = (priest, Nothing, "")                                                                  
+    
 
-sendVoted :: Priest a -> (Priest a, Maybe (Message a))
+sendVoted :: (Show a) => Priest a -> ActionResult a
 sendVoted priest@(Priest max pid _ _ _ _) 
   | prevBal priest /= Nothing = (priest, Just $ Message
                                          (Just $ owner max $ fromJust $ prevBal priest)
-                                         (Voted (fromJust $ prevBal priest) pid))
-  | otherwise                 = (priest, Nothing)
-
-succeed :: (Eq a) => Priest a -> (Priest a, Maybe (Message a))
+                                         (Voted bal pid)
+                                ,"sending voted "++ (show bal))
+  | otherwise                 = (priest, Nothing,"")
+ where
+   bal = (fromJust $ prevBal priest)
+   
+succeed :: (Eq a,Show a) => Priest a -> ActionResult a
 succeed priest@(Priest max pid _ Polling _ poll) = 
   if (all (`elem` (voters poll)) (quorum poll)) && (outcome (priestLog priest) == Nothing) then
-    (priest { priestLog = (priestLog priest) { outcome = Just $ decree (pollStatus priest) }}, Nothing)
+    (priest { priestLog = (priestLog priest) { outcome = Just $ dec }}, Nothing
+    ,"succeeding decree "++ (show dec))
   else
-    (priest, Nothing)
-succeed priest  =   (priest, Nothing)
+    (priest, Nothing ,"")
+  where 
+    dec = decree (pollStatus priest) 
+succeed priest  =   (priest, Nothing,"")
   
-sendSuccess :: (Eq a) => Priest a -> (Priest a, Maybe (Message a))
-sendSuccess priest | Just result <- outcome (priestLog priest) = (priest, Just $ Message Nothing (Success result))
-                   | otherwise                                 = (priest, Nothing)
+sendSuccess :: (Eq a, Show a) => Priest a -> ActionResult a
+sendSuccess priest | Just result <- outcome (priestLog priest) = (priest, Just $ Message Nothing (Success result), "sending success " ++ (show result))
+                   | otherwise                                 = (priest, Nothing, "")
     
     
-receive :: (Eq a) => MessageBody a -> Priest a -> Priest a
+receive :: (Show a, Eq a) => MessageBody a -> Priest a -> (Priest a, String)
 receive (NextBallot ballot)    priest   = if ballot >= (fromMaybe (-2^31) $ nextBal priest) then
-                                            priest { priestLog = (priestLog priest) { nextBallot = Just ballot}}
+                                            (priest { priestLog = (priestLog priest) { nextBallot = Just ballot}}
+                                             , "receiving next ballot " ++ show ballot)
                                           else
-                                            priest
+                                            (priest,"")
 receive (LastVote ballot vote) priest   = if priestStatus priest == Trying && ballot == lastTried (priestLog priest) then
-                                            priest { prevVotes = prevVotes priest `union` [vote] }
+                                            (priest { prevVotes = prevVotes priest `union` [vote] }
+                                             , "receiving last vote " ++ (show vote) ++","++ (show ballot))
                                           else   
-                                            priest
+                                            (priest,"")
 receive (BeginBallot ballot dec) priest = if ballot == (fromJust$ nextBal priest) && ballot > (fromJust$ prevBal priest) then
-                                            priest { priestLog = (priestLog priest) { previousBallot = Just ballot 
-                                                                                    , previousDecree = Just dec }}
+                                            (priest { priestLog = (priestLog priest) { previousBallot = Just ballot 
+                                                                                     , previousDecree = Just dec }}
+                                             ,"receiving begin ballot "++ (show ballot))
                                           else 
-                                            priest
+                                            (priest,"")
 receive (Voted ballot pid)       priest = if ballot == lastTried (priestLog priest) && priestStatus priest == Polling then 
-                                            priest { pollStatus = pstatus { voters = (voters pstatus) `union` [pid] }}
+                                            (priest { pollStatus = pstatus { voters = (voters pstatus) `union` [pid] }}
+                                             ,"receiving voted ballot "++ (show ballot))
                                           else
-                                            priest
+                                            (priest,"")
   where
     pstatus = pollStatus priest
+
 receive (Success decree)        priest = if outcome (priestLog priest) == Nothing then
-                                           priest { priestLog = (priestLog priest) { outcome = Just decree }}
+                                           (priest { priestLog = (priestLog priest) { outcome = Just decree }}
+                                            ,"receiving success "++ (show decree))
                                          else
-                                           priest
+                                           (priest,"")
 
 -- Execution of a session of the paxos algorithm for a number of priests
 
-action :: (Priest a -> (Priest a, Maybe (Message a))) 
+action :: (Priest a -> ActionResult a) 
           -> Maybe (MessageBody a) 
           -> Priest a
-          -> (Priest a, (Maybe (Message a), Maybe (MessageBody a)))
-action act input priest = (priest', (output,input)) 
+          -> (Priest a, (Maybe (Message a), Maybe (MessageBody a)), String)
+action act input priest = (priest', (output,input), log) 
   where
-    (priest',output) = act priest
+    (priest',output,log) = act priest
     
 receiveAct :: (Show a, Eq a) => 
               Maybe (MessageBody a) 
               -> Priest a
-              -> (Priest a, (Maybe (Message a), Maybe (MessageBody a)))
-receiveAct (Just input) priest = let priest' = receive input priest
+              -> (Priest a, (Maybe (Message a), Maybe (MessageBody a)), String)
+receiveAct (Just input) priest = let (priest', log) = receive input priest
                                  in  if priest == priest' then
-                                       (priest, (Nothing, Just input))
+                                       (priest, (Nothing, Just input), log)
                                      else
-                                       trace ("received message " ++ show input) $ (priest', (Nothing, Nothing))
-receiveAct Nothing      priest = (priest, (Nothing, Nothing))
+                                       (priest', (Nothing, Nothing), log)
+receiveAct Nothing      priest = (priest, (Nothing, Nothing),"")
 
-actions = ("receive",receiveAct) : map (id *** action) [ ("try new ballot", tryNewBallot)
-                                                       , ("sendNextBallot",sendNextBallot)
-                                                       , ("sendLastVote",sendLastVote)
-                                                       , ("startPolling",startPolling 1)
-                                                       , ("sendBeginBallot",sendBeginBallot)
-                                                       , ("sendVoted",sendVoted)
-                                                       , ("succeed",succeed)
-                                                       , ("sendSuccess",sendSuccess) ]
+actions = receiveAct : map action [ tryNewBallot
+                                  , sendNextBallot
+                                  , sendLastVote
+                                  , startPolling 1
+                                  , sendBeginBallot
+                                  , sendVoted
+                                  , succeed
+                                  , sendSuccess ]
 
 parliament :: Int -> [Priest Int]
 parliament numberOfPriests = map (idlePriest numberOfPriests) [0 .. numberOfPriests -1]
@@ -248,9 +269,11 @@ initializeMbox = (,[])
 stepParliament :: [(Priest Int,[MessageBody Int])] ->  [(Priest Int,[MessageBody Int])]
 stepParliament priests = dispatchMessages $ map stepPriest priests
 
+dispatchMessages :: [(Priest a, ([MessageBody t], Maybe (Message t)))]
+                    -> [(Priest a, [MessageBody t])]
 dispatchMessages actionResults = let max = length actionResults
                                      
-                                     collectMessages  (ps,mms) (p,(ms,Just m))  = ((p,ms):ps, m:mms)
+                                     collectMessages  (ps,mms) (p,(ms,Just m))  = ((p,ms):ps, (priestId p,m):mms)
                                      collectMessages  (ps,mms) (p,(ms,Nothing)) = ((p,ms):ps, mms)
                                      
                                      allocateMessages priests messages = foldl allocateMessage (reverse priests) messages
@@ -258,31 +281,34 @@ dispatchMessages actionResults = let max = length actionResults
                                      fillMBox pid mbody (priest,ms) | (priestId priest == pid) = (priest, ms ++ [mbody])
                                                                     | otherwise                = (priest, ms)
                                                                                        
-                                     allocateMessage priests (Message Nothing mbody)    = map (fillMBox (random max) mbody) priests
-                                     allocateMessage priests (Message (Just pid) mbody) = map (fillMBox pid mbody) priests
+                                     allocateMessage priests (senderId, (Message Nothing mbody))    = map (fillMBox (randomExcept max senderId) mbody) priests
+                                     allocateMessage priests (senderId, (Message (Just pid) mbody)) = map (fillMBox pid mbody) priests
                                      
                                  in uncurry allocateMessages $ foldl collectMessages ([],[]) actionResults
+
+randomExcept :: Int -> Int -> Int 
+randomExcept bound except = randomExcept' bound except (random bound)
+  where
+    randomExcept' b x n | x /= n    = n
+                        | otherwise = randomExcept' b x (random bound)
 
 random :: Int -> Int
 random m = unsafePerformIO $ randomRIO (0,m-1)
 
-randomlySelectOneOf :: [(String,a)] -> a
-randomlySelectOneOf xs = trace ("selecting " ++ fst sel) $ snd sel
-  where
-    sel = select xs
+randomlySelectOneOf :: [a] -> a
+randomlySelectOneOf xs = select xs
 
 select xs = xs !! random (length xs)
-  
+
 stepPriest :: (Priest Int, [MessageBody Int]) -> (Priest Int, ([MessageBody Int], Maybe (Message Int)))
 stepPriest (priest, message:messages) = let futures = possibleFutures priest $ Just message
                                         in case randomlySelectOneOf futures of
-                                          (priest', (Nothing,Just _))  -> (priest',(messages, Nothing))
-                                          (priest', (output,_))        -> (priest',(message:messages,output))
+                                          (priest', (Nothing,Just _),log)  -> trace (show (priestId priest') ++ " " ++ log) $ (priest',(messages, Nothing))
+                                          (priest', (output,_)      ,log)  -> trace (show (priestId priest') ++ " " ++ log) $ (priest',(message:messages,output))
 stepPriest (priest, [])               = let futures = possibleFutures priest Nothing
                                         in case randomlySelectOneOf futures of
-                                          (priest', (output,Nothing))  -> (priest',([],output))
+                                          (priest', (output,Nothing),log)  -> trace (show (priestId priest') ++ " " ++ log) $ (priest',([],output))
 
-possibleFutures :: Priest Int
-                   -> Maybe (MessageBody Int)
-                   -> [(String,(Priest Int, (Maybe (Message Int), Maybe (MessageBody Int))))]
-possibleFutures priest m = map (second (($ priest).($ m))) actions
+possibleFutures priest m = filter effectiveActions $ map (($ priest).($ m)) actions
+  where
+    effectiveActions (_,_,s) = s /= ""
