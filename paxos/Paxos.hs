@@ -56,18 +56,24 @@ data PriestStatus =
 type Votes a = [Vote a]
 emptyVotes = []
 
+-- |Poll status represents transient information that can be lost by the priest.
+-- 
+-- In the original paper by Lamport, this is the "slip of paper" priests use to record
+-- information that can be lost.
 data PollStatus a = PollStatus { 
   quorum :: [ PriestId ],  -- ^Set of priests forming the quorum for current ballot
   voters :: [ PriestId ],  -- ^Set of quorum members from which that priest has received @Voted@ message
   decree :: a              -- ^Current decree 
   } deriving (Eq, Show, Ord)
 
+-- |Priest's log represents persistent data that is kept in his/her "ledger".
+--
 data PriestLog a = PriestLog {
   outcome        :: Maybe a,      -- ^Outcome of current voting round
-  lastTried      :: Ballot,       -- ^Number of last ballot that priest tried to begin
+  lastTried      :: Ballot,       -- ^Number of last ballot that priest tried to initiate
+  nextBallot     :: Maybe Ballot, -- ^Number of last ballot that priest agreed to participate in
   previousBallot :: Maybe Ballot, -- ^Number of last ballot that priest voted in
-  previousDecree :: Maybe a,      -- ^Decree last voted for
-  nextBallot     :: Maybe Ballot  -- ^Number of last ballot that priest agreed to participate in
+  previousDecree :: Maybe a       -- ^Decree last voted for
  } deriving (Eq, Show, Ord)
                 
 
@@ -201,33 +207,33 @@ sendSuccess priest | Just result <- outcome (priestLog priest) = (priest, Just $
     
     
 receive :: (Show a, Eq a) => MessageBody a -> Priest a -> (Priest a, String)
-receive (NextBallot ballot)    priest   = if ballot >= (fromMaybe (-2^31) $ nextBal priest) then
+receive n@(NextBallot ballot)    priest   = if ballot >= (fromMaybe (-2^31) $ nextBal priest) then
                                             (priest { priestLog = (priestLog priest) { nextBallot = Just ballot}}
-                                             , "receiving next ballot " ++ show ballot)
+                                             , "receiving " ++ show n)
                                           else
                                             (priest,"")
-receive (LastVote ballot vote) priest   = if priestStatus priest == Trying && ballot == lastTried (priestLog priest) then
+receive l@(LastVote ballot vote) priest   = if priestStatus priest == Trying && ballot == lastTried (priestLog priest) then
                                             (priest { prevVotes = prevVotes priest `union` [vote] }
-                                             , "receiving last vote " ++ (show vote) ++","++ (show ballot))
+                                             , "receiving " ++ show l)
                                           else   
                                             (priest,"")
-receive (BeginBallot ballot dec) priest = if ballot == (fromJust$ nextBal priest) &&  (maybe True (ballot >) (prevBal priest)) then
+receive b@(BeginBallot ballot dec) priest = if ballot == (fromJust$ nextBal priest) &&  (maybe True (ballot >) (prevBal priest)) then
                                             (priest { priestLog = (priestLog priest) { previousBallot = Just ballot 
                                                                                      , previousDecree = Just dec }}
-                                             ,"receiving begin ballot "++ (show ballot))
+                                             ,"receiving "++ (show b))
                                           else 
                                             (priest,"")
-receive (Voted ballot pid)       priest = if ballot == lastTried (priestLog priest) && priestStatus priest == Polling then 
+receive v@(Voted ballot pid)       priest = if ballot == lastTried (priestLog priest) && priestStatus priest == Polling then 
                                             (priest { pollStatus = pstatus { voters = (voters pstatus) `union` [pid] }}
-                                             ,"receiving voted ballot "++ (show ballot))
+                                             ,"receiving "++ (show v))
                                           else
                                             (priest,"")
   where
     pstatus = pollStatus priest
 
-receive (Success decree)        priest = if outcome (priestLog priest) == Nothing then
+receive s@(Success decree)        priest = if outcome (priestLog priest) == Nothing then
                                            (priest { priestLog = (priestLog priest) { outcome = Just decree }}
-                                            ,"receiving success "++ (show decree))
+                                            ,"receiving success "++ (show s))
                                          else
                                            (priest,"")
 
@@ -241,18 +247,18 @@ action act input priest = (priest', (output,input), log)
   where
     (priest',output,log) = act priest
     
-receiveAct :: (Show a, Eq a) => 
+receiveAction :: (Show a, Eq a) => 
               Maybe (MessageBody a) 
               -> Priest a
               -> (Priest a, (Maybe (Message a), Maybe (MessageBody a)), String)
-receiveAct (Just input) priest = let (priest', log) = receive input priest
+receiveAction (Just input) priest = let (priest', log) = receive input priest
                                  in  if priest == priest' then
                                        (priest, (Nothing, Just input), log)
                                      else
                                        (priest', (Nothing, Nothing), log)
-receiveAct Nothing      priest = (priest, (Nothing, Nothing),"")
+receiveAction Nothing      priest = (priest, (Nothing, Nothing),"")
 
-actions = receiveAct : receiveAct : receiveAct : receiveAct : receiveAct : receiveAct : receiveAct : map action [ idle
+actions = receiveAction : receiveAction : receiveAction : receiveAction : receiveAction : receiveAction : receiveAction : map action [ idle
                                   , tryNewBallot
                                   , sendNextBallot
                                   , sendLastVote
