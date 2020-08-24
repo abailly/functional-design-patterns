@@ -1,0 +1,1530 @@
+\documentclass[11pt,]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{a4wide}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+    \setmainfont{Fontin}
+    \setmonofont{Consolas}
+\fi
+\usepackage{color}
+\usepackage{fancyvrb}
+\DefineShortVerb[commandchars=\\\{\}]{\|}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Arnaud Bailly - Cédric Pineau},
+            pdftitle={Patterns of Functional Programming for Simpler Design},
+            colorlinks=true,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+% Make links footnotes instead of hotlinks:
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+\title{Patterns of Functional Programming for Simpler Design}
+\author{Arnaud Bailly - Cédric Pineau}
+\date{2012-11}
+
+\begin{document}
+\thispagestyle{empty}
+{\centering
+\vspace{3cm}
+\hrule
+\vspace{1cm}
+\Huge{\textbf{Patterns of Functional Programming for Simpler Design}}
+\vspace{1cm}
+\hrule
+\vspace{3cm}
+\Large{Arnaud Bailly - Cédric Pineau}
+\vfill
+\hrule
+\large{2012-11}}
+\newpage
+\thispagestyle{empty}
+{\centering \textit{This page intentionally left blank}}
+\newpage
+
+
+{
+\hypersetup{linkcolor=black}
+\tableofcontents
+}
+\section{Introduction}
+
+This little booklet aims at summarizing, with some level of details,
+common \emph{Functional Programming Patterns} and how they apply to
+Object-Oriented programming. These patterns were selected from the
+existing literature, both in OO programming and FP programming, with an
+aim to be directly applicable to day-to-day coding problems. Due to the
+limitation of the author, they also were selected on the basis of their
+simplicity and commonality in both paradigms, eg. some of them are quite
+obvious and part of the OO folklore like (Function object) while some
+other are nearly unknown in OO programming but quite common in FP
+(Monad).
+
+For each pattern, I have tried to provide meaningful and relevant
+examples, when possible from real-world codebases that effectively use
+these patterns. Some more advanced patterns have been left over for
+another edition of this booklet. The main sources used are:
+
+\begin{itemize}
+\item
+  \href{http://www.domaindrivendesign.org/}{Domain Driven Design},
+  E.Evans, Addison-Wesley, 2004
+\item
+  \href{http://martinfowler.com/books/dsl.html}{Domain Specific
+  Languages}, Martin Fowler, Addison-Wesley 2008
+\item
+  \href{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.92.1134\&rep=rep1\&type=pdf}{A
+  Functional Pattern-System for Object-Oriented Programming}, Thomas
+  Kühne, PhD Thesis, 1998
+\item
+  \href{http://www.haskell.org/haskellwiki/Haskell}{Haskell Wiki}
+\end{itemize}
+
+The pattern format used here is straightforward:
+
+\begin{itemize}
+\item
+  \emph{Intent}: Why would anyone want to use this pattern
+\item
+  \emph{Motivation}: Which problem are we trying to solve
+\item
+  \emph{Implementation}: How this pattern solves the given problem
+\item
+  \emph{Tradeoffs}: Pros and cons of this pattern
+\item
+  \emph{Related Patterns}: How this pattern relates to others
+\item
+  \emph{References}: Where this pattern comes from
+\end{itemize}
+
+\section{The Patterns}
+
+\subsection{Expression Builder}
+
+\begin{itemize}
+\item
+  \emph{Intent}: An object or family of objects that provides a fluent
+  interface over a normal command-query API
+\item
+  \emph{Related Patterns}:
+
+  \begin{itemize}
+  \item
+    \href{http://wiki.apidesign.org/wiki/APIDesignPatterns:CumulativeFactory}{Cumulative
+    Factory}: Use when one needs to provide \emph{setters} semantics to
+    some immutable objects
+  \item
+    Builder Pattern: Classical creational pattern from GoF, provide a
+    mutable layer to simplify construction of complex objects
+  \item
+    Zipper: Provide an alternative way of constructing complex immutable
+    values, filling it from an intially ``empty'' structure
+  \item
+    \href{http://www.martinfowler.com/bliki/FluentInterface.html}{Fluent
+    Interface}
+  \item
+    Closure of Operations: When working on a single object type with
+    immutable value objects then Fluent interface is a Closure of
+    Operation
+  \end{itemize}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+Quoting Martin Fowler's \emph{Domain Specific Languages} book:
+
+\begin{quote}
+APIs are usually designed to provide a set of self-standing methods on
+objects. Ideally, these methods can be understood individually. I call
+this style of API a command-query API {[}..{]} An Expression Builder
+provides a fluent interface as a separate layer on top of a regular API.
+This way you have both styles of interface and the fluent interface is
+clearly isolated, making it easier to follow.
+\end{quote}
+
+Expression Builder (or other forms of Builder patterns) should be the
+default interface to creation of complex data structures like
+expressions and syntactic trees and other complex Value objects.
+
+\begin{itemize}
+\item
+  \emph{Implementation}:
+\end{itemize}
+
+An implementation of Expression Builder for constructing Value objects
+should provide various forms of \emph{copy constructors} as public API
+methods or \emph{friend} Builder implementation like in the following
+example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \DataTypeTok{final} \KeywordTok{class} \NormalTok{User \{}
+
+   \KeywordTok{public} \DataTypeTok{static} \KeywordTok{class} \NormalTok{Builder \{}
+       \KeywordTok{private} \NormalTok{String name;}
+       \KeywordTok{private} \NormalTok{Address address;}
+       
+       \KeywordTok{public} \NormalTok{Builder }\FunctionTok{name}\NormalTok{(String name) \{}
+          \KeywordTok{this}\NormalTok{.}\FunctionTok{name} \NormalTok{= name; }\KeywordTok{return} \KeywordTok{this}\NormalTok{;}
+       \NormalTok{\}}
+       
+       \KeywordTok{public} \NormalTok{Address }\FunctionTok{address}\NormalTok{(Address address) \{}
+          \KeywordTok{this}\NormalTok{.}\FunctionTok{address} \NormalTok{= address; }\KeywordTok{return} \KeywordTok{this}\NormalTok{;}
+       \NormalTok{\}}
+       
+       \KeywordTok{public} \NormalTok{User }\FunctionTok{build}\NormalTok{() \{}
+          \KeywordTok{return} \KeywordTok{new} \FunctionTok{User}\NormalTok{(name, address);}
+       \NormalTok{\}}
+   \NormalTok{\}}
+   
+   \KeywordTok{private} \FunctionTok{User} \NormalTok{(String name, Address address) \{}
+      \KeywordTok{this}\NormalTok{.}\FunctionTok{name} \NormalTok{= name; }\KeywordTok{this}\NormalTok{.}\FunctionTok{address} \NormalTok{= addres;}
+   \NormalTok{\}}
+   
+   \NormalTok{...}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    \href{http://martinfowler.com/books/dsl.html}{Domain Specific
+    Languages}, Martin Fowler, Addison-Wesley 2008, pp.343-355
+  \end{itemize}
+\end{itemize}
+
+\subsection{Immutable Value Object}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Represent ``things'' with properties and no identity as
+  immutable objects
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+When working with complex domain models, we need to distinguish between
+\emph{entities}, that is objects which have a well-defined
+\emph{identity} within the system that needs to be tracked, and
+\emph{values} which describes as an arbitrarily complex structure
+undistinguishable characteristics of the entities. To put it in the
+words of Eric Evans:
+
+\begin{quote}
+Value Objects are instantiated to represent elements of the design that
+we care about only for what they are, not for who or which they are
+\end{quote}
+
+Value objects are by essence \emph{immutable}, otherwise this would
+contradic their absence of identity. A value object should be
+\emph{equal} to any other object instance with same values irrespective
+of where it has been built and which memory location it references.
+
+\begin{itemize}
+\item
+  \emph{Implementation}:
+\end{itemize}
+
+Value objects in Object-oriented programming are ``easily'' implemented
+as immutable objects and classes. In java using Guava:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{@Immutable}
+\KeywordTok{public} \KeywordTok{class} \NormalTok{User \{}
+  \KeywordTok{private} \DataTypeTok{final} \NormalTok{String email;}
+  \KeywordTok{private} \DataTypeTok{final} \NormalTok{String firstName;}
+  
+  \KeywordTok{public} \FunctionTok{User}\NormalTok{(String email, String firstName) \{}
+    \KeywordTok{this}\NormalTok{.}\FunctionTok{email} \NormalTok{= email;}
+    \KeywordTok{this}\NormalTok{.}\FunctionTok{firstName} \NormalTok{= firstName;}
+  \NormalTok{\}}
+  
+  \KeywordTok{public} \NormalTok{String }\FunctionTok{getEmail}\NormalTok{() \{}
+    \KeywordTok{return} \NormalTok{email;}
+  \NormalTok{\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Note that immutability can be rather tricky to implement in languages
+such as Java as quite a number of data structures and common objects are
+actually mutable. Moreover, using some ``dirty tricks'' involving
+bytecode engineering it is possible to make objects mutable: No support
+for immutability is provided by the language or the underlying runtime.
+
+\begin{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    \href{http://c2.com/ppr/checks.html\#1}{Whole Value}
+  \item
+    \href{http://www.domaindrivendesign.org/}{Domain Driven Design},
+    E.Evans, Addison-Wesley, 2004, p.97-103
+  \end{itemize}
+\end{itemize}
+
+\subsection{Function Object}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Encapsulate a function with an object. This is useful
+  for parameterization of algorithms, partial parameterization of
+  functions, delayed calculation, lifting methods to first-class
+  citizens, and for separating functions from data.
+\item
+  \emph{AKA}: Blocks, closures, Functionals,\ldots{}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+Behaviour parametrization is a cornerstone of almost all software of
+significant size: One recurringly needs a way to change the behaviour of
+objects within the system depending on some conditions. Collections are
+a very common use case, for example when \emph{filtering} elements of a
+collection:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{List<User> users = ...}
+\CommentTok{// filter all "Johns" without Function object}
+\NormalTok{List<User> johns = Lists.}\FunctionTok{newArrayList}\NormalTok{();}
+\KeywordTok{for}\NormalTok{(User user : users) \{ }
+  \KeywordTok{if}\NormalTok{(user.}\FunctionTok{firstName}\NormalTok{().}\FunctionTok{equals}\NormalTok{(}\StringTok{"John"}\NormalTok{)) johns.}\FunctionTok{add}\NormalTok{(user);}
+\NormalTok{\}}
+
+\CommentTok{// filter with Function Object in Guava}
+\NormalTok{Predicate<User> firstNameIsJohn = ...}
+\NormalTok{Iterable<User> johns = Iterables.}\FunctionTok{filter}\NormalTok{(users, firstNameIsJohn);}
+\end{Highlighting}
+\end{Shaded}
+
+Other uses within collections involve \emph{sorting} with a specific
+ordering relation, transforming elements with a \emph{map} and many
+more. The use of Function Object prevents duplication, encapsulation
+breach by exposing the internals of iteration logic, awkward reuse.
+
+Beyond collections, Function Object has countless potential usages:
+Reifying business rules within forms or applicative logic, decoupling,
+customizing and reusing parts of an algorithm, \ldots{}
+
+\begin{itemize}
+\item
+  \emph{Implementation}:
+\end{itemize}
+
+Where closures or blocks are not directly supported by the language (eg.
+Java), typical implementation involves:
+
+\begin{itemize}
+\item
+  The definition of a \emph{Function} or equivalent interface offering a
+  single method \emph{apply()},
+\item
+  Possible definitions of \emph{Function2}, \emph{Function3} and the
+  like for different arities,
+\item
+  Inner or anonymous subclasses for providing concrete implementation.
+\end{itemize}
+
+\emph{Function} is typically parametric in its input and output type to
+remove cruft of casting and opaque Object handles. Note that Java does
+not permit variance annotation which would be handy in this case as a
+Function is usually contravariant in its arguments and covariant in its
+return type. Definition of Function1 in scala is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{trait} \NormalTok{Function[-I,+O] \{ }\KeywordTok{def} \FunctionTok{apply}\NormalTok{(I : input) : O \}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Provide \emph{closures} as first-class objects thus allowing
+    encapsulating behaviours and moving them around
+  \item
+    Decouple behaviour from data and promotes \emph{black-box} reuse:
+    Neither it nor its client need to know implementation details of one
+    another
+  \item
+    Promotes reuse through \emph{composition} of functions instead of
+    inheritance or delegation, which is much more flexible and done at
+    runtime (possibly with compile-time type-checking)
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    When language has poor support for closures, it yields to awkward
+    constructions that may clutter the code.
+  \item
+    Multiplying anonymous function objects can yield to code which is
+    difficult to debug: Stack traces get ladden with lots of
+    \texttt{apply(xxx)} calls which do not relate obviously to some
+    meaningful piece of code
+  \item
+    Some performance might be lost by adding more calls, deepening
+    stack's depth and maintaining more memory for closures.
+  \end{itemize}
+\end{itemize}
+
+Consider the following definitions of the same predicate in javascript
+and scala:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var} \NormalTok{firstNameIsJohn = }\KeywordTok{function}\NormalTok{(user) \{ }\KeywordTok{return} \KeywordTok{user}\NormalTok{.}\FunctionTok{firstName} \NormalTok{=== }\StringTok{"John"}\NormalTok{; \}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{val} \NormalTok{firstNameIsJohn = (u: User) => u.}\FunctionTok{firstName} \NormalTok{== }\StringTok{"John"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Related Patterns}:
+
+  \begin{itemize}
+  \item
+    \href{http://www.vincehuston.org/dp/command.html}{Command}:
+    Parameterizes the actions of some object by delegating it to a
+    reified \emph{method object}. Commands are mostly procedural in
+    natures, Function Object is a more general approach
+  \item
+    \href{http://www.vincehuston.org/dp/strategy.html}{Strategy}:
+  \item
+    Functor: Assumes the existence of Function Object or some other form
+    of closure to \emph{lift} it into some context
+  \end{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    \href{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.92.1134\&rep=rep1\&type=pdf}{A
+    Functional Pattern-System for Object-Oriented Programming}, Thomas
+    Kühne, PhD Thesis, 1998
+  \end{itemize}
+\end{itemize}
+
+\subsection{Lazy Object}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Defer computation to the latest possible time by
+  encapsulating it in an object that can be computed at any time
+\item
+  \emph{AKA}: Suspension, Thunk, Stream, Pipes \& Filters, Pipeline
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+Imperative programming usually enforces a specific evaluation sequence
+to evaluate some piece of code. In Java, method call semantics is
+\emph{call-by-value} which implies all arguments to a method need to be
+evaluated before the method itself may be called. But call-by-name,
+which only passes around references of values also needs to evaluate its
+arguments. The call-by-need semantics as implemented in Haskell promotes
+so-called \emph{lazy evaluation}: A function evaluates its arguments
+only when it needs them. When evaluating a function containing an
+\texttt{if-then-else} construct for example, one might not need some
+argument to the function which is only used in one branch of the
+alternative.
+
+Laziness is also extremely useful when working with potentially infinite
+data structures, like iterating over a \emph{stream} of data. Strict
+adherence to call-by-value would entail a non-terminating program before
+any computation could be ever done. For the same reason, working with
+costly operations or sequence of operations should be done lazily.
+Finally, Lazy Object makes it possible to implement data-flow
+programming in languages not supporting this paradigm directly:
+Computation is carried in steps involving the evaluation of values if
+and only if they are needed, thus proceeding along the \emph{flow of
+data dependencies}.
+
+\begin{itemize}
+\item
+  \emph{Implementation}:
+\end{itemize}
+
+When implementing Lazy Object, one can also have the added benefit of
+\emph{memoization}, eg. caching the result of the (lazy) computation for
+further use.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \KeywordTok{abstract} \KeywordTok{class} \NormalTok{Lazy<A> \{}
+  \KeywordTok{private} \NormalTok{A cached;}
+  
+  \KeywordTok{public} \KeywordTok{abstract} \NormalTok{A }\FunctionTok{value}\NormalTok{() \{}
+     \KeywordTok{if}\NormalTok{(cached == }\KeywordTok{null}\NormalTok{) \{}
+         \NormalTok{cached = }\FunctionTok{compute}\NormalTok{();}
+     \NormalTok{\}}
+     \KeywordTok{return} \NormalTok{cached;}
+  \NormalTok{\}}
+
+  \KeywordTok{protected} \KeywordTok{abstract} \NormalTok{A }\FunctionTok{compute}\NormalTok{();}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Streams provide a prototypical example where Lazy Object shines. Its
+interface (like lists) provide access to its head, a value of some type,
+and another stream, its tail. The stream itself is a lazy object that
+does not compute its tail until needed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{interface} \NormalTok{Stream<A> }\KeywordTok{extends} \NormalTok{Iterable<A> \{}
+  \NormalTok{A }\FunctionTok{head}\NormalTok{();}
+  \NormalTok{Stream<A> }\FunctionTok{tail}\NormalTok{();}
+  \DataTypeTok{boolean} \FunctionTok{isDone}\NormalTok{();}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+A stream may be \emph{done} or not, in which case it holds a value. Its
+\emph{iterator} (not shown) simply loops over the subsequent streams as
+requested by the client, until the stream is done.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \KeywordTok{abstract} \KeywordTok{class} \NormalTok{LazyStream<A> }\KeywordTok{implements} \NormalTok{Stream<A> \{}
+   \KeywordTok{private} \DataTypeTok{final} \NormalTok{A a;}
+   \KeywordTok{public} \FunctionTok{LazyStream}\NormalTok{(A a) \{ }\KeywordTok{this}\NormalTok{.}\FunctionTok{a} \NormalTok{= a;\}   }
+   \KeywordTok{public} \NormalTok{A }\FunctionTok{head}\NormalTok{() \{}
+     \KeywordTok{return} \NormalTok{a;}
+   \NormalTok{\}}
+   
+   \KeywordTok{public} \NormalTok{Stream<A> }\FunctionTok{tail}\NormalTok{() \{}
+     \KeywordTok{return} \FunctionTok{next}\NormalTok{();}
+   \NormalTok{\}}
+   
+   \KeywordTok{public} \DataTypeTok{boolean} \FunctionTok{isDone}\NormalTok{() \{ }\KeywordTok{return} \KeywordTok{false}\NormalTok{; \}}
+   
+   \KeywordTok{public} \NormalTok{Iterator<A> }\FunctionTok{iterator}\NormalTok{() \{ }\KeywordTok{... }\NormalTok{\};}
+   \KeywordTok{protected} \KeywordTok{abstract} \NormalTok{Stream<A> }\FunctionTok{next}\NormalTok{();}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+An empty stream has no value and tails on itself:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \DataTypeTok{final} \KeywordTok{class} \NormalTok{EmptyStream<A> }\KeywordTok{implements} \NormalTok{Stream<A> \{}
+  \KeywordTok{public} \NormalTok{A }\FunctionTok{head}\NormalTok{() \{ }\KeywordTok{throw} \KeywordTok{new} \NormalTok{IllegalStateException(}\StringTok{"stream is empty"}\NormalTok{); \}}
+  
+  \KeywordTok{public} \NormalTok{Stream<A> }\FunctionTok{tail}\NormalTok{() \{ }\KeywordTok{return} \KeywordTok{this}\NormalTok{; \}}
+  
+  \KeywordTok{public} \DataTypeTok{boolean} \FunctionTok{isDone}\NormalTok{() \{ }\KeywordTok{return} \KeywordTok{true}\NormalTok{; \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Related Patterns}:
+
+  \begin{itemize}
+  \item
+    Immutable Value Object: Memoization is most meaningful when computed
+    values are immutable hence have no identity
+  \end{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    \href{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.92.1134\&rep=rep1\&type=pdf}{A
+    Functional Pattern-System for Object-Oriented Programming}, Thomas
+    Kühne, PhD Thesis, 1998
+  \item
+    Haskell Language Report, 2010
+  \end{itemize}
+\end{itemize}
+
+\subsection{Monoid}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Group together a way of composing values within some
+  type or data structure
+\item
+  \emph{Relations}:
+
+  \begin{itemize}
+  \item
+    \emph{Closure of Operations}: Use when operations may not respect
+    monoidal laws
+  \item
+    \emph{Transfold}: Use in conjunction with a Monoid when values
+    permit it to abstract away the details of what we are folding over
+  \item
+    \emph{Monad}: A particular form of ``Monoid with a Context'' or
+    ``Monoid of Functors''
+  \item
+    \emph{Lazy Object}: Lazily applying the monoid's operations can
+    provide more efficient implementations
+  \end{itemize}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+A client might want to be able to aggregate different kind of values
+without taking care of their implementation details, typically when
+using numbers or implementing numeric applications. For example, a
+client wants to compute the average of some number series where number
+can either be integers, reals or even complex values. Provided there
+exist some implementation of integral division (\texttt{div(int)}) for
+each type, considering each type as monoid simplifies client code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Monoid<?> monoid = Monoid.}\FunctionTok{monoid}\NormalTok{(sum, zero);}
+\NormalTok{...}
+\NormalTok{List<? }\KeywordTok{extends} \NormalTok{Numeric> numbers = }\FunctionTok{retrieveNumbers}\NormalTok{();}
+\NormalTok{...}
+\NormalTok{monoid.}\FunctionTok{sumRight}\NormalTok{(numbers).}\FunctionTok{div}\NormalTok{(numbers.}\FunctionTok{size}\NormalTok{());}
+\end{Highlighting}
+\end{Shaded}
+
+Technically, a Monoid is a set with a \texttt{sum()} operation and a
+distinguished neutral element \texttt{e} respecting associativity and
+neutral operation with \texttt{e}. Non numeric values can give rise
+easily to monoids provided they respect the basic laws. Typical examples
+are:
+
+\begin{itemize}
+\item
+  Strings with operator \texttt{+} and empty string
+\item
+  Iterables with \texttt{concat} and empty Iterable
+\item
+  Matrices with operator \texttt{*} and unit matrix
+\item
+  \ldots{}
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Abstracts away the detail of composing values of different types
+    when all one is interested in is the aggregation
+  \item
+    Decouple composition from their implementation: A single type can
+    provide different implementations of monoid representing different
+    ways of composing values
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    ??
+  \end{itemize}
+\end{itemize}
+
+\subsection{Option}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Signals the possibility of a non-existing value (eg.
+  Null object)
+\item
+  \emph{Relations}:
+
+  \begin{itemize}
+  \item
+    \emph{Void Value}: Can be used instead of \emph{Option} where all
+    that is needed is representing some unique initial/terminal object
+  \item
+    \emph{Functor}: An Option usually implements Functor pattern to be
+    able to transparently transform contained values
+  \end{itemize}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+When passing around references to objects, it might be tempting to use
+\texttt{null} to represent the absence of value:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \NormalTok{Credentials }\FunctionTok{login}\NormalTok{(String login, String password) \{}
+  \KeywordTok{if}\NormalTok{(!passwordDb.}\FunctionTok{check}\NormalTok{(login, password) \{}
+     \KeywordTok{return} \KeywordTok{null}\NormalTok{;}
+  \NormalTok{\}}
+  \NormalTok{...}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+This then entails the need to check the possibility of a reference to be
+null all over, cluttering the code with statements like one:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \DataTypeTok{void} \FunctionTok{login}\NormalTok{(User user, Credentials credentials) \{}
+  \KeywordTok{if}\NormalTok{(credentials == }\KeywordTok{null}\NormalTok{) \{}
+     \KeywordTok{throw} \KeywordTok{new} \FunctionTok{NotLoggedInException}\NormalTok{(...);}
+  \NormalTok{\}}
+  \NormalTok{...}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+An \textbf{Option} wraps a type and exposes its content:
+
+\begin{itemize}
+\item
+  Either as a generic \emph{None} value, denoting an empty option,
+\item
+  Or as containing a single value \emph{Some(value)}.
+\end{itemize}
+
+In Guava this type is named \textbf{Optional} and can be constructed
+easily, including to wrap null values (eg. returned from some legacy
+library call). It provides various methods such as defaulting to a value
+when empty or transforming its content when non-empty using some
+function (since 12.0).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Optional<String> optional = Optional.}\FunctionTok{fromNullable}\NormalTok{(aString);}
+\KeywordTok{... }
+\KeywordTok{return} \NormalTok{optional.}\FunctionTok{or}\NormalTok{(defaultValue); }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Removes the need for null, make the code more concise and less
+    error-prone to the dreaded NullPointerException (or whatever it is
+    called in your language)
+  \item
+    Thin layer over the wrapped object
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    Added storage overhead: Adds one more indirection and object for
+    each held reference
+  \item
+    Abstraction leak: Using an Option quickly ``contaminates'' the
+    codebase for data types that are very common, thus leading to
+    cumbersome code. It can imposes some dependencies on clients of the
+    code
+  \end{itemize}
+\end{itemize}
+
+\subsection{Lens}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Decouple the operations on element contained in an
+  object from its concrete structure
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+When Objects are immutable, traversing them when we want to
+modify/update a value is cumbersome
+
+Example: Update ZIP code of a User
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{User user = ...}
+\NormalTok{Address address = user.}\FunctionTok{address}\NormalTok{;}
+
+\NormalTok{User updated = user.}\FunctionTok{builder}\NormalTok{().(}
+   \NormalTok{address.}\FunctionTok{builder}\NormalTok{().}\FunctionTok{zip}\NormalTok{(}\StringTok{"12345"}\NormalTok{).}\FunctionTok{build}\NormalTok{()}
+  \NormalTok{).}\FunctionTok{build}\NormalTok{();}
+\end{Highlighting}
+\end{Shaded}
+
+We would like to have a way to express this update as a composable
+transformation over Users and addresses.
+
+Lenses provide this feature as a pair of functions: one for \emph{get},
+one for \emph{set}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{User user = ...}
+
+\NormalTok{Lens<User> userZip = }\FunctionTok{lens}\NormalTok{(}\StringTok{"zip"}\NormalTok{, Address.}\FunctionTok{class}\NormalTok{).}\FunctionTok{in}\NormalTok{(}\FunctionTok{lens}\NormalTok{(}\StringTok{"address"}\NormalTok{, User.}\FunctionTok{class}\NormalTok{));}
+
+\NormalTok{User updated = userZip.}\FunctionTok{set}\NormalTok{(user, }\StringTok{"12345"}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Change logic is manipulable as a first class object, thus decoupling
+    business logic and algorithms from the concrete structure of objecs.
+    One only has to manipulate lenses, compose them, then feed objects
+    at a later stage
+  \item
+    Depending on implementation, it can be typesafe, checked at
+    compile-time and/or generated automatically from an Object's
+    structure
+  \item
+    Provides copy-on-write semantics when changing immutable objects
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    Awkward to implement in Java, need use of reflection or compile-time
+    magic or bytecode instrumentation to work efficiently
+  \end{itemize}
+\item
+  \emph{References}:
+\end{itemize}
+
+\subsection{Zipper}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Provide a way to traverse and modify immutable
+  structures
+\item
+  \emph{AKA}: Derivatives, One-hole Structure
+\item
+  \emph{Relations}:
+
+  \begin{itemize}
+  \item
+    \emph{Lens} pattern: Both let user express and compose changes on an
+    object. But the zipper keeps track of a context thus allowing more
+    complex operations
+  \end{itemize}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+While modifying complex or nested immutable data structures, one needs
+to keep track of the context of the traversal and operations on the data
+to be able to reconstruct a new data which is equivalent to the old one
+but for some changes. This bookkeeping is tedious, cumbersome and
+error-prone.
+
+Example: update all postings related to a user using some conversion
+function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{User user = ...}
+\NormalTok{Function updatePostings = ...}
+
+\NormalTok{User newUser = UserZipper.}\FunctionTok{zip}\NormalTok{(user).}\FunctionTok{postings}\NormalTok{().}\FunctionTok{update}\NormalTok{(updatePostings).}\FunctionTok{build}\NormalTok{();}
+\end{Highlighting}
+\end{Shaded}
+
+A Zipper encapsulates some navigation's state while providing a way to
+modify the underlying value. It is usually made of:
+
+\begin{itemize}
+\item
+  A current location or \emph{focus}
+\item
+  Context(s) representing the rest of the data structure:
+
+  \begin{itemize}
+  \item
+    For lists, might be the left and right segments around the focus,
+  \item
+    For binary trees might be the left, right and parent trees around
+    the focus.
+  \end{itemize}
+\end{itemize}
+
+A Zipper is tailored to a specific base type and provides the following
+common operations:
+
+\begin{itemize}
+\item
+  Initialization: Starts the Zipper at the ``beginnning'' of the wrapped
+  value.
+\item
+  Moving around: Returns a new Zipper with changed focus depending on
+  the navigation property of the underlying structure (eg.
+  \texttt{left()/right()} for lists). Note that left/right can be enough
+  for all structures if they support some form of linearization
+\item
+  Modifying focused value: Uses an update function to create a new
+  zipper with value under focus updated
+\item
+  Extraction: Extracts a complete (possibly changed) value from the
+  Zipper
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Remove bookkeeping burden from the developer while retaining the
+    ability to point to some part of structure
+  \item
+    Simplify updates of immutable structure
+  \item
+    Decouple transformations of values within structures from the
+    structure holding them
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    Each type need a specific Zipper construct as its navigation is
+    specific
+  \end{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    Haskell Wiki
+  \item
+    Original Zipper article by G.Huet
+  \item
+    Functional Java 3.0 library
+  \end{itemize}
+\end{itemize}
+
+\subsection{Functor}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Provide a generic interface for containers of singly
+  typed values decoupling client code from container's implementation
+  details
+\item
+  \emph{AKA}: Generic Container
+\item
+  \emph{Related Patterns}:
+
+  \begin{itemize}
+  \item
+    Function Object: Provides the foundations for Functors
+  \end{itemize}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+When one works with a collection of objects and wants to do some bulk
+transformation or operation on all the objects within the collection,
+the structure of the collection is irrelevant, as well as its ordering
+or any other characteristics that distinguishes this collection from any
+other type of collection: It acts as a \emph{container} for some value
+or values. It is enough then to be able to delegate applying the
+transformation to the container itself without any knowledge of how it
+is actually implemented.
+
+More generally, any structure or object that encapsulates another (type
+of) object, providing some additional properties and methods, may as
+well provide the capability to apply some transformation on the object
+it contains without revealing its internal structure or imposing any
+specific requirement on its client. For example, if one can construct a
+\texttt{Future\textless{}String\textgreater{}} instance, and wants to
+convert the returned \texttt{String} value, if it exists, to an
+\texttt{Integer}, it would be too stringent to require the client to
+\emph{explicitly wait} on the Future's outcome. One would like to be
+able to \emph{apply} the \emph{parseInteger} function to the
+\texttt{Future\textless{}String\textgreater{}} yielding a
+\texttt{Future\textless{}Integer\textgreater{}} which will provide the
+transformed value, once or if available.
+
+In other words, a Functor F (a generic type) provides the ability, for
+any instance \texttt{F\textless{}A\textgreater{}}, to apply a function
+\texttt{f : A → B} on the container, yielding an instance of
+\texttt{F\textless{}B\textgreater{}}.
+
+\begin{itemize}
+\item
+  \emph{Implementation}:
+\end{itemize}
+
+Functor implementations are specific to the concrete type that
+encapsulates one or more value of the same type. It should adhere to the
+following interface:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \KeywordTok{interface} \NormalTok{Functor<A> \{}
+  \NormalTok{<B> Functor<B> }\FunctionTok{map}\NormalTok{(Function<A,B> f);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Note the \texttt{map} method can also be viewed as transforming a
+function \texttt{f: A → B} into a function
+\texttt{F\textless{}f\textgreater{} : F\textless{}A\textgreater{} → F\textless{}B\textgreater{}},
+which is the traditional functional language presentation. This method
+should respect composition law of \emph{functions}: Applying the
+composition of two functions or composing the result of two maps should
+yield the same final value.
+
+Here is an example implementation for Futures, provided as a static
+\texttt{map} method. Note this implementation requires an
+\texttt{ExecutorService} to preserve asynchronous semantics of Future's
+execution:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class} \NormalTok{Functors \{}
+
+  \KeywordTok{public} \DataTypeTok{static} \NormalTok{<A,B> Function<...> }\FunctionTok{map} \NormalTok{(}\DataTypeTok{final} \NormalTok{Function<A,B> f, }
+                                         \DataTypeTok{final} \NormalTok{ExecutorService executor) \{}
+     \KeywordTok{return} \KeywordTok{new} \NormalTok{Function<Future<A>, Future<B>>() \{}
+        \KeywordTok{public} \NormalTok{Future<B> }\FunctionTok{apply}\NormalTok{(}\DataTypeTok{final} \NormalTok{Future<A> future) \{}
+          \KeywordTok{return} \NormalTok{executor.}\FunctionTok{submit}\NormalTok{(}\KeywordTok{new} \NormalTok{Callable<B>() \{}
+               \KeywordTok{public} \NormalTok{B }\FunctionTok{call}\NormalTok{() \{}
+                 \NormalTok{A a = future.}\FunctionTok{get}\NormalTok{();}
+                 \KeywordTok{return} \NormalTok{f.}\FunctionTok{apply}\NormalTok{(A);}
+               \NormalTok{\}}
+            \NormalTok{\}}
+        \NormalTok{\}}
+     \NormalTok{\};}
+  \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+This allows a client to write code that is agnostic with respect to the
+execution policy of the values it manipulates provided they do not try
+to access directly the value (if they use the Functor interface):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// select only the address part of a User object}
+\KeywordTok{public} \NormalTok{Functor<Address>  }\FunctionTok{extractAddresses}\NormalTok{(Functor<User> users) \{}
+  \KeywordTok{return} \NormalTok{users.}\FunctionTok{map}\NormalTok{(}\KeywordTok{new} \NormalTok{Function<User,Address>() \{}
+    \KeywordTok{public} \NormalTok{Address }\FunctionTok{apply}\NormalTok{(User user) \{}
+      \KeywordTok{return} \NormalTok{user.}\FunctionTok{address}\NormalTok{;}
+    \NormalTok{\}}
+  \NormalTok{\};}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Promotes better encapsulation by allowing clients to ignore
+    implementation details of the structures they use
+  \item
+    Allows reusing transformations (eg. Functions) in various and even
+    unforeseen contexts
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    Adds another layer of indirection and possibly complexify the
+    execution path of the code
+  \end{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    Guava's \texttt{transform} method for \texttt{Iterables},
+    \texttt{Optional}, \texttt{ListenableFuture} and other types
+  \item
+    Functional Java
+  \end{itemize}
+\end{itemize}
+
+\subsection{Applicative}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Allows working with multiple arity functions in an
+  enclosing transparent context
+\item
+  \emph{Related Patterns}:
+
+  \begin{itemize}
+  \item
+    \emph{Functor}: Applicative is a ``generalization'' of Functor to
+    multiple arity functions
+  \item
+    \emph{Monad}: Applicatives imposes less structure than monads, at
+    the expense of less guarantees (eg. no sequencing)
+  \item
+    \emph{Lazy Object}: An Applicative defers computation by allowing
+    partial application on a Function object
+  \end{itemize}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+Initial motivation for implementing the applicative pattern within the
+functional programming community came with \emph{parsing combinators}.
+Parsing combinators libraries makes it possible to describe (LL)
+grammars directly within the host language through the use of various
+\emph{combinators}, eg. closed functions that operate on some state and
+consumes part of an input stream. In this context, one often needs to
+apply some function with more than one arguments on two fragments
+resulting from the parsing, \emph{while preserving} parser's state.
+
+Here is an example syntax rule describing a function call written using
+\href{http://jparsec.codehaus.org}{jParsec} library, where the
+\texttt{FunctionCall} constructor needing 2 arguments is applied to the
+result of parsing a \texttt{VARIABLE} and an \texttt{EXPRESSION} (parens
+are ignored after parsing):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{private} \DataTypeTok{static} \DataTypeTok{final} \NormalTok{Parser<FunctionCall> METHOD_CALL = }
+        \FunctionTok{curry}\NormalTok{(FunctionCall.}\FunctionTok{class}\NormalTok{).}\FunctionTok{sequence}\NormalTok{(VARIABLE, }\CommentTok{//}
+            \FunctionTok{skip}\NormalTok{(OPEN_PAREN, }\StringTok{"open ("}\NormalTok{), }\CommentTok{//}
+            \NormalTok{EXPRESSION.}\FunctionTok{lazy}\NormalTok{().}\FunctionTok{sepBy}\NormalTok{(COMMA), }\CommentTok{//}
+            \FunctionTok{skip}\NormalTok{(CLOSE_PAREN, }\StringTok{"close )"}\NormalTok{));}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the type of \texttt{METHOD\_CALL} is a
+\texttt{Parser\textless{}FunctionCall\textgreater{}}, that is a
+\emph{Parser} object that recognizes a \emph{FunctionCall} object or
+fails. This parser can be compoesed with other parsers to produce an
+arbitrarily complex grammar.
+
+Another example is the \emph{Stream} container: When considered as an
+Applicative, it can be used to \emph{zip} together a stream of functions
+and a stream of values.
+
+More generally, an Applicative is useful when one wants to be able to
+apply Function objects that are encapsulated within a Functor (an
+Applicative is always a Functor). In other words, an Applicative
+\texttt{App} provides a way to applly a
+\texttt{App\textless{}Function\textless{}A,B\textgreater{}\textgreater{}}
+to an \texttt{App\textless{}A\textgreater{}} yielding an
+\texttt{App\textless{}B\textgreater{}} object, or equivalently
+transforming the nested function into a
+\texttt{Function\textless{}App\textless{}A\textgreater{},App\textless{}B\textgreater{}\textgreater{}}
+function.
+
+\begin{itemize}
+\item
+  \emph{Implementation}:
+\end{itemize}
+
+Here is the example implementation for \emph{Streams}, similar to the
+one from Functional Java:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{public} \DataTypeTok{final} \NormalTok{<B> Stream<B> }\FunctionTok{apply}\NormalTok{(}\DataTypeTok{final} \NormalTok{Stream<Function<A, B>> sf) \{}
+    \KeywordTok{if}\NormalTok{(!sf.}\FunctionTok{isDone}\NormalTok{()) \{}
+      \KeywordTok{return} \KeywordTok{new} \FunctionTok{LazyStream}\NormalTok{(sf.}\FunctionTok{head}\NormalTok{().}\FunctionTok{apply}\NormalTok{(}\KeywordTok{this}\NormalTok{.}\FunctionTok{a}\NormalTok{)) \{}
+         \KeywordTok{public} \NormalTok{Stream<B> }\FunctionTok{next}\NormalTok{() \{}
+           \KeywordTok{return} \FunctionTok{tail}\NormalTok{().}\FunctionTok{apply}\NormalTok{(sf.}\FunctionTok{tail}\NormalTok{());}
+         \NormalTok{\}}
+      \NormalTok{\};}
+    \NormalTok{\} }\KeywordTok{else} \NormalTok{\{}
+      \KeywordTok{return} \KeywordTok{new} \FunctionTok{EmptyStream}\NormalTok{();}
+  \NormalTok{\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Provides yet another decoupling between the structure (or
+    \emph{shape}) of a container of objects and operations on these
+    objects
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    Abstracts away too much from the concrete business operation details
+  \end{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    \href{http://www.soi.city.ac.uk/~ross/papers/Applicative.html}{Applicative
+    Programming with Effects}, Conor McBride and Ross Paterson
+  \item
+    \href{http://etorreborre.blogspot.fr/2011/06/essence-of-iterator-pattern.html}{Essence
+    of the Iterator Pattern}: A scala implementation of original paper
+    in Haskell
+  \end{itemize}
+\end{itemize}
+
+\subsection{Monad}
+
+\begin{itemize}
+\item
+  \emph{Intent}: Compose operations while preserving transparently an
+  enclosing context
+\item
+  \emph{AKA}: Triple, Kleisli triple
+\item
+  \emph{Related patterns}:
+
+  \begin{itemize}
+  \item
+    Applicative: Proper monads are normally also Applicatives, hence
+    support the same kind of operations
+  \item
+    Function Object: Support abstracting over functions
+  \item
+    Monoid: A Monad may be viewed as a kind of monoid on encapsulated
+    values
+  \item
+    Fluent Interface: A monad can be used to provide some form of Domain
+    Specific Language
+  \item
+    Lazy Object: Monadic code usually works in two phase, first
+    constructing some sequencing of operation then executing it.
+  \end{itemize}
+\item
+  \emph{Motivation}:
+\end{itemize}
+
+Monads originated in theoretical works on \emph{pure functional}
+programming languages as a way to formalize side-effects in languages
+that are not supposed to support them. They received lot of attention
+from this community, especially in Haskell programming circles as they
+permitted to express various forms of ``imperative'' (e.g.~enforcing
+execution order) programming. In particular, complex loops supporting
+filtering and nesting, called \emph{for-comprehensions} are based on
+constructions provided by monads.
+
+For example, here is in Scala a way to compute all pairs of elements of
+a list whose sum is an even number:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scala> }\KeywordTok{def} \FunctionTok{sumIsEven}\NormalTok{(xs : List[Int], ys : List[Int]) : List[(Int,Int)] =}
+     \NormalTok{\textbar{}    }\KeywordTok{for} \NormalTok{( x <- xs; }
+     \NormalTok{\textbar{}          y <- ys; }
+     \NormalTok{\textbar{}          }\KeywordTok{if} \NormalTok{(x + y) % }\DecValTok{2} \NormalTok{== }\DecValTok{0}\NormalTok{) }\KeywordTok{yield} \NormalTok{(x,y)}
+\NormalTok{sumIsEven: (xs: List[Int], ys: List[Int])List[(Int, Int)]}
+
+\NormalTok{scala> }\FunctionTok{sumIsEven}\NormalTok{(List(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{), List(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{))}
+\NormalTok{res1: List[(Int, Int)] = List((}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{), (}\DecValTok{1}\NormalTok{,}\DecValTok{7}\NormalTok{), (}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{), (}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{), (}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{), (}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{), (}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{), (}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Here the monad involved is the \emph{list monad} which represents
+computations with multiple outcomes. More generally, monads are all kind
+of structures, containers or contexts that support some form of
+\emph{shape-preserving} composition: Options, Futures, Lists, Functions
+with argument type fixed,\ldots{}
+
+Another motivating example might be found when working with some kind of
+external resource requiring specific form of management, like database
+operations and connections. Typically, database access is done in
+transactional units, where a sequence of queries and commands is
+delimited by a transaction that provides atomicity (among other
+properties).
+\href{http://www.ibm.com/developerworks/java/library/j-eaed4/index.html}{Neal
+Ford} proposes to use \emph{Composed Method} pattern and \emph{Single
+Level Abstraction Principle} to code databased operations within JDBC
+encapsulating the transactional context. Things get interesting when one
+wants to \emph{compose} operations, and the proposed method falls short
+in this respect: One cannot compose 2 transactional operations and get a
+single transactional operations, effectively merging the transactional
+contexts.
+
+Monads pattern specifically address this point as they can be
+arbitrarily composed while preserving the transactional context: The
+transaction occurs only when the monad is \emph{run}. Here we can
+compose queries that are totally unrelated but operate on the same
+\emph{monad} and thus are composable. The final \texttt{commit} call is
+where the transaction is discharged and the queries effectively executed
+within a single transactional context.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \DataTypeTok{void} \FunctionTok{placeOrder}\NormalTok{(DatabaseConnection databaseConnection, }
+          \DataTypeTok{final} \NormalTok{ShoppingCart cart, }
+          \DataTypeTok{final} \NormalTok{String userName) }\KeywordTok{throws} \NormalTok{SQLException \{}
+  \DataTypeTok{final} \NormalTok{OrderOperations order = }\KeywordTok{new} \FunctionTok{OrderOperations}\NormalTok{();}
+  \DataTypeTok{final} \NormalTok{InventoryOperations inventory = }\KeywordTok{new} \FunctionTok{InventoryOperations}\NormalTok{();}
+  \FunctionTok{unit}\NormalTok{(cart).}\FunctionTok{bind}\NormalTok{(order.}\FunctionTok{createOrder}\NormalTok{(userName))}
+    \NormalTok{.}\FunctionTok{bind}\NormalTok{(order.}\FunctionTok{addOrderFrom}\NormalTok{(userName))}
+    \NormalTok{.}\FunctionTok{bind}\NormalTok{(inventory.}\FunctionTok{prepareDispatching}\NormalTok{(userName))}
+    \NormalTok{.}\FunctionTok{commit}\NormalTok{(databaseConnection);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Implementation}:
+\end{itemize}
+
+A Monad is specified by two operations, \texttt{unit} (aka.
+\texttt{return}) which allows injecting arbitrary values within the
+Monad, and the \texttt{bind} which sequences an \emph{Function} within
+the Monad, propagating the context. Here is the detailed implementation
+of a very simple transactional monad for database operations.
+
+The \texttt{DatabaseOperations\textless{}A\textgreater{}} is our Monad
+of interested: It is based on a \texttt{DatabaseConnection} that
+provides all the machinery to access the database using JDBC (it could
+equally have been injected as an instance variable). The method
+\texttt{run} triggers execution of the
+
+The \emph{unit} is represented by a subclass which simply encapsulates a
+value as a form
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \KeywordTok{abstract} \KeywordTok{class} \NormalTok{DatabaseOperations<A> }\KeywordTok{extends} \NormalTok{DatabaseConnection \{}
+  
+  \KeywordTok{private} \DataTypeTok{static} \KeywordTok{class} \NormalTok{Return<A> }\KeywordTok{extends} \NormalTok{DatabaseOperations<A> \{}
+    
+    \KeywordTok{private} \DataTypeTok{final} \NormalTok{A a;}
+    \KeywordTok{...    }
+    \NormalTok{@Override}
+    \KeywordTok{protected} \NormalTok{A }\FunctionTok{run}\NormalTok{() }\KeywordTok{throws} \NormalTok{SQLException \{}
+      \KeywordTok{return} \NormalTok{a;}
+    \NormalTok{\}}
+    
+  \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Implementation of the \texttt{bind} operation is more interesting: It
+takes as input an existing monadic value (eg. an instance of
+\texttt{DatabaseOperations\textless{}A\textgreater{}}) and Function
+object (here denoted \texttt{Command}) taking as input an \texttt{A} and
+returning another monadic value, and when run it applies the
+\emph{command} on the result of running the first monadic value, then
+run the resulting Monad.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{private} \DataTypeTok{static} \KeywordTok{class} \NormalTok{Bind<A,B> }\KeywordTok{extends} \NormalTok{DatabaseOperations<B> \{}
+    
+    \KeywordTok{private} \DataTypeTok{final} \NormalTok{DatabaseOperations<A> a;}
+    \KeywordTok{private} \DataTypeTok{final} \NormalTok{Command<A,DatabaseOperations<B>> command;}
+    
+    \KeywordTok{public} \FunctionTok{Bind}\NormalTok{(DatabaseOperations<A> a, Command<A,DatabaseOperations<B>> command) \{}
+      \KeywordTok{this}\NormalTok{.}\FunctionTok{a} \NormalTok{= a;}
+      \KeywordTok{this}\NormalTok{.}\FunctionTok{command} \NormalTok{= command;}
+    \NormalTok{\}}
+    
+    \KeywordTok{protected} \NormalTok{B }\FunctionTok{run}\NormalTok{() }\KeywordTok{throws} \NormalTok{SQLException \{}
+      \NormalTok{DatabaseOperations<B> txA = command.}\FunctionTok{execute}\NormalTok{(a.}\FunctionTok{run}\NormalTok{());}
+      \KeywordTok{return} \NormalTok{txA.}\FunctionTok{run}\NormalTok{();}
+    \NormalTok{\}}
+    
+  \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, we get to the \texttt{commit} operation which starts the ball
+rolling from an initial Monad: The monad is \emph{run} within a
+transactional context that is eventually cleaned up. This effectively
+hides all the necessary plumbing from the end-user who simply has to
+take care of properly sequencing and running its queries. Moreover, this
+promotes reuse as fragments of SQL ``scripts'' can be developed
+independently then later on composed to produce some larger operations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  
+  \KeywordTok{public} \DataTypeTok{final} \NormalTok{A }\FunctionTok{commit}\NormalTok{(DatabaseConnection db) }\KeywordTok{throws} \NormalTok{SQLException \{}
+    \NormalTok{db.}\FunctionTok{setupDataInfrastructure}\NormalTok{();}
+    \KeywordTok{try} \NormalTok{\{}
+      \NormalTok{A a = }\FunctionTok{run}\NormalTok{();}
+      \NormalTok{db.}\FunctionTok{completeTransaction}\NormalTok{();}
+      \KeywordTok{return} \NormalTok{a;}
+    \NormalTok{\} }\KeywordTok{catch} \NormalTok{(SQLException sqlx) \{}
+      \NormalTok{db.}\FunctionTok{rollbackTransaction}\NormalTok{();}
+      \KeywordTok{throw} \NormalTok{sqlx;}
+    \NormalTok{\} }\KeywordTok{finally} \NormalTok{\{}
+      \NormalTok{db.}\FunctionTok{cleanUp}\NormalTok{();}
+    \NormalTok{\}}
+  \NormalTok{\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \emph{Advantages}:
+
+  \begin{itemize}
+  \item
+    Makes complex contextual operations easily composable and reusable
+  \item
+    Isolate client code from the details of managing the context of the
+    computation thus focusing on implementing business logic
+  \item
+    Underlying logic can change without impacting client code. It is
+    even possible to \emph{stack} Monads on top of one another, as a
+    form of \emph{Strategy} pattern, to change the sequence's behaviour
+    without changing its ``shape''
+  \item
+    Allow quick and safe development of small Domain Specific Languages,
+    leveraging other patterns like Lazy object, Fluent Interface or
+    Method Chaining.
+  \end{itemize}
+\item
+  \emph{Drawbacks}:
+
+  \begin{itemize}
+  \item
+    Needs a somewhat complex machinery to work properly (implementations
+    of bind and unit, meaningful composition, context managment) without
+    language support. This can clutter the codebase and appears
+    overengineered for small applications
+  \item
+    Hiding too much of the context might lead to unexpected and
+    surprising behaviour for the client code level
+  \end{itemize}
+\item
+  \emph{References}:
+
+  \begin{itemize}
+  \item
+    There are really countless \emph{monad tutorials} to be found on the
+    web, and quite a number of papers explaining their origin,
+    properties and use
+  \item
+    \href{http://cacm.acm.org/magazines/2011/10/131398-the-world-according-to-linq/fulltext}{Erik
+    Meijer about LINQ} provides a detailed account of usage of Monad
+    pattern in the context of the LINQ infrastructure and C\# language
+  \end{itemize}
+\end{itemize}
+
+\section{Other Patterns}
+
+\subsection{From \emph{Domain-Driven Design}}
+
+\begin{itemize}
+\item
+  \emph{Side-effect Free Functions}: This is self-explanatory! When
+  dealing with a complex Domain and a web of objects, side-effects free
+  functions favor composition, reuse, and ease reasoning by limiting
+  complexity to what is done \emph{locally} (pp 250-254)\\
+\item
+  \emph{Closure of Operations}: Provide methods on objects returning
+  same or other object transformed. Ä closed operation provides a
+  high-level interface without introducing any dependency on other
+  concepts (pp.268-270)
+\end{itemize}
+
+\subsection{From \emph{A Functional Pattern System}}
+
+\begin{itemize}
+\item
+  \emph{Transfold}: Process the elements of one or more aggregate
+  objects without exposing their representation and writing explicit
+  loops. Allows expressing some kind of
+  \href{http://code.google.com/edu/parallel/mapreduce-tutorial.html}{map-reduce}
+  using higher-order functions like \emph{fold} and \emph{map}
+\item
+  \emph{Void Value}: Raises \texttt{null} to a first-class value. Among
+  many other benefits, this allows to treat void and non-void data
+  uniformly. Even Sir Tony Hoare himself
+  \href{http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare}{acknowledges}
+  using null was a mistake!
+\item
+  \emph{Translator}: Add semantics to structure with heterogeneous
+  elements without changing the elements. This is a replacement for the
+  classical \emph{Visitor} pattern, using reflection or other form of
+  \emph{Runtime Type Information} to replace double-dispatching.
+\end{itemize}
+
+\subsection{From Functional Programming Folklore}
+
+\begin{itemize}
+\item
+  \emph{Iteratee}: A different form of producer-consumer pattern where
+  the consumer (the \emph{Iteratee}) controls how it is fed input by the
+  producer (the \emph{Enumerator}). Provides efficient and elegant ways
+  to process streams of data and compose those processors
+\item
+  \emph{Co-monad}: Provide a way to generate values within a context. A
+  close cousin to the Zipper and, obviously, to the Monad.
+\end{itemize}
+
+\end{document}
